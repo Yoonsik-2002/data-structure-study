@@ -13,7 +13,7 @@ stdData findMax(stdData *a, int n);
 
 int main()
 {
-	stdData exmember[30], stdInfo; // 구조체 타입의 구조체 배열 exmember와 구조체 타입의 변수 stdInfo 선언
+	stdData exmember[30], stdInfo; // 구조체 타입의 구조체 배열 exmember
 	int stdNum, i;
 	
 	// 구조체에 학생 데이터 입력
