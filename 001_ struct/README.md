@@ -52,7 +52,7 @@
   *형 정의문을 이용하여 선언된 구조체의 경우, 위 코드와 같이 main()에서 해당 구조체 타입의 구조체 변수나 구조체 배열 선언 시, (**`struct 구조체 태그 이름`** 이 아닌) 새롭게 정의된 구조체 별칭을 자료형으로 사용한다. 즉, 자료형에 **`struct`** 태그를 붙이지 않는다.*
   <br><br>
   
-## 구조체의 초기화
+## 구조체 변수의 선언과 접근
 먼저 예시로 사용할 인적사항 구조체를 만들어 보겠다.
 ```c
 typedef struct {
@@ -63,7 +63,7 @@ typedef struct {
   float weight;
 }personal_info;
 ```
-- #### 멤버연산자 `.`를 이용한 초기화
+- #### 멤버연산자 `.`를 이용하여 구조체 변수 안의 멤버에 접근하기 
   ```c
   main()
   {
@@ -76,6 +76,13 @@ typedef struct {
     my_info.weight = 63.4;
   }
   ```
+  *구조체 변수 `my_info`를 선언하고 , 멤버연산자 `.`를 이용하여 해당 구조체 변수안에 존재하는 멤버(ID, name, age, height, weight)에 값을 저장하였다.*
+  
+  ```c
+  printf("Information of %s\n ID : %d \n Name : %s \n Age : %d \n Height : %.1f \n Weight : %.1f\n", my_info.ID, 
+  my_info.name, my_info.age, my_info.height, my_info.weight);
+  ```
+  *구조체 변수안의 멤버에 저장된 값을 출력할 때에도 구조체 멤버에 접근(값 저장)할 때와 같이 `구조체 변수.멤버` 형식을 이용한다.*
   
   
   
