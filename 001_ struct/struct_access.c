@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 typedef struct{
 	int ID;
@@ -18,6 +19,6 @@ int main()
 	my_info.height = 172.6;
 	my_info.weight = 63.4;
 	
-	printf("Information of %s\n ID : %d \n Name : %s \n Age : %d \n Height : %.1f \n Weight : %.1f\n", my_info.ID, 
+	printf("Information of %s\n ID : %d \n Name : %s \n Age : %d \n Height : %f \n Weight : %f\n", my_info.ID, 
 		   my_info.name, my_info.age, my_info.height, my_info.weight);
 }
