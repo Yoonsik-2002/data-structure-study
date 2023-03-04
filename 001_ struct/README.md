@@ -39,7 +39,7 @@
     float score;
   }stdData;
   ```
-  *서로 연관성이 있지만, 자료형이 다른(다양한) 데이터 **`stdID`**, **`name[20]`**, **`score`** 는 형 정의문을 통해 새롭게 정의된 자료형 **`stdData`** 라는 새로운 하나의 자료형으로 묶이게 된다.*<br>
+  서로 연관성이 있지만, 자료형이 다른(다양한) 데이터 **`stdID`**, **`name[20]`**, **`score`** 는 형 정의문을 통해 새롭게 정의된 자료형 **`stdData`** 라는 새로운 하나의 자료형으로 묶이게 된다.*br>
   ```c
   // main()에서 해당 구조체 타입의 구조체 변수 또는 구조체 배열 선언 시, typedef 로 새롭게 정의한 자료형을 이용하여 선언한다. 
   ...
@@ -49,10 +49,10 @@
       ...
   }
   ```
-  *형 정의문을 이용하여 선언된 구조체의 경우, 위 코드와 같이 main()에서 해당 구조체 타입의 구조체 변수나 구조체 배열 선언 시, (**`struct 구조체 태그 이름`** 이 아닌) 새롭게 정의된 구조체 별칭을 자료형으로 사용한다. 즉, 자료형에 **`struct`** 태그를 붙이지 않는다.*
+  형 정의문을 이용하여 선언된 구조체의 경우, 위 코드와 같이 main()에서 해당 구조체 타입의 구조체 변수나 구조체 배열 선언 시, (**`struct 구조체 태그 이름`** 이 아닌) 새롭게 정의된 구조체 별칭을 자료형으로 사용한다. 즉, 자료형에 **`struct`** 태그를 붙이지 않는다.
   <br><br>
   
-## 구조체 변수의 선언과 접근
+## 구조체 변수
 먼저 예시로 사용할 인적사항 구조체를 만들어 보겠다.
 ```c
 typedef struct {
@@ -63,6 +63,8 @@ typedef struct {
   float weight;
 }personal_info;
 ```
+
+#### 구조체 변수의 선언과 초기화
 - #### 멤버연산자 `.`를 이용하여 구조체 변수 안의 멤버에 접근하기 
   ```c
   main()
@@ -76,16 +78,16 @@ typedef struct {
     my_info.weight = 63.4;
   }
   ```
-  *구조체 변수 `my_info`를 선언하고 , 멤버연산자 `.`를 이용하여 해당 구조체 변수안에 존재하는 멤버(ID, name, age, height, weight)에 값을 저장하였다.*
+  구조체 변수 `my_info`를 선언하고 , 멤버연산자 `.`를 이용하여 해당 구조체 변수안에 존재하는 멤버(ID, name, age, height, weight)에 값을 저장하였다.
   
   ```c
   printf("Information of %s\n ID : %d \n Name : %s \n Age : %d \n Height : %.1f \n Weight : %.1f\n", my_info.ID, 
   my_info.name, my_info.age, my_info.height, my_info.weight);
   ```
-  *구조체 변수안의 멤버에 저장된 값을 출력할 때에도 구조체 멤버에 접근(값 저장)할 때와 같이 `구조체 변수.멤버` 형식을 이용한다.*
+  구조체 변수안의 멤버에 저장된 값을 출력할 때에도 구조체 멤버에 접근(값 저장)할 때와 같이 `구조체 변수.멤버` 형식을 이용한다.
   <br><br>
   
-## 구조체 배열의 선언과 접근 
+## 구조체 배열
 다수의 `int`형 변수를 선언하기 위해 우리는 배열을 사용한다. 그럼, 다수의 구조체 변수를 선언하기 위해서는 무엇을 사용하면 되는가? 바로 구조체 배열을 사용하면 된다.
 구조체 배열에 대해 전화번호부를 예시로 들어 설명해 보겠다.
 
@@ -117,10 +119,53 @@ typedef struct {
     ... 
     contact_number minsu, number_list[3];
  ```
- *위 코드를 보면 전화번호부 역할을 하는 구조체 배열 `number_list`가 선언된 것을 볼 수 있다. 구조체 배열의 선언도 일반 배열의 선언과 크게 다른것이 없다는 것을 알 수 있다.*
+ 위 코드를 보면 전화번호부 역할을 하는 구조체 배열 `number_list`가 선언된 것을 볼 수 있다. 구조체 배열의 선언도 일반 배열의 선언과 크게 다른것이 없다는 것을 알 수 있다.
  
- 
- 
+ ```c
+ int main()
+{
+	contact_number phone_book[30];
+	int i, pnum;
+	
+	printf("Input number of person : ");
+	scanf("%d\n", &pnum);
+	
+	for (i = 0; i < pnum; i++) {
+		printf("Input person name and number : ");
+		scanf("%s %d\n", phone_book[i].name, &phone_book[i].num);
+	}
+	
+	printf("--Your contact number list--");
+	puts("");
+	for (i = 0; i < pnum; i++) {
+		printf("Name : %s -- Phone number : %d\n", phone_book[i].name, phone_book[i].num);
+	}
+	puts("");
+	printf("-----------------------------\n");
+}
+```
+다음은 구조체 배열을 이용하여 만든 간단한 전화번호부 프로그램이다. 
+<br><br>
+
+## 구조체 포인터 변수
+구조체 포인터 변수의 선언 방법은 일반 포인터 변수의 선언 방법과 크게 다르지 않다. 
+```c
+// 점의 x, y 좌표값을 저장하는 구조체 spot
+typedef struct {
+  int xpos;
+  int ypos;
+}spot;
+```
+```c
+// 구조체 포인터 변수의 선언과 초기화
+spot pos1 = {10, 17};
+spot * pptr = &pos1; // spot 타입의 구조체 포인터 변수 pptr을 선언하고, 구조체 변수 pos1을 가리키도록 선언과 동시에 초기화 하였다. 
+```
+위 코드에서 보았듯이, 구조체 포인터 변수의 선언도 **`자료형 * 구조체 포인터 변수 이름;`** 형태를 띈다. 
+
+
+
+
 
 
 
