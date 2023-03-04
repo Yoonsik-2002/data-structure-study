@@ -9,7 +9,7 @@ typedef struct {
 
 int main()
 {
-	contact_number person, phone_book[30];
+	contact_number phone_book[30];
 	int i, pnum;
 	
 	printf("Input number of person : ");
