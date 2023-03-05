@@ -200,17 +200,29 @@ typedef struct {
   center_coor * pptr; // center_coor 타입의 구조체 포인터 변수 pptr
   double radius;
 }circle;
-
+```
+```c
 int main()
 {
   center_coor cen = {10, 18}; // 원의 중심점의 좌표(x축, y축)값을 저장하는 구조체 변수 pos1 선언 및 초기화
   double rad = 5.5;
-  
-  circle ring = {&cen, rad} // circle 타입의 구조체 변수 ring 선언, 첫 번째 멤버인 center_coor 타입의 구조체 포인터 변수 pptr 에는 위에서 먼저 선언된 center_coor 타입의 구조체 변수 cen의 주소값이 저장된다. 즉, 구조체 포인터 변수 pptr이 구조체 포인터 변수 cen을 가리키고 있는 상태가 된다. center_coor * pptr = &cen
-  
-  
+```
+```c
+  circle ring = {&cen, rad}
+```
+circle 타입의 구조체 변수 ring 선언, 첫 번째 멤버인 center_coor 타입의 구조체 포인터 변수 pptr 에 위에서 먼저 선언된 center_coor 타입의 구조체 변수 cen의 주소값이 저장된다.<br> 
+즉, 구조체 포인터 변수 pptr이 구조체 포인터 변수 cen을 가리키고 있는 상태가 된다. **`center_coor * pptr = &cen`**
+```c
+  // 원의 반지름과 중심점 출력
+  printf("원의 반지름 : %g\n", rign.radius);
+```
+```c
+  printf("원의 중심점 : [%d, %d]\n", (ring.pptr)->xpos, (ring.pptr)->ypos);
 }
 ```
+circle 타입의 구조체 변수 ring의 center_coor 타입의 구조체 포인터 변수 pptr이 가리키고 있는 center_coor 타입의 구조체 변수 cen의 멤버 xpos, ypos 값을 출력한다.<br>
+더 풀어서 설명하면 **`(ring.pptr)->xpos`** 에서 **`.`** 연산자는 ring 이라는 구조체 변수의 멤버인 pptr과 radius 중 무엇을 선택할지 지정해주는 역할을 하고 **`->`** 연산자는 **`*`** 연산자와 **`.`** 연산자의 역할을 동시에 수행하여, 구조체 포인터 변수가 가리키고 있는(**`*`** 연산자의 역할) 구조체 변수 cen 의 멤버인 xpos와 ypos중 무엇을 선택할지(**`.`** 연산자의 역할) 지정해주는 역할을 한다. 
+
 
 
 
