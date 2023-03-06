@@ -275,6 +275,34 @@ int main()
 <br><br>
 구조체 변수 또한 함수의 인자로서 해당 함수의 매개변수에 전달 될 수 있다. 그리고, 전달되는 구조체 변수의 값은 매개변수에 통째로 (int형 변수가 전달되는 것과 같이) 복사되어 전달된다. 
 
+```c
+#include <stdio.h>
+
+typedef struct {
+	int xpos;
+	int ypos;
+}spot;
+
+spot current_coordinate(void) {
+	spot cen;
+	printf("Input coordinate of spot : ");
+	scanf("%d %d", &cen.xpos, &cen.ypos);
+	return cen; // spot 타입의 구조체 변수 cen에 값 저장 후, 반환(return)
+}
+
+void show_coordinate(spot pos) {
+	printf("[%d, %d]\n", pos.xpos, pos.ypos);
+}
+
+int main()
+{
+	spot cur_spot = current_coordinate(); // current_coordinate 함수 실행 후, 리턴되는 구조체 변수 cen에 저장되어 있는 값이 cur_spot에 나란히 복사되어 저장된다. 
+	show_coordinate(cur_spot); // spot 타입의 구조체 변수 cur_spot가 show_coordinate 함수에 인자로 전달된다. 이때, cur_spot 에 저장되어 있는 값이 나란히 복사되어 매개변수 pos 에 저장된다. 
+}
+```
+**`current_coordinate`** 함수가 실행되며 구조체 변수 **`cur_spot`** 에 반환된(**return**) **`spot`** 타입의 구조체 변수 **`cen`** 에 저장된 값은 나란히 복사되어 **`cur_spot`** 에 저장된다. 
+<br>또, **`show_coordinate`** 함수에 인자로서 전달된 구조체 변수 **`cur_spot`** 에 저장된 값들은 나란히 복사되어 **`show_coordinate`** 함수의 매개변수 **`pos`** 에 저장된다.<br><br> 
+**이렇게 함수에 인자로서의 전달과정에서, 값의 반환과정(return)에서 구조체 변수에 저장된 값들은 복사되어 전달되게 된다.**
 
 
 
