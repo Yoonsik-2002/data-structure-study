@@ -232,17 +232,17 @@ circle 타입의 구조체 변수 ring의 center_coor 타입의 구조체 포인
 #include <stdio.h>
 
 typedef struct {
-	int ID;
-	char Pass_Word[20];
+  int ID;
+  char Pass_Word[20];
 }member;
 
 int main()
 {
-	member example_member = {20211059, "asdfe1203"};
-	member * pptr = &example_member;
+  member example_member = {20211059, "asdfe1203"};
+  member * pptr = &example_member;
 	
-	printf("구조체 변수 example_member의 주소값 : %p\n", pptr); // 구조체 포인터 변수 pptr이 가리키고 있는 구조체 변수 example_member의 주소값
-	printf("구조체 변수 example_member의 첫 번째  멤버의 주소값 : %p\n", &pptr->ID); // 구조체 포인터 변수 pptr이 가리키고 있는 구조체 변수 example_member의 첫 번째 멤버 ID의 주소값
+  printf("구조체 변수 example_member의 주소값 : %p\n", pptr); // 구조체 포인터 변수 pptr이 가리키고 있는 구조체 변수 example_member의 주소값
+  printf("구조체 변수 example_member의 첫 번째  멤버의 주소값 : %p\n", &pptr->ID); // 구조체 포인터 변수 pptr이 가리키고 있는 구조체 변수 example_member의 첫 번째 멤버 ID의 주소값
 }
 ```
 
@@ -258,9 +258,23 @@ int main()
 구조체 변수 example_member의 첫 번째  멤버의 주소값 : 0x7fff71349290
 ```
 위 실행 결과에서 확인해 볼 수 있듯이, **구조체 변수의 주소값과 해당 구조체 변수의 첫 번째 멤버의 주소값은 동일하다 !**
+<br><br>
 
+## 함수로의 구조체 변수 전달과 반환
+구조체 변수를 함수의 인자로, 해당 함수의 매개변수에 전달하거나 함수 내에서 **`return`** 문을 통해서 구조체 변수를 반환하는 경우, 발생하는 모든 현상은 **`int`** 형 변수를 인자로 전달하거나 반환하는 경우에 발생하는 현상과 완전히 동일하다.
+```c
+void example_func(int num) { ... };
 
-   
+int main() 
+{
+  int number = 22;
+  example_func(number);
+}
+``` 
+위의 예시 코드는 **`int`** 형 변수 **`number`** 를 **`example_func`** 함수의 인자로 전달하는 내용을 담은 코드이다. 이때, 변수 **`number`** 에 저장되어 있는 값인 22는 **`example_func`** 함수의 매개변수 **`num`** 에 복사되어 전달되게 된다.
+<br><br>
+구조체 변수 또한 함수의 인자로서 해당 함수의 매개변수에 전달 될 수 있다. 그리고, 전달되는 구조체 변수의 값은 매개변수에 통째로 (int형 변수가 전달되는 것과 같이) 복사되어 전달된다. 
+
 
 
 
