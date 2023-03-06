@@ -222,9 +222,42 @@ circle 타입의 구조체 변수 ring 선언, 첫 번째 멤버인 center_coor 
 ```
 circle 타입의 구조체 변수 ring의 center_coor 타입의 구조체 포인터 변수 pptr이 가리키고 있는 center_coor 타입의 구조체 변수 cen의 멤버 xpos, ypos 값을 출력한다.<br>
 더 풀어서 설명하면 **`(ring.pptr)->xpos`** 에서 **`.`** 연산자는 ring 이라는 구조체 변수의 멤버인 pptr과 radius 중 무엇을 선택할지 지정해주는 역할을 하고 **`->`** 연산자는 **`*`** 연산자와 **`.`** 연산자의 역할을 동시에 수행하여, 구조체 포인터 변수가 가리키고 있는(**`*`** 연산자의 역할) 구조체 변수 cen 의 멤버인 xpos와 ypos중 무엇을 선택할지(**`.`** 연산자의 역할) 지정해주는 역할을 한다. 
+<br><br>
 
+## 구조체 변수의 주소값과 구조체 변수의 첫 번째 멤버의 주소값
+구조체 변수의 주소값은 구조체 변수의 첫 번째 멤버의 주소값과 동일하다. 
+해당 내용은 다음 코드를 통해서 확인해 보도록 하겠다. 
 
+```c
+#include <stdio.h>
 
+typedef struct {
+	int ID;
+	char Pass_Word[20];
+}member;
+
+int main()
+{
+	member example_member = {20211059, "asdfe1203"};
+	member * pptr = &example_member;
+	
+	printf("구조체 변수 example_member의 주소값 : %p\n", pptr); // 구조체 포인터 변수 pptr이 가리키고 있는 구조체 변수 example_member의 주소값
+	printf("구조체 변수 example_member의 첫 번째  멤버의 주소값 : %p\n", &pptr->ID); // 구조체 포인터 변수 pptr이 가리키고 있는 구조체 변수 example_member의 첫 번째 멤버 ID의 주소값
+}
+```
+
+일단, 회원의 ID와 password를 저장하는 구조체 **`member`** 를 생성하였고, **`member`** 타입의 구조체 변수 **`example_member`** 를 선언과 동시에 초기화 해주었다.
+그리고, 구조체 포인터 변수 **`pptr`** 을 선언하여, 구조체 변수 **`example_member`** 를 가리키도록 하였다. (example_member의 주소값을 구조체 포인터 변수 pptr에 저장하였다.)
+<br><br>
+마지막으로 pptr에 저장되어 있는 구조체 변수 **`example_member`** 의 주소값과 **`example_member`** 의 첫 번째 멤버의 주소값을 출력하였다.<br>
+해당 프로그램의 실행 결과는 다음과 같다. ~~(군대 사지방 컴퓨터는 화면 캡쳐후, 저장해서 업로드 하는것이 불가능 하므로, 그냥 내가 실행결과를 적도록 하겠다.)~~
+```c
+[실행결과]
+
+구조체 변수 example_member의 주소값 : 0x7fff71349290
+구조체 변수 example_member의 첫 번째  멤버의 주소값 : 0x7fff71349290
+```
+위 실행 결과에서 확인해 볼 수 있듯이, **구조체 변수의 주소값과 해당 구조체 변수의 첫 번째 멤버의 주소값은 동일하다 !**
 
 
    
