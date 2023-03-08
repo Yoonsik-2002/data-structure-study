@@ -311,6 +311,45 @@ int main()
 이때, 구조체 변수의 멤버가 위 예시처럼 int 형 변수가 아닌, 배열이라면 어떤식으로 함수에 인자로 전달되고, 값의 반환과정 또한 어떤식으로 이루어질까?<br>
 int 형 변수 멤버의 값이 **복사되어 함수의 인자로 전달되고, 값의 반환과정 또한 복사되어 전달** 되듯이, 구조체 변수의 멤버가 배열인 경우에도(구조체의 멤버로 선언된 배열의 경우에도), 배열이 통째로 복사되어 전달되게 된다.  
 
+```c
+#include <stdio.h>
+
+typedef struct {
+	char name[20];
+	char phone_num[25];
+	int age;
+}person;
+
+person read_person_info(void){
+	person man;
+	printf("--Input Information of person--\n");
+	printf("Name : "); scanf("%s", man.name);
+	printf("Phone Number : "); scanf("%s", man.phone_num);
+	printf("Age : "); scanf("%d", &man.age);
+	printf("-------------------------------\n");
+	puts("");
+	return man;
+}
+
+void show_person_info(person a){
+	printf("----Information of %s----\n", a.name);
+	printf("Name : %s\n", a.name);
+	printf("Phone Number : %s\n", a.phone_num);
+	printf("Age : %d\n", a.age);
+	printf("-----------------------------\n");
+}
+
+int main()
+{
+	person man1 = read_person_info();
+	show_person_info(man1);
+}
+```
+위 코드를 보면 **`read_person_info`** 함수를 통해 구조체 변수 **`man`** 이 선언되고, 해당 구조체 변수의 멤버들에 값을 입력하게 된다. 이때, 구조체 변수 **`man`** 의 멤버중 **`name`** 과 **`phone_num`** 은 배열인 것을 알 수 있다. 
+**`man`** 에 데이터가 다 입력 되고, 해당 구조체 변수가 **return** 될 때, **`man`** 의 멤버인 **`name`**, **`phone_num`** 는 배열일지라도 상관 없이 int 형 변수 형태인 **`age`** 와 같이 통째로 복사되어 멤버 대 멤버로 값이 구조체 변수 **`man1`** 에 전달된다. 
+
+또, 구조체 변수 **`man1`** 이 **`show_person_info`** 함수에 인자로서 전달될 때도 **`man1`** 의 멤버인 **`name`** , **`phone_num`**, **`age`** 모두 복사되어 매개변수에 멤버 대 멤버로 전달된다. 
+
 
 
   
