@@ -349,8 +349,66 @@ int main()
 
 **`man`** 에 데이터가 다 입력 되고, 해당 구조체 변수가 **return** 될 때, **`man`** 의 멤버인 **`name`**, **`phone_num`** 는 배열일지라도 상관 없이 int 형 변수 형태인 **`age`** 와 같이 통째로 복사되어 멤버 대 멤버로 값이 구조체 변수 **`man1`** 에 전달된다. 
 
-또, 구조체 변수 **`man1`** 이 **`show_person_info`** 함수에 인자로서 전달될 때도 **`man1`** 의 멤버인 **`name`** , **`phone_num`**, **`age`** 모두 복사되어 매개변수에 멤버 대 멤버로 전달된다. 
-<br><br>
+또, 구조체 변수 **`man1`** 이 **`show_person_info`** 함수에 인자로서 전달될 때도 **`man1`** 의 멤버인 **`name`** , **`phone_num`**, **`age`** 모두 복사되어 매개변수에 멤버 대 멤버로 전달된다.<br>
+
+### 구조체 변수를 대상으로 하는 Call-by-reference
+Call-by-reference 또는 Call-by-value가 무엇인지에 대한 설명은 다음 링크에서 확인해 볼 수 있다. [Call-by-value 와 Call-by-reference](https://github.com/Yoonsik-2002/data-structure-study/tree/main/000_other_knowledge)
+
+함수를 정의할 때 구조체 포인터 변수를 매개변수로 선언하여, 해당 매개변수에 구조체 변수의 주소값이 전달되게 하는 **구조체 변수를 대상으로 하는 Call-by-reference 형태의 함수호출이 가능하다.**
+<br>
+다음 코드를 보고 이해해 보자. 
+
+```c
+// call-by-reference 형태의 함수 호출을 이용하여 x, y좌표값을 원점대칭 이동시키는 프로그램 
+#include <stdio.h>
+
+typedef struct {
+	int xpos;
+	int ypos;
+}point;
+
+void change_coordinate(point * pptr) { // 구조체 포인터 변수 형태로 선언된 매개 변수 pptr. 이를 통해 call-by-reference 형태의 함수호출이 가능해지고, 함수 내에서 함수 밖에 선언된 변수에 접근이 가능하게 된다. 
+	printf("pos1의 x,y 좌표의 원점 대칭 이동 수행중 ...\n");
+	pptr->xpos = (pptr->xpos) * -1; // (*pptr.xpos) * -1 과 같은 의미
+	pptr->ypos = (pptr->ypos) * -1; // (*pptr.ypos) * -1 과 같은 의미
+	printf("수행 완료 !\n");
+	puts("");
+}
+
+void restoration(point pos1) {
+	printf("좌표의 이동을 다시 원상 복구하겠습니다.\n");
+	change_coordinate(&pos1);
+	printf("원상 복구된 pos1의 x, y 좌표 : [%d, %d]\n", pos1.xpos, pos1.ypos);
+}
+
+int main()
+{
+	point pos1 = {-7, 5};
+	printf("pos1의 x, y 좌표 : [%d, %d]\n", pos1.xpos, pos1.ypos);
+	puts("");
+	change_coordinate(&pos1);
+	printf("원점 대칭이동 된 pos1의 x, y 좌표 : [%d, %d]\n", pos1.xpos, pos1.ypos);
+	puts("");
+	restoration(pos1);
+}
+```
+```c
+[실행결과]
+pos1의 x, y 좌표 : [-7, 5]
+
+pos1의 x,y 좌표의 원점 대칭 이동 수행중 ...
+수행 완료 !
+
+원점 대칭이동 된 pos1의 x, y 좌표 : [7, -5]
+
+좌표의 이동을 다시 원상 복구하겠습니다
+pos1의 x,y 좌표의 원점 대칭 이동 수행중 ...
+수행 완료 !
+
+원상 복구된 pos1의 x, y 좌표 : [-7, 5]
+```
+위 프로그램을 통해 알 수 있듯이, **구조체 포인터 변수 형태로 선언된 함수의 매개변수에 구조체 변수의 주소값을 전달하여 Call-by-reference 형태의 함수호출을 구성할 수 있다.**<br>
+이 경우, 코드에서 볼 수 있듯이, **`change_coordinate`** 함수 내에서 해당 함수 밖에 선언된 구조체 변수 pos1에 접근이 가능해진다 !!!!
 
 ## 구조체 변수를 대상으로 하는 연산
 기본 자료형 변수를 대상으로는 사칙연산, 비교연산 등 다양한 연산이 가능하다. 하지만, 구조체 변수를 대상으로는 제한된 형태의 연산만이 가능하다. 다음은 구조체 변수를 대상으로 허용되는 대표적인 연산들이다. 
