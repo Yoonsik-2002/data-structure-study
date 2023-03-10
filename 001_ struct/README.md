@@ -350,7 +350,88 @@ int main()
 **`man`** 에 데이터가 다 입력 되고, 해당 구조체 변수가 **return** 될 때, **`man`** 의 멤버인 **`name`**, **`phone_num`** 는 배열일지라도 상관 없이 int 형 변수 형태인 **`age`** 와 같이 통째로 복사되어 멤버 대 멤버로 값이 구조체 변수 **`man1`** 에 전달된다. 
 
 또, 구조체 변수 **`man1`** 이 **`show_person_info`** 함수에 인자로서 전달될 때도 **`man1`** 의 멤버인 **`name`** , **`phone_num`**, **`age`** 모두 복사되어 매개변수에 멤버 대 멤버로 전달된다. 
+<br><br>
 
+## 구조체 변수를 대상으로 하는 연산
+기본 자료형 변수를 대상으로는 사칙연산, 비교연산 등 다양한 연산이 가능하다. 하지만, 구조체 변수를 대상으로는 제한된 형태의 연산만이 가능하다. 다음은 구조체 변수를 대상으로 허용되는 대표적인 연산들이다. 
+
+- 대입연산
+- 주소값 반환 목적의 **`&`** 연산
+- 구조체 변수의 크기를 반환하는 **`sizeof`** 연산
+
+```c
+#include <stdio.h>
+
+typedef struct {
+	int xpos;
+	int ypos;
+}spot;
+
+int main()
+{
+	spot pos1 = {10, 12};
+	// 구조체 변수의 대입 연산 - pos1의 멤버 대 pos2의 멤버간의 복사가 진행됨 쉽게말해, pos1 의 멤버 10, 12가 복사되어 그대로 pos2의 멤버에 전달됨
+	spot pos2 = pos1;
+	
+	printf("구조체 변수 pos1의 크기 : %ld\n", sizeof(pos1)); // 구조체 변수의 크기를 반환하는 sizeof 연산
+	printf("[%d, %d]\n", pos1.xpos, pos1.ypos);
+	puts("");
+	printf("구조체 변수 pos2의 크기 : %ld\n", sizeof(pos2));
+	printf("[%d, %d]\n", pos2.xpos, pos2.ypos);
+}
+```
+```c
+[실행결과]
+구조체 변수 pos1의 크기 : 8
+[10, 12]
+
+구조체 변수 pos2의 크기 : 8
+[10, 12]
+```
+### 구조체 변수를 대상으로 덧셈과 뺄셈과 같은 사칙연산이 불가능한 이유
+구조체 변수를 대상으로 허용되는 연산이 이렇게 종류가 적다니.. 라는 생각이 들 수도 있다. 그럼 구조체 변수를 대상으로 사칙연산이 불가능한 이유는 무엇일까?<br>
+**구조체 안에는 우리가 흔히 생각하는 기본 자료형 변수 뿐만 아니라, 배열, 포인터 변수, 심지어 다른 구조체의 변수도 존재할 수 있다.<br>
+이러한 상태에서 구조체 변수를 대상으로 사칙연산의 결과를 정형화 하는 것은 무리가 있다.** <br><br>
+그렇다면 구조체 변수를 대상으로 사칙연산을 하기 위해선 어떻게 해야 할까?<br>
+정답은 함수의 정의를 통해서 사칙연산의 결과를 프로그래머가 직접 정의 해야 한다. 
+
+다음은 점의 좌표값(x, y값)을 멤버로 하는 구조체 변수 **`pos1`** 과 **`pos2`** 를 대상으로 덧셈과 뺄셈 연산을 하는 프로그램이다. 
+
+```c
+#include <stdio.h>
+
+typedef struct {
+	int xpos;
+	int ypos;
+}point;
+
+point add_point(point pos1, point pos2);
+point min_point(point pos1, point pos2);
+
+int main()
+{
+	point pos1 = {10, 20};
+	point pos2 = {30, 40};
+	
+	point result;
+	
+	result = add_point(pos1, pos2);
+	printf("add_point 의 계산 결과 : [%d, %d]\n", result.xpos, result.ypos);
+	
+	result = min_point(pos1, pos2);
+	printf("min_point 의 계산 결과 : [%d, %d]\n", result.xpos, result.ypos);
+}
+
+point add_point(point pos1, point pos2){
+	point pos = {pos1.xpos + pos2.xpos, pos1.xpos + pos2.ypos};
+	return pos;
+}
+
+point min_point(point pos1, point pos2){
+	point pos = {pos2.xpos - pos1.xpos, pos2.xpos - pos1.ypos};
+	return pos;
+}
+```
 
 
   
