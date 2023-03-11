@@ -542,3 +542,55 @@ circle c2 = {30, 40, 5.5};
 <br><br>
 
 ## 구조체를 정의하는 이유
+구조체를 정의하여 서로 연관성을 지니지만, 자료형이 다른 데이터들을 하나의 새로은 자료형으로 묶으면 이러한 연관성이 있는 데이터들의 표현과 관리가 용이해 지고, 그만큼 합리적인 코드를 작성할 수 있게 된다.
+
+```c
+#include <stdio.h>
+
+typedef struct {
+	char name[20];
+	char stdnum[20];
+	char major[20];
+	int year;
+	float score;
+}student;
+
+void show_std_info(student * ptr) { // call by reference 형태의 함수호출을 수행하는 함수
+	printf("Name : %s\n", ptr->name);
+	printf("Student Number : %s\n", ptr->stdnum);
+	printf("Major : %s\n", ptr->major);
+	printf("Year : %d\n", ptr->year);
+	printf("Score : %.2f\n", ptr->score);
+}
+
+int main()
+{
+	student stdarr[30];
+	int i, num;
+	
+	printf("Input num : "); scanf("%d", &num);
+	
+	// 입력받은 학생 수 만큼 구조체 배열 stdarr에 학생 데이터 입력
+	for(i = 0; i < num; i++){
+		printf("Name : "); scanf("%s", stdarr[i].name);
+		printf("Student Number : "); scanf("%s", stdarr[i].stdnum);
+		printf("Major : "); scanf("%s", stdarr[i].major);
+		printf("year : "); scanf("%d", &stdarr[i].year);
+		printf("Score : "); scanf("%f", &stdarr[i].score);
+	}
+	
+	for(i = 0; i < num; i++){
+		show_std_info(&stdarr[i]); // call by reference 형태의 함수 show_std_info에 구조체 배열 stdarr의 0 부터 num 까지의 인덱스에 해당하는 구조체 변수의 주소값을 함수의 인자로서 전달. 
+		puts("");
+	}
+}
+```
+다음 프로그램을 보면, **`student`** 라는 구조체의 정의를 통하여, *"학생의 정보"* 라는 주제로 서로 연관성을 지니는 데이터들인 **학생 이름`name`** , **학번 `stdnum`** , **전공 `major`** , **학년 `year`**, **학점 `score`** 을 **`student`** 라는 새로운 하나의 자료형으로 묶어주었다. 
+<br>
+이 과정을 통해 **`stdarr`** 이라는 구조체 배열을 선언하여 여러명의 학생의 정보가 담긴 구조체 배열을 만들수가 있었고, 또 학생들의 정보를 함수에 인자로서 전달할 경우에도 구조체 배열 **`stdarr`** 의 주소값을 보내주는 방식으로 간단히 표현이 가능해 졌다. 
+<br><br>
+만약, 이런 구조체라는 개념이 존재하지 않았더라면, 학생들의 정보를 저장할 때 이름과 관련된 데이터, 학번과 관련된 데이터, ... 학점에 관련된 데이터를 저장하는 배열을 각각 따로 따로 선언하여 데이터를 저장하고, 해당 데이터들을 처리하기 위해 함수의 매개변수도 각각 항목별로 여러개를 선언해주어야 할 것이다. <br>
+또, 함수의 인자로서 매개변수에 전달하게 되는 데이터 또한 늘어나게 될 것이다.
+즉, 쓸데없이 코드가 복잡해지고, 데이터의 표현과 관리에 있어 용이성이 매우 떨어지게 된다. 
+<br><br>
+때문에, **데이터의 표현과 관리의 용의성을 위해서, 보다 더 간결하고 합리적인 코드를 작성하기 위해서 구조체라는 개념은 C 프로그래밍에 있어 정말 중요한 개념이다.**
