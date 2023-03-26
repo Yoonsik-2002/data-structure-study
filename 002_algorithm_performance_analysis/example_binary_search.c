@@ -2,10 +2,11 @@
 
 int b_search(int ex_arr[], int len, int target) {
 	int first = 0;
-	int last = len -1;
+	int last = len - 1;
 	int mid;
 	
 	while(first <= last) {
+		mid = (first + last) / 2;
 		if(target == ex_arr[mid])
 			return mid; // target 과 중앙값이 같은 경우, 값을 찾은 경우
 		else {  // target 과 중앙값이 다른 경우, 값을 찾지 못한 경우 - 두가지 경우로 나뉨 target 이 중앙값보다 작은 경우, target 이 중앙값보다 큰 경우
