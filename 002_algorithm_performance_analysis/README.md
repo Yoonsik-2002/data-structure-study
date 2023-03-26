@@ -166,5 +166,26 @@ for(i = 0; i < array_length; i++){
 `1` `2` `3` `7`<br>
 `3` `7`<br>
 
-***이렇듯, 이진탐색 알고리즘은 탐색의 대상(범위)를 반복해서 반 씩 떨구어 내는 것을 알 수 있다.***
+***이렇듯, 이진탐색 알고리즘은 탐색의 대상(범위)를 반복해서 반 씩 떨구어 내는 것을 알 수 있다.***<br>
 
+### 이진탐색 알고리즘의 작동원리 - 배열 내에 찾고자 하는 값이 존재하지 않을 경우
+다음은 위에서 설명한 이진탐색 알고리즘을 적용한 함수 **`b_search`** 이다.<br>
+```c
+int b_search(int ex_arr[], int len, int target) {
+	int first = 0;
+	int last = len -1;
+	int mid;
+	
+	while(first <= last) {
+		if(target == ex_arr[mid])
+			return mid; // target 과 중앙값이 같은 경우, 값을 찾은 경우
+		else {  // target 과 중앙값이 다른 경우, 값을 찾지 못한 경우 - 두가지 경우로 나뉨 target 이 중앙값보다 작은 경우, target 이 중앙값보다 큰 경우
+			if(target < ex_arr[mid])
+				last = mid - 1;
+			if(target > ex_arr[mid])
+				first = mid + 1;
+		}
+	}
+	return -1;
+}
+```
