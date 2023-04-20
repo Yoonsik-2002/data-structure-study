@@ -1,23 +1,23 @@
 #include <stdio.h>
 
-int Fibo(int num) 
+int Fibo(int n) 
 {
-	if (num == 1) 
+	if (n == 1) 
 		return 0;
-	else if(num == 2)
+	else if(n == 2)
 		return 1;
 	else
-		return Fibo(num - 1) + Fibo(num - 2);
+		return Fibo(n - 1) + Fibo(n - 2);
 }
 
 void main()
 {
-	int n, i;
+	int length, i;
 	printf("Enter the length of the sequence\n");
-	scanf("%d", &n);
+	scanf("%d", &length);
 	
 	printf("-----Fibonacci Sequence!-----\n");
-	for(i = 1; i <= n; i++){
+	for(i = 1; i <= length; i++){
 		printf("%d ", Fibo(i));
 	}
 	puts("");
