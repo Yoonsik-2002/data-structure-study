@@ -1,13 +1,13 @@
 #include <stdio.h>
 
-int Fibo(int n) 
+int Fibo(int num) 
 {
-	if (n == 1) 
+	if (num == 1) 
 		return 0;
-	else if(n == 2)
+	else if(num == 2)
 		return 1;
 	else
-		return Fibo(n - 1) + Fibo(n - 2);
+		return Fibo(num - 1) + Fibo(num - 2);
 }
 
 void main()
