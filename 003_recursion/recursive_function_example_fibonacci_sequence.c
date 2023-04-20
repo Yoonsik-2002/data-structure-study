@@ -12,10 +12,12 @@ int Fibo(int n)
 
 void main()
 {
-	int i;
+	int n, i;
+	printf("Enter the length of the sequence\n");
+	scanf("%d", &n);
 	
 	printf("-----Fibonacci Sequence!-----\n");
-	for(i = 1; i < 15; i++){
+	for(i = 1; i <= n; i++){
 		printf("%d ", Fibo(i));
 	}
 	puts("");
