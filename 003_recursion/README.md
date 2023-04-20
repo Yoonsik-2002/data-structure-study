@@ -146,6 +146,45 @@ C언어는 함수의 재귀적 호출(함수 내에서 함수 자기자신을 �
       n * Factorial(n - 1);
   }
   ```
+- #### n번째 피보나치 수열의 값을 출력하는 함수 `Fibonacci`
+  피보나치 수열은 앞의 수 두개를 더하여 현재의 수를 만들어 가는 수열로, 아래 예시와 같이 표현된다.<br>
+  (피보나치 수열의 조건 - `첫번째 수는 0, 두 번째 수는 1`, 그 다음부터는 `이전값 + 이전전값 = 현재값`)<br>
+    
+  ```c
+  0, 1, 1, 2, 3, 5, 8, 13, 21, ...
+  ```
+  즉, `n번째 값 = (n - 1)번째 값 + (n - 2)번째 값` 이 성립 되며, 피보나치 수열의 n번째 값 f(n)은 다음과 같은 수학적 수식으로 표현이<br>
+  가능하다.<br>
+  ![수식 이미지 (1)](https://user-images.githubusercontent.com/83572199/233345307-e2191d4d-842c-4983-bbd3-60e257ae3418.png)<br>
+  첫 번째 값을 의미하는 f(1)은 0을 반환하고, 두 번째 값을 의미하는 f(2)는 1을 반환한다. 그리고, 그 밖의 n 번째 값들은 `f(n - 1) + f(n - 2)`<br>
+  수식을 통해 반환이 된다.<br>
+  위 수식을 그대로 코드로 옮겨, n번째 피보나치 수열의 값을 출력해주는 **Fibonacci** 함수를 이용한 피보나치 수열 출력 프로그램을 만들어 보겠다. 
+  ```c
+  int Fibonacci(int n)
+  {
+    if(n == 1)
+      return 0;
+    else if(n == 2)
+      return 1;
+    else
+      return Fibonacci(n - 1) + Fibonacci(n - 2);
+  }
+  ```
+  ```c
+  main void()
+  {
+    int length, i;
+    printf("Enter the length of the sequence\n");
+    scanf("%d", &length);
+    
+    printf("-----Fibonacci Sequence!-----\n");
+    for(i = 1; i <= length; i++) {
+      printf("%d ", Fibonacci(i));
+    }
+  }
+  ```
+팩토리얼, 피보나치 수열과 같이 **재귀적인 수학적 수식으로 표현이 가능한 경우**에는 해당 수식을 그대로 코드로 옮기는 방식으로,<br>
+간단히 재귀함수로 구현이 가능하다. 
     
 
 
