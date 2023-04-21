@@ -214,7 +214,25 @@ C언어는 함수의 재귀적 호출(함수 내에서 함수 자기자신을 �
 때문에, 해당 부분을 재귀적으로 표현하는 것이 가능하게 되는 것이다!<br>
 
 먼저, 해당 조건들을 가지고 이진탐색 알고리즘을 재귀적으로 구현한 함수 **`BSearchRecur`** 을 나타내면 다음과 같다.<br>
-
+```c
+int BSearchRecur(int ex_arr[], int first, int last, int target)
+{
+  
+  int mid = (first + last) / 2;
+  
+  if(first > last)
+    return -1;  // '값을 찾지 못하였음'을 의미하는 값 -1 반환
+  
+  if(ex_arr[mid] == target) 
+    return mid;
+  else if(ex_arr[mid] > target) 
+    return BSearchRecur(ex_arr[], first, mid - 1, target);
+  else
+    return BSearchRecur(ex_arr[], mid + 1, last, target);
+}
+```
+  
+  
 
 
 
