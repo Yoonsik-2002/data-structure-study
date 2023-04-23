@@ -107,7 +107,7 @@ void PutMoney(Wallet * pw, int coinNum, int billNum);    // 돈을 넣는 연산
 typedef struct tagNode
 {
   int Data; // 데이터를 저장하는 필드
-  tagNode* NextNode; // 다음 노드의 주소값을 저장하는 포인터 
+  tagNode* NextNode; // 다음 노드의 주소값을 저장하는 포인터 (같은 구조체 타입(`tagNode(Node)`의 노드를 연결해준다.)
 } Node;
 ```
 이렇게 선언한 `Node` 구조체는 다음과 같이 인스턴스를 생성 가능하다. 
