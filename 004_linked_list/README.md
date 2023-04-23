@@ -100,6 +100,20 @@ void PutMoney(Wallet * pw, int coinNum, int billNum);    // 돈을 넣는 연산
 <br>
 
 ### 링크드 리스트의 구현
+링크드 리스트는 노드가 주렁주렁 엮인 형태라고 설명하였다. 때문에, 링크드 리스트를 구현하기 위해서는 노드를 코드로 표현할 수 있어야 한다.<br>
+이 노드를 C언어로 표현하면 다음과 같이 구조체 형태로 표현이 가능하다.<br>
+
+```c
+typedef struct tagNode
+{
+  int Data; // 데이터를 저장하는 필드
+  tagNode* NextNode; // 다음 노드의 주소값을 저장하는 포인터 
+} Node;
+```
+이렇게 선언한 `Node` 구조체는 다음과 같이 인스턴스를 생성 가능하다. 
+```c
+Node Mynode;
+```
 
 
 
