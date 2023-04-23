@@ -8,7 +8,8 @@
     - 지폐의 추출
 
 기능의 진행(완성)되는 과정을 언급하지 않고 기능이 무엇인지만 나열하였다. <br>
-(`‘이런기능이 있고 이런 기능이 있어’` 기능의 명세!)
+(`‘이런기능이 있고 이런 기능이 있어’` 기능의 명세!)<br>
+<br>
 
 ### 자료형의 정의
 완전한 자료형의 정의로 인식되기 위해서는 해당 자료형과 관련이 있는 연산이 함께 정의 되어야 한다.<br>
@@ -31,7 +32,8 @@ int TakeOutMoney(Wallet * pw, int coinNum, int billNum);     // 돈을 꺼내는
 void PutMoney(Wallet * pw, int coinNum, int billNum);    // 돈을 넣는 연산 
 ```
 ‘자료형’의 정의에 ‘기능’ 혹은 ‘연산’과 관련된 내용을 명시할 수 있다.  따라서 추상 자료형이라 하여 그것에 기능 또는 연산과 관련된 내용을<br>
-명시할 수 없다는 생각은 버려야 한다.
+명시할 수 없다는 생각은 버려야 한다.<br>
+<br>
 
 ### Wallet의 추상 자료형(ADT)
 - `int TakeOutMoney(Wallet * pw, int coinNum, int billNum);`
