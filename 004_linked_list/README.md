@@ -135,6 +135,7 @@ Node Mynode;
 ### 노드의 생성/소멸
 노드의 생성과 소멸에 대해 이해하기 위해서는 우선적으로, C언어 프로그램의 메모리 영역에 대한 지식이 필요하다.<br>
 해당 내용은 다음 링크에서 다루고 있다.<br>
+[Memory Area of C Program](https://github.com/Yoonsik-2002/data-structure-study/tree/main/000_other_knowledge/memory_area_of_c_program)
 
 
 
