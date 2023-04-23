@@ -104,7 +104,7 @@ void PutMoney(Wallet * pw, int coinNum, int billNum);    // 돈을 넣는 연산
 이 노드를 C언어로 표현하면 다음과 같이 구조체 형태로 표현이 가능하다.<br>
 
 ```c
-typedef struct tagNode
+typedef struct tagNode // 구조체 태그이름 tagNode(안써도 됨)
 {
   int Data; // 데이터를 저장하는 필드
   tagNode* NextNode; // 다음 노드의 주소값을 저장하는 포인터 (같은 구조체 타입:tagNode(Node) 의 노드를 연결해준다.)
