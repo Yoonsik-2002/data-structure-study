@@ -186,7 +186,7 @@ Node Mynode;
   
   그러면, `Node`의 크기에 해당하는 바이트 크기의 메모리 공간이 heap영역에 할당되게 된다.<br>
   
-  그 후,`malloc()` 함수는 `Node`의 크기만큼 heap영역에 할당된 메모리 공간을 이루는 바이트들 중, 첫 번째 바이트의 주소값을 포인터 변수 `NewNode`에 반환한다.
+  그 후,`malloc()` 함수는 `Node`의 크기만큼 heap영역에 할당된 메모리 공간을 이루는 바이트들 중, 첫 번째 바이트의 주소값을 구조체 포인터 변수 `NewNode`에 반환한다.
   <br><br>
   
   구조체 타입 `Node`로 해당 함수를 형변환 하는 이유를 살펴보자.<br>
@@ -205,9 +205,26 @@ Node Mynode;
   이러한 이유로, 프로그래머는 기본적으로 `void`형 으로 반환되는 이 주소값을 원하는 type으로 형 변환하여 할당된 메모리 공간으로 접근이 가능할<br>
   수 있게 해야 한다.<br>
   
-  우리가 원하는 type은 구조체 타입 `Node`이므로, 해당 type으로 형 변환을 해 준다.<br>
- 
+  우리가 원하는 type은 구조체 타입 `Node`이므로, 해당 type으로 형 변환을 해 준다.<br><br>
   
+  이 과정들을 짧게 설명하면 다음과 같다.<br>
+  > `malloc()` 함수는 sizeof 연산자가 측정한 노드의 크기만큼 자유 저장소에 할당한 후, 구조체 포인터 변수 `NewNode`에<br>
+  > 그 메모리 주소를 저장한다.
+  <br>
+  
+  그럼, `Node`를 생성하는 함수인 `SSL_CreateNode()` 를 완성해 보겠다.<br>
+  ```c
+  Node* SSL_CreateNode(int NewData)
+  {
+    Node* NewNode = (Node*)malloc(sizeof(Node));
+    
+    NewNode->Data = NewData;	// 구조체 포인터 변수 NewNode 가 가리키고 있는 구조체의 멤버 Data의 값을 NewData로 초기화
+    NewNode->NextNode = Null;
+    
+    return NewNode;
+  }
+  ```
+    
   
   
   
