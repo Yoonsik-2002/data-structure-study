@@ -133,8 +133,32 @@ Node Mynode;
 ### 노드의 생성/소멸
 노드의 생성과 소멸에 대해 이해하기 위해서는 우선적으로, C언어 프로그램의 메모리 영역에 대한 지식이 필요하다.<br>
 해당 내용은 다음 링크에서 다루고 있다.<br>
-[Memory Area of C Program](https://github.com/Yoonsik-2002/data-structure-study/tree/main/000_other_knowledge/memory_area_of_c_program)
+[Memory Area of C Program](https://github.com/Yoonsik-2002/data-structure-study/tree/main/000_other_knowledge/memory_area_of_c_program)<br>
 
+그럼, 링크드 리스트를 이루는 노드는 자동 메모리(스택 영역), 자유 메모리(힙 영역) 중 어디에 생성하는 것이 적절할까?<br>
+먼저, 자동 메모리에 노드를 생성해 보겠다. 
+
+- #### 노드를 자동메모리(스택 영역)에 생성하게 되는 경우
+  다음은 새로운 노드를 자동메모리에 생성해주는 함수 `SSL_CreateNode` 이다.<br>
+  
+  ```c
+  // 노드생성(실패 버전)
+  Node* SSL_CreateNode(int new_data)
+  {
+    Node NewNode; // 자동 저장소(스택 영역)에 새로운 노드 생성
+    
+    NewNode.Data = new_data; // 인자로 받은 new_data의 값을 인스턴스의 멤버 Data에 저장
+    NewNode.NextNode = Null; // 새로 생성된 노드 NewNode의 다음 노드는 존재하지 않음(Null)
+    
+    return &NewNode; // NewNode의 주소값 반환
+  }
+  ...
+  Node* MyNode = SSL_CreateNode(911); // 구조체 타입의 포인터 변수 MyNode에 반환된 NewNode의 주소값 저장
+  ```
+  
+  
+  
+    
 
 
 
