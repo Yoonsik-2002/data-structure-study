@@ -108,7 +108,42 @@ void * ptr = &num;
       ```c
       void* ptr1 = malloc(4);  *ptr1 = 20; // type 정보가 없기 때문에 포인터 연산 불가능
       int* ptr1 = (int*)malloc(sizeof(4));  *ptr1 = 20; // 포인터 연산 가능
-      ```<br>
+      ```
 <br>
 
 - #### `malloc()` 함수의 반환형이 `void형 포인터`인 이유
+  `malloc()` 함수의 반환형이 `void형 포인터`인 이유는 `malloc()`함수의 일반적인 호출 형태와 `sizeof()`연산이 이루어진 후,<br>
+  실질적으로 이루어지는 `malloc()` 함수의 호출을 보면 알 수 있다.<br>
+  
+  - #### malloc 함수의 일반적인 호출 형태
+    ```c
+    void * ptr1 = malloc(sizeof(int));
+    void * ptr2 = malloc(sizeof(double));
+    void * ptr3 = malloc(sizeof(int)*7);
+    void * ptr4 = malloc(sizeof(double)*9);
+    ```
+  - #### sizeof 연산 이후 실질적인 malloc 함수 호출
+    ```c
+    void * ptr1 = malloc(4);
+    void * ptr2 = malloc(8);
+    void * ptr3 = malloc(28);
+    void * ptr4 = malloc(72);
+    ```
+  결국 전달받은 바이트크기만큼 메모리를 할당하는 malloc함수 입장에서는 sizeof 연산 후 실질적으로는 달랑 숫자정보밖에 전달받지 못한다. <br>
+  때문에, 할당하는 메모리의 용도가 int형인지, float형인지, char형 배열인지 도무지 알 수가 없다.<br>
+  
+  그렇기 떄문에 일단은 어떤 주소값이든 담을 수 있는 void형 포인터로 반환한다.<br>
+  
+  malloc 함수는 원하는 크기만큼 heap영역에 메모리 공간을 할당하고, 그 메모리의 주소값(메모리의 첫 번째 byte의 주소값)을 void형 포인터로 반환한다.<br>
+  따라서 프로그래머는 void형으로 반환되는 주소값을 원하는 type으로 적절히 형변환하여 할당된 메모리 공간에 접근해야 한다.<br><br>
+  
+- #### 형 변환을한 malloc 함수의 호출 형태
+  ```c
+  int * ptr1 = (int*)malloc(sizeof(int));
+  double * ptr2 = (double*)malloc(sizeof(double));
+  int * ptr3 = (int*)malloc(sizeof(int)*7);
+  double * ptr4 = (double*)malloc(sizeof(double)*9);
+  ```
+<br><br>
+
+---
