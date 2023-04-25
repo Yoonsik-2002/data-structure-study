@@ -214,6 +214,7 @@ Node Mynode;
   
   그럼, `Node`를 heap 영역에 생성하고 만들어진 `Node`의 주소값을 반환하는 함수인 `SSL_CreateNode()` 를 완성해 보겠다.<br>
   ```c
+  // 노드 생성
   Node* SSL_CreateNode(int NewData)
   {
     Node* NewNode = (Node*)malloc(sizeof(Node));
@@ -224,6 +225,17 @@ Node Mynode;
     return NewNode;
   }
   ```
+  
+  다음은, heap 영역에 생성된 `Node`를 소멸하는 함수인 `SSL_DestroyNode()`를 만들어 보겠다.<br>
+  ```c
+  // 노드 소멸
+  void SSL_DestroyNode(Node* Node)
+  {
+    free(Node);
+  }
+  ```
+  
+  
     
   
   
