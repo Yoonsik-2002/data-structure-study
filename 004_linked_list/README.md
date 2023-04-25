@@ -212,7 +212,7 @@ Node Mynode;
   > 그 메모리 주소를 저장한다.
   <br>
   
-  그럼, `Node`를 생성하는 함수인 `SSL_CreateNode()` 를 완성해 보겠다.<br>
+  그럼, `Node`를 heap 영역에 생성하고 만들어진 `Node`의 주소값을 반환하는 함수인 `SSL_CreateNode()` 를 완성해 보겠다.<br>
   ```c
   Node* SSL_CreateNode(int NewData)
   {
