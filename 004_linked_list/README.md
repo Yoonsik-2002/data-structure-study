@@ -268,8 +268,8 @@ SSL_AppendNode(&List, NewNode); // 생성한 노드를 List에 추가
   먼저, 함수가 호출되면서, 구조체 타입의 이중포인터 `Head`는 노드를 가리키는 구조체 타입의 포인터 변수 `List`를 가리키게 되는데,<br>
   (`Node** Head = &List`)<br>
   해당 상황을 그림으로 표현하면 다음과 같다.<br>
-  ![C68AA4F9-D413-4160-9A2A-C97A490EA805](https://user-images.githubusercontent.com/83572199/236385910-83e547d8-fed8-4398-8d7f-d7133acc5741.jpeg)<br>
-
+  
+  <img src = "https://user-images.githubusercontent.com/83572199/236385910-83e547d8-fed8-4398-8d7f-d7133acc5741.jpeg" width = 450px height = 300px><br>
   ```c
   SSL_AppendNode(Node** Head, Node* NewNode) 
   {
