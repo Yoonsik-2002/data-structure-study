@@ -243,8 +243,27 @@ Node Mynode;
 이 작업을 수행하기 위해서는 링크드 리스트의 테일노드의 연결고리 역할을 해주는 `NextNode` 포인터에 새로 생성한 <br>
 노드의 주소값을 대입해주어야 한다.<br>
 
+해당 작업을 수행하는 노드 추가함수 `SSL_AppendNode`를 만들어 보겠다.<br>
+해당 함수는 다음과 같이 사용이 가능하다.<br>
+
+*(`SSL_CreateNode` 함수를 이용하여 heap영역에 새 노드를 생성하고, 생성한 노드를 `SSL_AppendNode` 함수를 이용하여 `List`에 추가)*
+
+```c
+Node* List = Null;
+Node* NewNode = Null;
+
+NewNode = SSL_CreateNode(int data); // 힙 영역(자유 저장소)에 노드 생성
+SSL_AppendNode(&List, NewNode); // 생성한 노드를 List에 추가
+```
+<br>
+
+- #### 노드 추가함수 `SSL_AppendNode`
+  ```c
+  SSL_AppendNode(Node** Head, Node* NewNode)
+  {
   
-  
+
+
   
     
 
