@@ -258,11 +258,39 @@ SSL_AppendNode(&List, NewNode); // 생성한 노드를 List에 추가
 <br>
 
 - #### 노드 추가함수 `SSL_AppendNode`
-  ```c
-  SSL_AppendNode(Node** Head, Node* NewNode)
-  {
+  `SSL_AppendNode` 함수가 호출되면, 해당 함수의 인자로, `Node`의 주소값을 리스트 형태로 저장하는 구조체 타입의 포인터 변수 `List`의 주소값이<br>
+  매개변수인 구조체 타입의 이중 포인터 변수 `Head`에 전달되고,<br>
+  새로 만들어진 노드의 주소값을 저장하고 있는 포인터 `NewNode`가 매개변수 `NewNode`로 전달된다.<br>
   
+  해당 함수를 이용하여, `List`가 비어있으면, 새로 생성한 노드를 바로 추가해주고,<br>
+  `List`가 비어있지 않다면, 테일노드를 찾아 해당 노드의 `NextNode` 에 `NewNode(새로 생성한 노드의 주소값)`를 대입해 주어야 한다.<br>
+  
+  먼저, 함수가 호출되면서, 구조체 타입의 이중포인터 `Head`는 노드를 가리키는 구조체 타입의 포인터 변수 `List`를 가리키게 되는데,<br>
+  (`Node** Head = &List`)<br>
+  해당 상황을 그림으로 표현하면 다음과 같다.<br>
+  ![C68AA4F9-D413-4160-9A2A-C97A490EA805](https://user-images.githubusercontent.com/83572199/236385910-83e547d8-fed8-4398-8d7f-d7133acc5741.jpeg)<br>
 
+  ```c
+  SSL_AppendNode(Node** Head, Node* NewNode) 
+  {
+    if((*Head) == Null)
+    {
+      *Head = NewNode;
+    }
+    
+    else
+    {
+      Node* Tail = (*Head);
+      while(Tail->NextNode != Null)
+      { 
+        Tail = Tail->NextNode;
+      }
+      Tail->NextNode = NewNode
+    }
+  }
+  ```
+    
+    
 
   
     
