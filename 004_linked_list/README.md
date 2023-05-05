@@ -270,15 +270,22 @@ SSL_AppendNode(&List, NewNode); // 생성한 노드를 List에 추가
   해당 상황을 그림으로 표현하면 다음과 같다.<br>
   
   <img src = "https://user-images.githubusercontent.com/83572199/236385910-83e547d8-fed8-4398-8d7f-d7133acc5741.jpeg" width = 450px height = 300px><br>
+
+  > `*List` - 저장된 주소값에 해당되는 노드<br>
+  > `List` - heap 영역에 생성된 노드의 주소값 저장(없을 시, Null값 저장)<br><br>
+  > `**Head` - `List`가 저장하고 있는 노드의 주소값에 해당하는 노드(`*List`)<br>
+  > `*Head` - `List`가 저장하고 있는 노드의 주소값(`List`)<br>
+  > `Head` - 구조체 포인터`List`의 주소값(`&List`)<br>
+ 
   ```c
   SSL_AppendNode(Node** Head, Node* NewNode) 
   {
-    if((*Head) == Null)
+    if((*Head) == Null) // List(*Head)가 Null인 경우 - List가 구조체의 주소값을 저장하고 있지 않은 경우, 즉 List가 비어있는 경우
     {
-      *Head = NewNode;
+      *Head = NewNode; // List에 새로운 노드 추가
     }
     
-    else
+    else // List가 비어있지 않은 경우 - Tail 노드를 찾아 해당 노드의 NextNode에 NewNode를 대입
     {
       Node* Tail = (*Head);
       while(Tail->NextNode != Null)
