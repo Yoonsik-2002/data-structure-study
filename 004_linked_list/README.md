@@ -276,6 +276,10 @@ SSL_AppendNode(&List, NewNode); // 생성한 노드를 List에 추가
   > `**Head` - `List`가 저장하고 있는 노드의 주소값에 해당하는 노드(`*List`)<br>
   > `*Head` - `List`가 저장하고 있는 노드의 주소값(`List`)<br>
   > `Head` - 구조체 포인터`List`의 주소값(`&List`)<br>
+  
+  <br>
+  
+  **다음은 `List`에 새 노드를 추가해주는 `SSL_AppendNode` 함수이다.**<br>
  
   ```c
   SSL_AppendNode(Node** Head, Node* NewNode) 
@@ -296,8 +300,20 @@ SSL_AppendNode(&List, NewNode); // 생성한 노드를 List에 추가
     }
   }
   ```
-    
-    
+  이때 나는 개인적으로, 해당함수를 보고 다음과 같은 의문점이 생겼다.<br>
+  
+  *'왜 매개변수를 이중포인터로 두어서 `list`의 주소값을 인자로 전달받지? 그냥 `List`를 인자로 전달하고<br>
+  `Node* Head`로 받아도 문제 없는거 아닌가?'*<br>
+  
+  해당 의문에 대한 답은 직접 해당 함수가 작동하는 과정을 풀어봄으로써 찾아볼 수 있었다.<br>
+  
+  먼저, `SSL_AppendNode`함수는 노드의 주소값을 리스트 형태로 저장하는 구조체 포인터 변수 `List`에 새로운 노드를 추가하거나<br>
+  테일노드에 새로 생성된 노드를 이어 붙여주는 함수이다.<br>
+  **때문에, `Node* List = Null`인 경우, 해당 함수가 동작하고 난 뒤에 `List`는 `NewNode`를 꼭 가리키고 있어야 한다.**<br>
+  
+  이 점을 기억하고, `SSL_AppendNode`함수의 동작과정을 살펴보도록 하겠다.<br>
+  
+  
 
   
     
