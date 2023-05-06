@@ -343,6 +343,27 @@ SSL_AppendNode(&List, NewNode); // 생성한 노드를 연결 리스트에 추�
   
   다음 과정을 실행시키면 C언어 프로그램의 메모리 공간, Stack영역과 Heap영역에는 아래와 같은 변화가 생긴다.<br>
   
+  [이미지]<br>
+  
+  > 지역변수와 함수의 매개변수가 저장되는 Stack영역에 `List`와 `NewNode`가 생성되고, `SSL_CreateNode`함수를 통해 `119`라는 int형 값을<br>
+  저장하고 있는 새 노드가 Heap영역에 생성되고, 반환된 해당 노드의 주소값을 `NewNode`가 저장하여, 가리키는 형태를 띄게 된다.<br>
+  <br>
+  
+  #### Step2
+  ```c
+  SSL_AppendNode(&List, NewNode); // void SSL_AppendNode(Node** Head, Node* NewNode);
+  ```
+  **`Step1`** 에서 Heap영역에 새 노드를 생성하고, 해당 노드의 주소값을 포인터 `NewNode`에 저장해 보았다.<br>
+  이제, 이렇게 새로 생성된 첫 번째 노드를 비어있는 연결리스트의 헤드 포인터 `List`가 가리킬 수 있도록, `SSL_AppendNode` 함수를<br>
+  사용해 보도록 하겠다.<br>
+  
+  위 과정을 실행시키면 Stack영역과 Heap영역에는 아래와 같은 변화가 생긴다.<br>
+  
+  [이미지]<br>
+  
+  > 
+  
+  
   
   
   
