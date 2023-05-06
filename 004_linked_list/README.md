@@ -237,56 +237,60 @@ Node Mynode;
 <br>
 
 ### 노드 추가 
-노드를 생성하는 법을 알아보았으니, 노드를 추가하는 방법에 대해 알아보도록 하겠다.<br>
+노드를 생성하는 법을 알아보았으니, 연결 리스트에 노드를 추가하는 방법에 대해 알아보도록 하겠다.<br>
 
-**노드 추가** 라는 작업은 **링크드 리스트의 테일노드 뒤에 새로운 노드를 만들어 추가하는 작업**을 의미한다.<br>
-이 작업을 수행하기 위해서는 링크드 리스트의 테일노드의 연결고리 역할을 해주는 `NextNode` 포인터에 새로 생성한 <br>
+**노드 추가** 라는 작업은 **연결 리스트가 비어있는 경우, 연결리스트의 첫 번째 노드를 가리키는 헤드 포인터에 새 노드를 추가하고 비어있지 않은 경우,<br>
+연결 리스트의 테일노드 뒤에 새로운 노드를 만들어 추가하는 작업**을 의미한다.<br>
+
+이 작업을 수행하기 위해서는 헤드 포인터에 새 노드의 주소값을 대입하거나 링크드 리스트의 테일노드의 연결고리 역할을 해주는 `NextNode` 포인터에 새로 생성한 <br>
 노드의 주소값을 대입해주어야 한다.<br>
 
 해당 작업을 수행하는 노드 추가함수 `SSL_AppendNode`를 만들어 보겠다.<br>
 해당 함수는 다음과 같이 사용이 가능하다.<br>
 
-*(`SSL_CreateNode` 함수를 이용하여 heap영역에 새 노드를 생성하고, 생성한 노드를 `SSL_AppendNode` 함수를 이용하여 `List`에 추가)*
+*(`SSL_CreateNode` 함수를 이용하여 heap영역에 새 노드를 생성하고, 생성한 노드를 `SSL_AppendNode` 함수를 이용하여 연결 리스트에 추가)*
 
 ```c
-Node* List = Null;
+Node* List = Null; // 연결리스트의 헤드 포인터 - 연결리스트의 첫 번째 노드의 주소값 저장
 Node* NewNode = Null;
 
 NewNode = SSL_CreateNode(int data); // 힙 영역(자유 저장소)에 노드 생성
-SSL_AppendNode(&List, NewNode); // 생성한 노드를 List에 추가
+SSL_AppendNode(&List, NewNode); // 생성한 노드를 연결 리스트에 추가
 ```
 <br>
 
 - #### 노드 추가함수 `SSL_AppendNode`
-  `SSL_AppendNode` 함수가 호출되면, 해당 함수의 인자로, `Node`의 주소값을 리스트 형태로 저장하는 구조체 타입의 포인터 변수 `List`의 주소값이<br>
+  `SSL_AppendNode` 함수가 호출되면, 해당 함수의 인자로, 연결리스트의 첫 번째 노드의 주소값을 저장하는 헤드 포인터 `List`의 주소값이<br>
   매개변수인 구조체 타입의 이중 포인터 변수 `Head`에 전달되고,<br>
   새로 만들어진 노드의 주소값을 저장하고 있는 포인터 `NewNode`가 매개변수 `NewNode`로 전달된다.<br>
   
-  해당 함수를 이용하여, `List`가 비어있으면, 새로 생성한 노드를 바로 추가해주고,<br>
+  노드를 추가하기 위해, 해당 함수를 이용하여 `List`가 비어있으면(헤드 포인터가 아무것도 가리키고 있지 않음), 새로 생성한 첫 번째 노드의 주소값<br>
+  을 헤드 포인터에 추가해주고,<br>
   `List`가 비어있지 않다면, 테일노드를 찾아 해당 노드의 `NextNode` 에 `NewNode(새로 생성한 노드의 주소값)`를 대입해 주어야 한다.<br>
   
-  먼저, 함수가 호출되면서, 구조체 타입의 이중포인터 `Head`는 노드를 가리키는 구조체 타입의 포인터 변수 `List`를 가리키게 되는데,<br>
-  (`Node** Head = &List`)<br>
+  먼저, 함수가 호출되면서, 구조체 타입의 이중포인터 `Head`는 연결리스트의 첫 번째 노드를 가리키는 구조체 타입의 포인터 변수,<br>
+  헤드 포인터 `List`를 가리키게 되는데, (`Node** Head = &List`)<br>
   해당 상황을 그림으로 표현하면 다음과 같다.<br>
   
-  <img src = "https://user-images.githubusercontent.com/83572199/236385910-83e547d8-fed8-4398-8d7f-d7133acc5741.jpeg" width = 450px height = 300px><br>
+  ![55FAA663-BD3A-47D2-BE1A-BC1191E55730](https://user-images.githubusercontent.com/83572199/236591704-bb77f416-67b1-4f7b-a05d-2318f7096e55.jpeg)<br>
+
 
   > `*List` - 저장된 주소값에 해당되는 노드<br>
-  > `List` - heap 영역에 생성된 노드의 주소값 저장(없을 시, Null값 저장)<br><br>
-  > `**Head` - `List`가 저장하고 있는 노드의 주소값에 해당하는 노드(`*List`)<br>
-  > `*Head` - `List`가 저장하고 있는 노드의 주소값(`List`)<br>
+  > `List` - heap 영역에 생성된 첫 번째 노드의 주소값 저장(없을 시, Null값 저장)<br><br>
+  > `**Head` - `List`가 저장하고 있는 노드의 주소값에 해당하는 첫 번째 노드(`*List`)<br>
+  > `*Head` - `List`가 저장하고 있는 첫 번째 노드의 주소값(`List`)<br>
   > `Head` - 구조체 포인터`List`의 주소값(`&List`)<br>
   
   <br>
   
-  **다음은 `List`에 새 노드를 추가해주는 `SSL_AppendNode` 함수이다.**<br>
+  **다음은 새 노드를 추가해주는 `SSL_AppendNode` 함수이다.**<br>
  
   ```c
   SSL_AppendNode(Node** Head, Node* NewNode) 
   {
-    if((*Head) == Null) // List(*Head)가 Null인 경우 - List가 구조체의 주소값을 저장하고 있지 않은 경우, 즉 List가 비어있는 경우
+    if((*Head) == Null) // List(*Head)가 Null인 경우 - 헤드 포인터 List가 첫 번째 노드의 주소값을 저장하고 있지 않은 경우, 즉 List가 비어있는 경우
     {
-      *Head = NewNode; // List에 새로운 노드 추가
+      *Head = NewNode; // List에 새로운 첫 번째 노드의 주소값 저장
     }
     
     else // List가 비어있지 않은 경우 - Tail 노드를 찾아 해당 노드의 NextNode에 NewNode를 대입
@@ -307,11 +311,20 @@ SSL_AppendNode(&List, NewNode); // 생성한 노드를 List에 추가
   
   해당 의문에 대한 답은 직접 해당 함수가 작동하는 과정을 풀어봄으로써 찾아볼 수 있었다.<br>
   
-  먼저, `SSL_AppendNode`함수는 노드의 주소값을 리스트 형태로 저장하는 구조체 포인터 변수 `List`에 새로운 노드를 추가하거나<br>
-  테일노드에 새로 생성된 노드를 이어 붙여주는 함수이다.<br>
-  **때문에, `Node* List = Null`인 경우, 해당 함수가 동작하고 난 뒤에 `List`는 `NewNode`를 꼭 가리키고 있어야 한다.**<br>
+  먼저, `SSL_AppendNode`함수는 연결리스트의 첫 번째 노드의 주소값을 저장하는 헤드 포인터 `List`에 새로운 첫번째 노드의 주소값을<br>
+  추가하거나,
+  헤드 포인터가 가리키고 있는 첫 번째 노드로부터 시작되어 이어져 있는 연결리스트의 테일노드에 새로 생성된 노드를<br>
+  이어 붙여주는 동작을 하는 함수이다.<br>
   
-  이 점을 기억하고, `SSL_AppendNode`함수의 동작과정을 살펴보도록 하겠다.<br>
+  **때문에, 해당 함수가 동작하고 난 뒤에도 헤드포인터 `List`는 연결리스트의 첫 번째 노드를 반드시 가리키고 있어야 한다!!**<br>
+  
+  이 점을 기억하고, `SSL_AppendNode`함수의 동작과정을 살펴보도록 하겠다.<br><br>
+  
+  #### Step1
+  ```c
+  Node* List = Null;
+  Node* NewNode = Null;
+  ```
   
   
 
