@@ -259,7 +259,7 @@ Node Mynode;
 Node* List = Null; // 연결리스트의 헤드 포인터 - 연결리스트의 첫 번째 노드의 주소값 저장
 Node* NewNode = Null;
 
-NewNode = SSL_CreateNode(int data); // 힙 영역(자유 저장소)에 노드 생성
+NewNode = SSL_CreateNode(int data); // 힙 영역(자유 저장소)에 노드 생성 후, 생성된 노드의 주소값을 NewNode에 저장
 SSL_AppendNode(&List, NewNode); // 생성한 노드를 연결 리스트에 추가
 ```
 <br>
