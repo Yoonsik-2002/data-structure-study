@@ -343,7 +343,7 @@ SSL_AppendNode(&List, NewNode); // 생성한 노드를 연결 리스트에 추�
   
   다음 과정을 실행시키면 C언어 프로그램의 메모리 공간, Stack영역과 Heap영역에는 아래와 같은 변화가 생긴다.<br>
   
-  [이미지]<br>
+  ![FACB1658-9586-4586-A5F6-76D1A0B74947](https://user-images.githubusercontent.com/83572199/236665563-5d6ab495-9c28-4625-befc-e9a762bc8cc0.jpeg)<br>
   
   > 지역변수와 함수의 매개변수가 저장되는 Stack영역에 `List`와 `NewNode`가 생성되고, `SSL_CreateNode`함수를 통해 `119`라는 int형 값을<br>
   저장하고 있는 새 노드가 Heap영역에 생성되고, 반환된 해당 노드의 주소값을 `NewNode`가 저장하여, 가리키는 형태를 띄게 된다.<br>
@@ -359,7 +359,10 @@ SSL_AppendNode(&List, NewNode); // 생성한 노드를 연결 리스트에 추�
   
   위 과정을 실행시키면 Stack영역과 Heap영역에는 아래와 같은 변화가 생긴다.<br>
   
-  [이미지]<br>
+  ![158C8109-F7BA-48AB-8B72-FA2DB12D1791](https://user-images.githubusercontent.com/83572199/236665615-760e4e1b-4566-47d3-991c-b59b0cd01504.jpeg)<br>
+  <br><br>
+  ![37BDCD1B-61A3-4EC4-A09B-7D11DE230F35](https://user-images.githubusercontent.com/83572199/236665664-db730e98-5ead-44ac-995c-def871b051db.jpeg)<br>
+
   
   > `SSL_AppendNode`함수를 호출하면 지역변수와 함수의 매개변수가 저장되는 Stack영역에는 위와 같이 `SSL_AppendNode`함수의 매개변수인<br>
   `Node** Head`와 `Node* NewNode`가 추가로 생성된다.<br><br>
@@ -373,6 +376,8 @@ SSL_AppendNode(&List, NewNode); // 생성한 노드를 연결 리스트에 추�
   여기서 내 의문에 대한 해답이 나온다.<br><br>
   **`SSL_AppendNode`함수의 매개변수를 이중 포인터(`**`)로 선언해야, 헤드 포인터 `List`의 주소값을 인자로서 전달할 수 있게 되고,<br>
   이중 포인터 `Head`는 이 `List`의 주소값을 이용하여, 헤드 포인터 `List`가 새로 생성된 첫 번째 노드를 가리킬 수 있게 하는 것이다!!**<br><br>
+  마지막으로, SSL_AppendNode 함수가 종료되면서, 해당 함수의 매개변수인 Head와 NewNode는 자동으로 Stack 영역에서 제거되게 되고,<br>
+  결국 나머지  구조체 포인터 변수 NewNode와 헤드 포인터 List는 그대로 Heap영역에 생성된 새 노드를 가리키고 있는 채로 남아있게 된다.<br><br>
   반대로, 내가 생각한대로 `Node* Head`에 `List`를 인자로 전달하게 되면, `List`는 가지고 있는 주소값인 `Null`을 복사하여 `Head`에 전달하고<br>
   `Head`는 `Null`값을 저장하고 있기 때문에 `Head = NewNode`가 작동하여, Heap영역의 노드를 가리키게 되지만,<br>
   자신이 가지고 있는 주소값을 복사하여 전달하기만 한 `List`는 그대로 `Null`값만 저장하고 있을 뿐, 아무것도 가리키고 있지 않은 상태가 된다.<br>
