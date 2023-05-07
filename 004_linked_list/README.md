@@ -386,8 +386,32 @@ SSL_AppendNode(&List, NewNode); // 생성한 노드를 연결 리스트에 추�
 <br>
   
 ### 노드 탐색
-  
-  
+유연한 크기변경, 자유로운 노드 추가, 삭제 등 배열과 비교했을때 모든면이 뛰어날 것 같던 링크드 리스트의 유일한 약점은 바로 이 탐색 연산이다.<br>
+배열에는 인덱스라는 개념이 존재하여, 배열 내의 `n`번째 데이터를 취하고 싶을땐 `n-1`에 해당하는 인덱스를 이용하면 쉽게 구할 수 있었다.<br>
+
+하지만, 링크드 리스트의 경우, 헤드부터 시작해서 원하는 노드까지 하나하나 세어나가야지만 해당 요소에 접근이 가능하다.<br> 
+이러한 탐색 연산을 수행하는 함수, `SSL_GetNodeAt`은 아래와 같이 사용이 가능하다.<br>
+
+```c
+Node* List = Null;
+Node* MyNode = Null;
+
+// 첫 번째 노드 생성 후, 헤더 포인트에 추가
+SSL_AppendNode(&List, (SSL_CreateNode(117));
+// 두 번째 노드 생성 후, 첫 번째 노드 뒤에 이어붙임
+SSL_AppendNode(&List, (SSL_CreateNode(119));
+// 세 번째 노드 생성 후, 두 번째 노드 뒤에 이어붙임
+SSL_AppendNode(&List, (SSL_CreateNode(121));
+
+// 노드 탐색(탐색한 노드의 주소값 반환)
+MyNode = SSL_GetNodeAt(List, 1);
+
+// 탐색한 노드의 멤버변수 Data를 출력
+printf("%d"\n", MyNode->Data);
+```
+이제, 원하는 링크드 리스트에서 원하는 노드를 탐색하여 해당 노드의 주소를 반환해주는 `SSL_GetNodeAt` 함수를 구현해 보겠다.<br>
+
+
  
   
   
