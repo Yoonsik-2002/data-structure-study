@@ -301,11 +301,11 @@ SSL_AppendNode(&List, NewNode); // 생성한 노드를 연결 리스트에 추�
     else // List가 비어있지 않은 경우 - Tail 노드를 찾아 해당 노드의 NextNode에 NewNode를 대입
     {
       Node* Tail = (*Head);
-      while(Tail->NextNode != Null)
+      while(Tail->NextNode != Null) // 탐색을 반복하여, 구조체 포인터 변수 Tail이 마지막 노드의 주소값을 저장(마지막 노드 바로 이전 노드의 포인터 멤버변수 NextNode 값 저장) - 마지막 노드를 Tail이 가리키게 됨
       { 
-        Tail = Tail->NextNode;
+        Tail = Tail->NextNode; 
       }
-      Tail->NextNode = NewNode
+      Tail->NextNode = NewNode // 마지막 노드를 Tail이 가리키고 있는 상태에서 저장값이 Null인 해당 노드의 포인터 멤버변수 NextNode에 새로 생성한 노드의 주소값 NewNode 저장!
     }
   }
   ```
