@@ -432,7 +432,7 @@ printf("%d"\n", MyNode->Data);
   Node* SSL_GetNodeAt(Node* Head, int Location)
   {
     Node* Current = Head;
-    Location -= 1; // Location값에서 1을 빼주는 기능을 더해, 두번째 노드를 탐색하고 싶은 경우, 헷갈리지 않게 1이 아닌 2를 인자로 전달할 수 있게 함.
+    Location -= 1; // Location값에서 1을 빼주는 기능을 더해, 두번째 노드를 탐색하고 싶은 경우, 그냥 헷갈리지 않게 1이 아닌 2를 인자로 전달할 수 있게 함.
     
     while(Current != Null && (--Location) >= 0)
     {
