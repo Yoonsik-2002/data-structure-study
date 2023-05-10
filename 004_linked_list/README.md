@@ -502,7 +502,28 @@ SSL_DestroyNode(MyNode);
   
   이를 토대로 노드 삭제함수 `SSL_RemoveNode` 함수를 완성해보도록 하겠다.<br>
   ```c
-
+  void SSL_RemoveNode(Node** Head, Node* Target)
+  {
+    if((*Head) == Target)
+    {
+      *Head = Target->NextNode;
+    }
+    
+    else
+    {
+      Node* Current = *Head;
+      
+      while(Current != Null && Current->NextNode != Target)
+      {
+        Current = Current->NextNode;
+      }
+      
+      if(Current != Null)
+      Current->NextNode = Target->NextNode;
+    }
+  }
+  ```
+      
 
  
   
