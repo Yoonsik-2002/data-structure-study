@@ -474,6 +474,35 @@ SSL_RemoveNode(&List, MyNode);
 // 링크드 리스트에서 제거한 노드를 Heap영역에서 완전히 삭제
 SSL_DestroyNode(MyNode);
 ```
+이제, 링크드 리스트 내부의 임의의 노드를 삭제하는 함수 `SSL_RemoveNode`함수를 구현해 보도록 하겠다.<br>
+<br>
+
+- #### 노드 삭제함수 `SSL_RemoveNode`
+  노드 삭제함수 `SSL_RemoveNode`가 동작하는 원리는 다음과 같다. **삭제하고자 하는 노드(`Target`)가 헤드 포인터가 가리키고 있는 노드 <br>
+  즉, 링크드 리스트의 첫 번째 노드인 경우, 바로 헤드 포인터가 두번째 노드를 가리키도록 헤드 포인터에 첫 번째 노드의 `NextNode`값을 저장해 준다.**<br>
+  ```c
+  *Head = Target->Nextnode;
+  ```
+  <br>
+  
+  **그리고, 삭제하고자 하는 노드가 첫 번째 노드가 아닌경우, 삭제하고자 하는 노드의 이전 노드와 삭제하고자 하는 노드를 이어준다. 해당 작업은 <br>
+  삭제하고자 하는 노드의 바로 이전 노드를 탐색한 뒤, 해당 노드의 `NextNode`에 삭제하고자 하는 노드의 `NextNode`값을 대입해주면 된다!**<br>
+  ```c
+  Node* Current = *Head;
+  
+  while(Current != Null && Current->NextNode != Target)
+  {
+    Current = Current->NextNode;
+  }
+  
+  if(Current != Null)
+    Current->NextNode = Target->NextNode;
+  ```
+  <br>
+  
+  이를 토대로 노드 삭제함수 `SSL_RemoveNode` 함수를 완성해보도록 하겠다.<br>
+  ```c
+
 
  
   
