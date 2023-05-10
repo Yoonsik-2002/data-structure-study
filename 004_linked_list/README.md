@@ -523,6 +523,32 @@ SSL_DestroyNode(MyNode);
     }
   }
   ```
+<br>
+
+### 노드 삽입
+노드와 노드 사이에 새 노드를 끼워넣는 노드 삽입은 구현이 간단하다. 앞 노드의 `NextNode` 포인터가 새 노드를 가리키게 하고, 새 노드의<br>
+`NextNode` 포인터가 뒤 노드를 가리키게 하면 된다.<br>
+
+해당 작업을 수행하는 노드 삽입함수 `SSL_InsertAfter` 함수는 다음과 같이 구현이 가능하다. <br>
+<br>
+
+- #### 노드 삽입함수 `SSL_InsertAfter`
+  ```c
+  void SSL_InsertAfter(Node* Current, Node* NewNode)
+  {
+    NewNode->NextNode = Current->NextNode;
+    Current->NextNode = NewNode;
+  }
+  ```
+  해당 함수를 구현하는데 있어 주의할 점은, `NewNode`의 `NextNode`가 `Current`의 `NextNode`를 가리키게 한 뒤에, `Current`의 <br>
+  `NextNode`가 `NewNode`를 가리키게 해야 한다.<br>
+  
+  이유는, `Current`의 다음 노드인 `Current->NextNode`를 `NewNode`가 가리킨 다음에 `Current->NextNode`가 `NewNode`를<br>
+  가리켜야지 `Current`의 다음 노드를 `NewNode`가 가리킬 수 있기 때문이다.<br>
+  
+  `Current->NextNode = NewNode`를 먼저 해버리면, 원래 `Current`의 다음 노드에 대한 주소값 정보가 사라져버려서 `NewNode`와<br>
+  `Current` 다음의 노드를 연결 할 수가 없다!
+
       
 
  
