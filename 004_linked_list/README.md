@@ -547,7 +547,37 @@ SSL_DestroyNode(MyNode);
   가리켜야지 `Current`의 다음 노드를 `NewNode`가 가리킬 수 있기 때문이다.<br>
   
   `Current->NextNode = NewNode`를 먼저 해버리면, 원래 `Current`의 다음 노드에 대한 주소값 정보가 사라져버려서 `NewNode`와<br>
-  `Current` 다음의 노드를 연결 할 수가 없다!
+  `Current` 다음의 노드를 연결 할 수가 없다!<br>
+<br>
+
+### 노드의 개수 세기
+노드의 개수를 세는 작업을 수행하는 함수 또한 구현이 간단하다. `while`문을 이용하여 첫 번째 노드부터 마지막 노드까지 순차적으로, 노드를 <br>
+가리키는 포인터 `Current`가 노드를 가리키게 하고, 해당 작업이 수행될때마다 노드의 수를 저장하는 int형 변수`count`의 값을 1씩 늘려주면 된다.<br>
+
+링크드 리스트의 노드의 개수를 세어서 반환해주는 함수 `SSL_GetNodeCount` 함수를 구현해 보도록 하겠다.<br>
+<br>
+
+- #### 노드의 개수를 세어 반환하는 함수 `SSL_CetNodeCount`
+  ```c
+  int SSL_GetNodeCount(Node* Head)
+  {
+    int Count = 0;
+    Node* Current = Head;
+    
+    while(Current != Null)
+    {
+      Current = Current->NextNode;
+      Count++;
+    }
+    return Count;
+  }
+  ```
+<br>
+
+---
+
+
+
 
       
 
