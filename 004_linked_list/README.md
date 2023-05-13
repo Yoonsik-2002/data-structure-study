@@ -169,7 +169,7 @@ Node Mynode;
   
 - #### 노드를 자유 저장소(힙 영역)에 생성하게 되는 경우
   자유 저장소에 메모리를 할당하기 위해서는 `malloc()` 함수가 필요하다. 해당 함수에 관한 내용은 다음 링크를 통해 볼 수 있다.<br>
-  [malloc function](https://github.com/Yoonsik-2002/data-structure-study/blob/main/000_other_knowledge/malloc_function/README.md)<br>
+  [malloc function](https://github.com/Yoonsik-2002/data-structure-study/tree/main/000_other_knowledge/002_malloc_function)<br>
   
   `malloc()` 함수를 이용하여 heap영역에 노드를 생성하는 코드를 한번 만들어 보겠다.<br>
   (Node 를 표현하는 구조체 Node 가 선언되어 있다고 가정)<br>
