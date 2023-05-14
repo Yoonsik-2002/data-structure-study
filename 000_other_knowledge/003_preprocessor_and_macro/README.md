@@ -74,6 +74,28 @@
 <br>
 
 ### `#define: Function-like macro`(함수와 유사한 매크로, 매크로 함수)
+매크로는 매개변수가 있는 형태로도 선언이 가능하다. 이렇게 매개변수가 있는 매크로의 경우, 작동방식이 함수와 유사하여, Function-like macro,<br>
+함수와 유가한 매크로 혹은 매크로 함수 라고 부른다.<br>
+
+매크로 함수의 예는 아래 그림과 같다.<br>
+
+![D1B0B4F9-FD09-402F-BB0F-B6126AA85AC2](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/3daf6128-1163-48b7-9704-0ae81df1bda4)<br>
+
+이렇게 정의된 매크로를 접한 선행처리기는 *'`SQUARE(X)와 같은 패턴을 만나면 `X*X` 로 치환해라!'* 라는 프로그래머의 지시를 매크로를 통해<br>
+전달받고, 그대로 `SQUARE(X)`와 같은 패턴을 만나게 되면, `X*X`로 치환해 버린다.<br>
+
+이런 `SQUARE(X)` 매크로가 정의된 후, 선행처리 과정에 선행처리기가 다음과 같은 매크로 함수를 만나게 되면, 그 다음 아래 그림과 같은 변환이 일어난다.<br>
+```c
+SQUARE(10);
+SQUARE(num);
+```
+<br>
+
+![25104E05-D460-406A-A375-983823FD3E91](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/f85b7fc3-7e6a-472c-b10e-ec0936818c4f)<br>
+
+이렇게 선행처리기에 의해서 변환되는 과정 자체를 **매크로 확장(Macro Expansion)** 이라고 한다. 
+
+
 
 
 
