@@ -193,7 +193,27 @@ int num = 120 / ((1+1)*(1+1));
 #define   SQUARE(X)  \
 	  ((X)*(X))
 ```
+<br>
 
+### 먼저 정의한 매크로를 사용하여 매크로 정의하기
+매크로 정의 시, 먼저 정의한 매크로를 사용하여 새로운 매크로를 정의하는 것도 가능하다. 이러한 원리를 이용하여<br>
+간단한 원의 넓이를 구해주는 프로그램을 작성해 보겠다.<br>
+```c
+#include <stdio.h>
+
+#define   PI  3.14
+#define   PRODUCT(X, Y)  ((X)*(Y))
+#define   CIRCLE_AREA(R)  (PRODUCT((R), (R))*(PI))
+
+void main()
+{
+  double rad = 2.1;
+  
+  printf("반지름 %g인 원의 넓이 : %g\n", rad, CIRCLE_AREA(rad));
+}
+```
+해당 코드를 보면, 매크로 `CIRCLE_AREA`가 먼저 정의된 매크로 `PI`와 `PRODUCT`를 사용하여 정의된 것을 알 수 있다.<br>
+이처럼, **먼저 정의된 매크로는 새로운 매크로를 정의하는데 사용할 수 있다.**
 
 
 
