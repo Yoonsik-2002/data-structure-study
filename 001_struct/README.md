@@ -352,7 +352,7 @@ int main()
 또, 구조체 변수 **`man1`** 이 **`show_person_info`** 함수에 인자로서 전달될 때도 **`man1`** 의 멤버인 **`name`** , **`phone_num`**, **`age`** 모두 복사되어 매개변수에 멤버 대 멤버로 전달된다.<br>
 
 ### 구조체 변수를 대상으로 하는 Call-by-reference
-Call-by-reference 또는 Call-by-value가 무엇인지에 대한 설명은 다음 링크에서 확인해 볼 수 있다. <br>[Call-by-value 와 Call-by-reference](https://github.com/Yoonsik-2002/data-structure-study/blob/main/000_other_knowledge/call_by_value_and_call_by_reference/README.md)
+Call-by-reference 또는 Call-by-value가 무엇인지에 대한 설명은 다음 링크에서 확인해 볼 수 있다. <br>[Call-by-value 와 Call-by-reference](https://github.com/Yoonsik-2002/data-structure-study/tree/main/000_other_knowledge/000_call_by_value_and_call_by_reference)
 
 함수를 정의할 때 구조체 포인터 변수를 매개변수로 선언하여, 해당 매개변수에 구조체 변수의 주소값이 전달되게 하는 **구조체 변수를 대상으로 하는 Call-by-reference 형태의 함수호출이 가능하다.**
 <br>
