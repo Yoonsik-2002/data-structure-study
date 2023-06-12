@@ -8,7 +8,7 @@ void main()
 	
 	// 정상적인 출력
 	printf("square of num : %d\n", SQUARE(num));
-	printf("square of 20 : %d\n", SQUARE(20));
+	printf("square of 2.5 : %g\n", SQUARE(2.5));
 	printf("square of -5 : %d\n", SQUARE(-5));
 	
 	// 비정상적인 출력
