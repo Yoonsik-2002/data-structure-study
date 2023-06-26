@@ -444,8 +444,35 @@ void main()
 조건으로 하였을 시 이어지는 코드를 삽입해주는 `#ifndef...#endif`지시자에 의해<br>
 `printf("%d + %d = %d", num1, num2, num1 - num2);` 코드가 선행처리과정에서 삽입되어 실행되게 된다.<br>
 
+### `#elif`의 삽입: `#if`에만 해당
+우리가 흔히 조건문 `if`를 사용할 때, `else if`를 여러 번 추가 할 수 있었듯이, 지시자 `#if`에도 `#elif`추가가 가능하다.<br>
+또, `else if`의 끝을 `else`로 마무리 지을 수 있었듯이, `#elif`도 `#else`로 마무리 지을 수 있다.<br>
 
+해당 지시자의 예시코드는 다음과 같다.<br>
+```c
+#include <stdio.h>
 
+#define HIT_NUM 7
+
+void main()
+{
+  #if HIT_NUM==5
+	printf("매크로 상수 HIT_NUM은 5입니다.");
+  #elif HIT_NUM==6
+  	printf("매크로 상수 HIT_NUM은 6입니다.");
+  #elif HIT_NUM==7
+  	printf("매크로 상수 HIT_NUM은 7입니다.");
+  #else
+  	printf("매크로 상수 HIT_NUM은 5, 6, 7이 아닙니다.");
+  #endif
+}
+```
+*[conditional_compilation_ex02.c 의 실행결과]*
+```
+매크로 상수 HIT_NUM은 7입니다.
+```
+조건이 참이면, 해당 지시자 사이에 존재하는 코드를 소스코드 안에 삽입하는 `#if...#endif`지시자와 조건을 더 추가할 수 있게 해주는 `#elif`<br>
+지시자를 활용하여 조건을 추가해, 결국 참이 되는 조건을 지닌 지시자 사이의 코드를 삽입하는 간단한 프로그램이였다.
 
 
 
