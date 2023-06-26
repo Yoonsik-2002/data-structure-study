@@ -384,9 +384,50 @@ void main()
 해당 코드에서는 `ADD`가 `true`로 치환되어 참이 되고, `MIN`이 `false`로 치환되어 거짓이 되므로, `#if...#endif`에 의해<br>
 조건이 참인 `printf("%d + %d = %d", num1, num2, num1 + num2);` 코드가 삽입되고,<br>
 `MIN`에 해당하는 코드는 삭제되게 된다.<br>
+<br>
 
+### `#ifdef...#endif`: 정의되었다면
+`#if...#endif`의 경우, 참이냐, 거짓이냐를 기준으로 동작하였었다. 이번에 다뤄볼 `#ifdef...#endif`는 매크로가 정의 되었느냐,<br>
+정의되지 않았느냐에 따라 동작한다.<br>
+이때, 정의된 매크로의 값(매크로 몸체)는 상관 없이 오직 '매크로가 정의되었느냐 아니냐' 만을 동작한다는 것을 명심하자.<br>
 
+이전 `conditional_compilation_ex01.c`를 약갼 변형하여 예시코드를 작성해 보았다. 해당 코드는 다음과 같다.<br>
+```c
+#include <stdio.h>
+#include <stdbool.h>
 
+// #define ADD true
+#define MIN false
+
+void main()
+{
+  int num1, num2;
+  printf("두 개의 정수를 입력 : ");
+  scanf("%d %d", &num1, &num2);
+
+  #ifdef ADD
+    printf("%d + %d = %d", num1, num2, num1 + num2);
+  #endif
+
+  #ifdef MIN
+    printf("%d - %d = %d", num1, num2, num1 - num2);
+  #endif
+}
+```
+*[conditional_compilation_ex02.c 의 실행결과]*
+```
+두 개의 정수를 입력 : 10 1
+10 + 1 = 9
+```
+해당 코드를 보면, 위에서 설명했던 것과 같이, 매크로 `MIN`이 정의되어 있기 때문에, `매크로`MIN`이 정의되었다면` 에 해당하는<br> `#ifdef...#endif`지시자 사이의 코드가 선행처리 과정 중 소스코드에 삽입되고,<br>
+주석처리 되어, 정의가 되지 않은 매크로 `MIN`에 관한 지시자`#ifdef...#endif`와 그 사이의 코드는 삭제된 것을 알 수 있다.<br>
+
+추가적으로, `#ifdef...#endif`지시자를 사용하는 경우, 조건으로 사용할 매크로 의 값(매크로 몸체)은 동작하는데 중요한 사항이 아니기<br> 때문에, 아래와 같이 생략해서 정의가 가능하다.<br>
+```c
+#define ADD
+#define MIN
+```
+이렇게 정의된 값이 없는 매크로는 선행처리 과정에서 그냥 공백으로 치환된다.(그냥 소멸된다.)<br>
 
 
 
