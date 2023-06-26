@@ -339,10 +339,51 @@ void main()
 ### `#if...#endif`: 참 이라면
 우리가 흔히 사용하는 `if`문은 조건에 따른 실행을 위한 것이었다. `#if...#endif`는 조건에 따른 코드 삽입 및 삭제를 위한 지시어이다.<br>
 `#if`문의 뒤에는 반드시 `#endif`문(이름 그대로, 해당 `#if`문이 끝난다는 의미)이 등장해야 한다.<br>
-두 매크로 지시자 사이에 존재하는 코드는 조건에 따라서, 매크로가 처리되는 선행처리 과정에서 선행처리기에 의해 소스파일에<br>
-삽입되거나 삭제된다.<br>
+```c
+#if
+  // 소스코드
+#endif
+```
+두 매크로 지시자(`#if`, `#endif`) 사이에 존재하는 코드는 조건에 따라서, 매크로가 처리되는 선행처리 과정에서 선행처리기에 의해<br>
+소스파일에 삽입되거나 삭제된다.<br>
 
-  
+다음 코드를 보면 쉽게 이해할 수 있다.<br>
+```c
+#include <stdio.h>
+#include <stdbool.h> // bool, true, false가 정의된 헤더파일
+
+#define ADD true
+#define MIN false
+
+void main()
+{
+	int num1, num2;
+	printf("두 개의 정수를 입력 : ");
+	scanf("%d %d", &num1, &num2);
+	
+	#if ADD // ADD가 참이라면 두 지시어 사이의 코드 삽입
+		printf("%d + %d = %d", num1, num2, num1 + num2);
+	#endif 
+	
+	#if MIN // MIN이 참이라면 두 지시어 사이의 코드 삽입
+		printf("%d - %d = %d", num1, num2, num1 - num2);
+	#endif
+}
+```
+*[conditional_compilation_ex01.c 의 실행결과]*
+```
+두 개의 정수를 입력 : 24 3
+24 + 3 = 27
+```
+위 코드를 보면, 매크로 `ADD`의 매크로 몸체는 `true`이고, `Min`의 매크로 몸체는 `false`인 것을 알 수 있다.<br>
+이때, 선행처리 과정에서 해당 코드에서의 `ADD`는 `true`로 치환되고, `Min`은 `false`로 치환되게 된다.<br>
+
+결국, 이 두 매크로는 `#if...#endif` 지시자 사이에 있는 코드를 소스코드에 삽입할지, 삭제할지 정해주는 조건이 된다.<br>
+(`ADD`가 참(true)이라면 이에 해당하는 두 지시어 사이의 코드가 삽입되고, 거짓이면 삭제된다. `MIN`의 경우도 마찬가지.)<br>
+
+해당 코드에서는 `ADD`가 `true`로 치환되어 참이 되고, `MIN`이 `false`로 치환되어 거짓이 되므로, `#if...#endif`에 의해<br>
+조건이 참인 `printf("%d + %d = %d", num1, num2, num1 + num2);` 코드가 삽입되고,<br>
+`MIN`에 해당하는 코드는 삭제되게 된다.<br>
 
 
 
