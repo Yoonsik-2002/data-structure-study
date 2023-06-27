@@ -91,3 +91,5 @@ int main()
 
   `#include "..\..\MyHeader\header2.h`
   > 두 단계 상위 디렉터리의 하위 디렉터리인 `Myheader`에 존재하는 `header2.h`를 포함하여라<br>
+
+  ** 이렇게 상대경로를 이용하여 헤더파일을 선언하면, 드라이브 명이나, 디렉터리
