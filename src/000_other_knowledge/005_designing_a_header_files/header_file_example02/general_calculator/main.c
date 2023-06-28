@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "areaArith/areaArith.h"
-#include "roundArith/roundArith.h"
+#include "areaArith.h"
+#include "roundArith.h"
 
 void main()
 {
