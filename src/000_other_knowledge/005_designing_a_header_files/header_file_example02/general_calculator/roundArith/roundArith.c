@@ -1,4 +1,4 @@
-#include "..\basicArith\basicArith.h"
+#include "../basicArith/basicArith.h"
 
 double RectangleRound(double base, double height) {
 	return Mul(Add(base, height), 2);
