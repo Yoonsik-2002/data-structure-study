@@ -3,9 +3,9 @@
 
 int main(void)
 {
-	int num = Add(10, 20);
+	double num = Add(1.5, 2.3);
 	
-	printf("%d", num);
+	printf("%g", num);
 	
 	return 0;
 }
