@@ -91,7 +91,7 @@ int main()
   > 이 문장을 포함하고 있는 소스파일이 저장되어 있는 디렉터리의 하위 디렉터리인 `Release`디렉터리에 존재하는 `header0.h`를 포함하여라<br>
 
   `#include "..\Cprog\header1.h"`
-  > 한 단계 상위 디렉터리의 하위 디렉터리인 `Cprog`에 존재하는 `header1.h`를 포함하여라<br>
+  > 해당 문장을 포함한 소스파일을 저장하고 있는 디렉터리의 한 단계 상위 디렉터리의 하위 디렉터리인 `Cprog`에 존재하는 `header1.h`를 포함하여라<br>
 
   `#include "..\..\MyHeader\header2.h`
   > 두 단계 상위 디렉터리의 하위 디렉터리인 `Myheader`에 존재하는 `header2.h`를 포함하여라<br>
