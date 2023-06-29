@@ -68,5 +68,8 @@ gcc --version
 
 ![스크린샷(6)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/6fe015ce-48b1-466c-83d9-7a5007b4edb3)<br>
 
+### GCC의 컴파일 과정
+gcc의 컴파일 과정은 아래 그림과 같이 나타낼 수 있다. <br>
 
+![ㅎㅊㅊzjavkdfl rhkwjd](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/506bc70f-7465-4525-904f-f33b69b65fb3)
 
