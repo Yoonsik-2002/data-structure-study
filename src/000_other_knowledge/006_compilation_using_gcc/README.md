@@ -1,4 +1,8 @@
-# GNU 프로젝트
+# GNU/리눅스
+우리가 흔히 "리눅스(Linux)"라고 호칭하는 
+
+
+## GNU 프로젝트
 ![스크린샷(2)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/07f1b9e1-966a-440e-b8cd-2ccf188af167)<br>
 
 **GNU 프로젝트**는 리처드 스톨먼의 주도하에 시작된 오픈 소스 소프트웨어 프로젝트이다.<br>
@@ -13,6 +17,7 @@ GNU 프로젝트의 목저은 자유롭게 사용할 수 있는 소프트웨어�
 결국 자동차의 엔진에 비견되는 커널이 빠진 채, 차체와 내장재는 모두 만들어낸 꼴이 된 것이다.<br>
 엔진이 빠진 자동차가 굴러갈 수 없듯이, 커널이 빠진 운영체제 또한 제대로 동작하지 않았을 것이다. <br>
 
-# 리눅스의 등장
+## 리눅스 커널
 <img src="https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/26da21cb-3d0d-4b01-b398-7277d1884b1c" width="200" height="230"/><br>
+
 
