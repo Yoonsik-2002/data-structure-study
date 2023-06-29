@@ -19,7 +19,7 @@ GNU/리눅스 운영체제를 가리키는 '리눅스'를 혼동하지 않도록
 ## GNU 프로젝트
 ![스크린샷(2)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/07f1b9e1-966a-440e-b8cd-2ccf188af167)<br>
 
-**GNU 프로젝트**는 리처드 스톨먼의 주도하에 시작된 오픈 소스 소프트웨어 프로젝트이다.<br>
+**GNU 프로젝트**는 리처드 스톨먼(Richard Matthew Stallman)의 주도하에, 1984년 시작된 오픈 소스 소프트웨어 프로젝트이다.<br>
 여기서, 오픈 소스 소프트웨어(Open source software, OSS)란 소스 코드를 공개해, 누구나 특별한 제한 없이<br>
 그 코드를 보고 사용할 수 있는 오픈소스 사용권(라이선스)을 만족하는 소프트웨어를 의미한다.<br>
 
@@ -33,5 +33,7 @@ GNU 프로젝트의 목적은 자유롭게 사용할 수 있는 소프트웨어�
 
 ## 리눅스 커널
 <img src="https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/26da21cb-3d0d-4b01-b398-7277d1884b1c" width="200" height="230"/><br>
+
+**리눅스 커널** 
 
 
