@@ -45,4 +45,16 @@ Minix의 기능이 풍족하지 않다고 느꼈다고 한다.<br>
 (흔히, 리눅스라고 부르는 운영체제)의 커널부분을 담당하는 리눅스가 된다.<br> 
 
 리누스 토발즈는 이 리눅스를 누구나 사용할 수 있도록 소스코드를 포함하여 1991년 9월 17일 세상에 공개한다.<br>
+<br>
+
+# GCC(GNU Compiler Collection)
+![스크린샷(4)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/ec271272-40c5-4a51-bd66-2d6a485c71c8)<br>
+
+GCC(CNU Compiler Collection)은 말 그대로, GNU 프로젝트의 컴파일러 컬렉션이다.<br>
+GNU 프로젝트를 주도한 리처드 스톨먼(Richard Matthew Stallman)에 의해 1987년 만들어졌다. <br>
+
+유닉스/리눅스 계열 플랫폼의 사실상 표준 컴파일러로, C(gcc), C++(g++), Objective-C(gobjc),<br>
+Fortran(gfortran), Ada(gnat), Go(gccgo), D(gdc)이다. Java(gcj)는 GCC 7.1버전부터 지원이 중단되었다.<br>
+
+
 
