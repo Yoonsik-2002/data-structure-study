@@ -71,5 +71,13 @@ gcc --version
 ### GCC의 컴파일 과정
 gcc의 컴파일 과정은 아래 그림과 같이 나타낼 수 있다. <br>
 
-![ㅎㅊㅊzjavkdfl rhkwjd](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/506bc70f-7465-4525-904f-f33b69b65fb3)
+![ㅎㅊㅊzjavkdfl rhkwjd](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/506bc70f-7465-4525-904f-f33b69b65fb3)<br>
+
+- **선행처리기(preprocessor):** `#include`, `#define`과 조건부 컴파일을 위한 매크로 등 과 같은 선행처리 지시자를 해석해준다.<br>
+  (이때, 선행처리와 전처리는 같은의미이다.)<br>
+
+- **컴파일러(compiler):** high level의 언어들(`C`나 `C++`과 같은 프로그래밍 언어)을 low level 언어인 어셈블리어(*.s)로 변환해준다.<br>
+  즉, 인간이 이해하기 쉬운 high level 언어를 컴퓨터가 이해하기 쉬운 low level 언어인 어셈블리어로 번역하는 것과 같다. <br>
+
+- 
 
