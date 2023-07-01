@@ -87,7 +87,7 @@ gcc의 컴파일 과정은 아래 그림과 같이 나타낼 수 있다. <br>
 
 - **링크(link):** 링커(linker)가 생성된 목적파일들을 묶어서 실행파일을 생성한다. 선행처리에서 링크과정을 통해 생성된 실행파일(.exe)은 <br>
 `exe`확장자를 가진다.<br>
-이 `exe`확장자는 Excutable의 약자로, 일반적인 파일 확장자로 컴퓨터 프로그램의 실행 파일을 가리킨다.<br>
+이 `exe`확장자는 Executable의 약자로, 일반적인 파일 확장자로 컴퓨터 프로그램의 실행 파일을 가리킨다.<br>
 오픈VMS, 도스, 마이크로소프트 윈도우, 리엑트오에스, OS/2 운영 체제에서 사용할 수 있다.<br>
 <br>
 이렇게, GCC의 컴파일 과정을 보면 알 수 있듯이, 선행처리에서 어셈블리 까지의 과정에서 중간 파일들이 생성된다.<br>
@@ -138,6 +138,83 @@ gcc의 컴파일 과정은 아래 그림과 같이 나타낼 수 있다. <br>
 gcc -o [컴파일을 통해 생성할 실행파일 이름] [main함수가 들어있는 c파일(.c)] [연결된 c파일(.c)]
 // 보통은 생성할 실행파일의 이름을 main함수가 들어있는 C파일의 이름과 동일하게 지정함
 ```
+
+그럼 이제, 여러개의 소스파일로 이루어진 간단한 연산 프로그램인 `siple_calculator`를 컴파일 하여 실행파일을 생성해 보도록 하겠다.<br>
+
+![스크린샷(3)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/136039e8-fead-4e29-9157-6c195fad0092)<br>
+
+##### [basicArith_copy0.h]
+```c
+#define PI 3.1415
+
+double Add (double num1, double num2);
+double Min (double num1, double num2);
+double Mul (double num1, double num2);
+double Dib (double num1, double num2);
+```
+
+##### [basicArith_copy0.c]
+```c
+double Add (double num1, double num2) {
+	return num1 + num2;
+}
+
+double Min (double num1, double num2) {
+	if(num1 > num2) 
+		return num1 - num2;
+	else
+		return num2 - num1;
+}
+
+double Mul (double num1, double num2) {
+	return num1 * num2;
+}
+
+double Div (double num1, double num2) {
+	return num1 / num2;
+}
+```
+
+##### [simple_calculator.c]
+```c
+#include <stdio.h>
+#include "basicArith_copy0.h"
+
+int main(void)
+{
+	double num = Add(1.5, 2.3); 
+	
+	printf("%g\n", num);
+	
+	return 0;
+}
+```
+<br>
+
+이 `simiple_calculator`을 이루는 소스파일들 중, 가장 의존성이 높은(함수 혹은 변수들을 다른 소스파일이나 헤더파일에서 많이 가져다 쓰는)<br>
+소스파일은 바로, `main`함수를 포함하고 있는 `simple_calculator.c`파일이다.<br>
+
+해당 소스파일을 `gcc`명령어의 맨 앞에 보내어 컴파일 명령어를 작성하면, 다음과 같다.<br>
+
+```
+gcc -o simple_calculator simple_calculator.c basicArith_copy0.c
+```
+
+이렇게 만들어진 명령어를 실행시키면, `-o` 명령어 옵션으로 지정해준 `simple_calculator`라는 이름의 실행파일이 생성된다.<br>
+
+![스크린샷(5)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/57314d20-1621-4898-8b4a-d2847dc4f8f8)<br>
+
+![스크린샷(7)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/dd0c77f6-1e8c-4556-a096-9e2c6096aef4)<br>
+
+이렇게 만들어진 `simple_calculator` 실행파일을 실행시키기 위해선, 해당 실행파일이 저장되어 있는 위치에서 `./simple_calculator`<br>
+명령을 이용하여 실행이 가능하다.<br>
+
+![스크린샷(10)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/b7139746-5e1e-4895-84c3-479f070bfd78)
+
+
+
+
+
 
 
 
