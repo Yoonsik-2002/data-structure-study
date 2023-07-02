@@ -209,14 +209,23 @@ gcc -o simple_calculator simple_calculator.c basicArith_copy0.c
 이렇게 만들어진 `simple_calculator` 실행파일을 실행시키기 위해선, 해당 실행파일이 저장되어 있는 위치에서 `./simple_calculator`<br>
 명령을 이용하여 실행이 가능하다.<br>
 
-![스크린샷(10)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/b7139746-5e1e-4895-84c3-479f070bfd78)
+![스크린샷(10)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/b7139746-5e1e-4895-84c3-479f070bfd78)<br>
 
+### `gcc`명령어 옵션을 사용하여 컴파일 과정 중간에 생성되는 파일 각각 따로 생성하기 - 선행처리가 완료된 파일(.i), 어셈블리 파일(.s), 오브젝트 파일(.o)
+`gcc`명령어를 이용하여 C언어로 작성된 소스파일을 컴파일 하면, 그 중간과정(선행처리, 어셈블리, 링킹)에서, 각 과정들이 완료될<br>
+때마다, `선행처리가 완료된 파일(.i)`, `어셈블리 파일(.s)`, `오브젝트 파일(.o)` 이 생성된다.<br>
 
+그냥 위에서 설명한  `gcc -o [컴파일을 통해 생성할 실행파일 이름] [main함수가 들어있는 c파일(.c)] [연결된 c파일(.c)]` 명령어를 <br>
+이용하여 한번에 컴파일 해버리는 경우, 컴파일 중간 과정들을 통해 생성되었던 파일들은 최종 링크과정을 통해 실행파일이 생성되고 나면<br>
+자동으로 삭제되게 된다.<br>
 
+이때, 컴파일 중간에 생성된 파일들의 내용이 궁금하다면, 컴파일 중간에 생성되는 파일들을 따로 생성하여 저장할 수 있는 `gcc`명령어<br>
+옵션들을 사용하면 된다.<br>
 
+이제, 컴파일 각 과정마다 따로 파일을 생성하여 저장하는 `gcc`명령어 옵션을 사용한 명령어를 정리해 보도록 하겠다.<br>
 
-
-
-
-
-
+#### 선행처리 단계
+```
+gcc -E -o simple_calculator.i simple_calculator.c basicArith_copy0.c
+```
+`simple_calculator.c
