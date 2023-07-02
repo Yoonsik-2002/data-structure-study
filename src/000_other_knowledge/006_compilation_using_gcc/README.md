@@ -224,8 +224,40 @@ gcc -o simple_calculator simple_calculator.c basicArith_copy0.c
 
 이제, 컴파일 각 과정마다 따로 파일을 생성하여 저장하는 `gcc`명령어 옵션을 사용한 명령어를 정리해 보도록 하겠다.<br>
 
-#### 선행처리 단계
-```
-gcc -E -o simple_calculator.i simple_calculator.c basicArith_copy0.c
-```
-`simple_calculator.c
+- #### 선행처리 과정
+  ```
+  gcc -E -o basicArith_copy0.i basicArith_copy0.c
+  ```
+  `basicArith_copy0.c`파일을 선행처리 하여, 해당 출력을 `basicArith_copy0.i`파일에 저장하여라<br>
+
+  ```
+  gcc -E -o simple_calculator.i simple_calculator.c
+  ```
+  `simple_calculator.c`파일을 선행처리 하여, 해당 출력을 `simple_calculaotr.i`파일에 저장하여라<br>
+
+  ![스크린샷(10)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/065f7d4e-5794-4fce-8d53-12affc7fed30)<br>
+
+  ![스크린샷(12)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/531b313c-ff26-4f37-b9b9-8ba9111df917)
+
+
+  
+
+
+- #### 어셈블리 과정
+  ```
+  gcc -S -o biasicArith_copy0.s basicArith_copy0.i
+  ```
+  선행처리가 완료된 `basicArith_copy0.i`파일을 어셈블리하여, 해당 출력을 `basicArith_copy.s`파일에 저장하여라<br>
+
+  ```
+  gcc -S -o simple_calculator.s simple_calculator.i
+  ```
+  선행처리가 완료된 `simple_calculator.i`파일을 어셈블리하여, 해당 출력을 `simple_calculator.i`파일에 저장하여라<br>
+
+  ![스크린샷(14)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/20fd9628-8711-4249-b430-20b120b10919)<br>
+
+  ![스크린샷(15)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/c2654fa6-0bb3-4ed0-bac1-e3a5aa0125b1)
+
+
+
+
