@@ -267,6 +267,12 @@ gcc -o simple_calculator simple_calculator.c basicArith_copy0.c
   컴파일이 완료된 어셈블리어로 이루어진 `simple_calculator.s`파일을 어셈블리 하여, 해당 출력을 `simple_calculator.o`파일에<br>
   저장하여라.<br>
 
+  ![스크린샷(17)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/7ff4169f-660e-4c22-a63e-f8a76f8420cf)<br>
+
+  ![스크린샷(18)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/969e4a4e-a962-4da4-bcd9-16acb986d437)<br>
+
+
+
 
 
 
