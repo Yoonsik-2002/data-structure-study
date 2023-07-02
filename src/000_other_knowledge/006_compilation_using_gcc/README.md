@@ -212,19 +212,19 @@ gcc -o simple_calculator simple_calculator.c basicArith_copy0.c
 ![스크린샷(10)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/b7139746-5e1e-4895-84c3-479f070bfd78)<br>
 
 ### `gcc`명령어 옵션을 사용하여 컴파일 과정 중간에 생성되는 파일 각각 따로 생성하기 - 선행처리가 완료된 파일(.i), 어셈블리 파일(.s), 오브젝트 파일(.o)
-`gcc`명령어를 이용하여 C언어로 작성된 소스파일을 컴파일 하면, 그 중간과정(선행처리, 어셈블리, 링킹)에서, 각 과정들이 완료될<br>
+`gcc`명령어를 이용하여 C언어로 작성된 소스파일을 컴파일 하면, 그 중간과정(선행처리, 어셈블리, 링크)에서, 각 과정들이 완료될<br>
 때마다, `선행처리가 완료된 파일(.i)`, `어셈블리 파일(.s)`, `오브젝트 파일(.o)` 이 생성된다.<br>
 
 그냥 위에서 설명한  `gcc -o [컴파일을 통해 생성할 실행파일 이름] [main함수가 들어있는 c파일(.c)] [연결된 c파일(.c)]` 명령어를 <br>
 이용하여 한번에 컴파일 해버리는 경우, 컴파일 중간 과정들을 통해 생성되었던 파일들은 최종 링크과정을 통해 실행파일이 생성되고 나면<br>
 자동으로 삭제되게 된다.<br>
 
-이때, 컴파일 중간에 생성된 파일들의 내용이 궁금하다면, 컴파일 중간에 생성되는 파일들을 따로 생성하여 저장할 수 있는 `gcc`명령어<br>
+이때, 컴파일 중간에 생성된 파일들의 내용이 궁금하다면, 컴파일 중간에 생성되는 각 파일들을 따로 생성하여 저장할 수 있는 `gcc`명령어<br>
 옵션들을 사용하면 된다.<br>
 
 이제, 컴파일 각 과정마다 따로 파일을 생성하여 저장하는 `gcc`명령어 옵션을 사용한 명령어를 정리해 보도록 하겠다.<br>
 
-- #### 선행처리 과정
+- #### 선행처리 단계
   ```
   gcc -E -o basicArith_copy0.i basicArith_copy0.c
   ```
@@ -239,20 +239,33 @@ gcc -o simple_calculator simple_calculator.c basicArith_copy0.c
 
   ![스크린샷(12)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/531b313c-ff26-4f37-b9b9-8ba9111df917)<br>
 
-- #### 어셈블리 과정
+- #### 어셈블리 파일 단계
   ```
   gcc -S -o biasicArith_copy0.s basicArith_copy0.i
   ```
-  선행처리가 완료된 `basicArith_copy0.i`파일을 어셈블리하여, 해당 출력을 `basicArith_copy.s`파일에 저장하여라<br>
+  선행처리가 완료된 `basicArith_copy0.i`파일을 컴파일 하여, 해당 출력을 `basicArith_copy.s`파일에 저장하여라<br>
 
   ```
   gcc -S -o simple_calculator.s simple_calculator.i
   ```
-  선행처리가 완료된 `simple_calculator.i`파일을 어셈블리하여, 해당 출력을 `simple_calculator.i`파일에 저장하여라<br>
+  선행처리가 완료된 `simple_calculator.i`파일을 컴파일 하여, 해당 출력을 `simple_calculator.i`파일에 저장하여라<br>
 
   ![스크린샷(14)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/20fd9628-8711-4249-b430-20b120b10919)<br>
 
   ![스크린샷(15)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/c2654fa6-0bb3-4ed0-bac1-e3a5aa0125b1)<br>
+
+- #### 오브젝트 파일 단계
+  ```
+  gcc -c -o basicArith_copy0.o basicArith_copy0.s
+  ```
+  컴파일이 완료된 어셈블리어로 이루어진 `basicArith_copy0.s`파일을 어셈블리 하여, 해당 출력을 `basicArith_copy0.o`파일에<br>
+  저장하여라.<br>
+
+  ```
+  gcc -c -o simple_calculator.o simple_calculator.s
+  ```
+  컴파일이 완료된 어셈블리어로 이루어진 `simple_calculator.s`파일을 어셈블리 하여, 해당 출력을 `simple_calculator.o`파일에<br>
+  저장하여라.<br>
 
 
 
