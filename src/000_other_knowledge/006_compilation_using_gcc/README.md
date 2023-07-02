@@ -237,11 +237,7 @@ gcc -o simple_calculator simple_calculator.c basicArith_copy0.c
 
   ![스크린샷(10)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/065f7d4e-5794-4fce-8d53-12affc7fed30)<br>
 
-  ![스크린샷(12)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/531b313c-ff26-4f37-b9b9-8ba9111df917)
-
-
-  
-
+  ![스크린샷(12)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/531b313c-ff26-4f37-b9b9-8ba9111df917)<br>
 
 - #### 어셈블리 과정
   ```
@@ -256,7 +252,7 @@ gcc -o simple_calculator simple_calculator.c basicArith_copy0.c
 
   ![스크린샷(14)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/20fd9628-8711-4249-b430-20b120b10919)<br>
 
-  ![스크린샷(15)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/c2654fa6-0bb3-4ed0-bac1-e3a5aa0125b1)
+  ![스크린샷(15)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/c2654fa6-0bb3-4ed0-bac1-e3a5aa0125b1)<br>
 
 
 
