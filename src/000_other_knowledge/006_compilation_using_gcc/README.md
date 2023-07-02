@@ -270,9 +270,26 @@ gcc -o simple_calculator simple_calculator.c basicArith_copy0.c
   ![스크린샷(17)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/7ff4169f-660e-4c22-a63e-f8a76f8420cf)<br>
 
   ![스크린샷(18)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/969e4a4e-a962-4da4-bcd9-16acb986d437)<br>
+<br>
 
+특정 단계까지만 컴파일하면 번거롭다 이를 모두 저장해주는 옵션 또한 존재한다. 컴파일 과정을 모두 출력하면서 각 단계마다 생성되는<br>
+중간 파일을 삭제하지 않고 모두 저장해주는 옵션이 있다.<br>
 
+### 컴파일 전체 단계를 화면에 출력 및 저장하는 방법
 
+- #### `-v` 옵션  
+  컴파일 되는 과정을 화면으로 출력한다.<br>
 
+- #### `--save-temps` 옵션
+  컴파일 과정에서 생성되는 중간 파일들을 삭제하지 않고 저장한다.<br>
+  
+- #### `-v` 옵션과 `--save-temps` 옵션을 이용하여 완성한 명령어
+  ```
+  gcc -v --save-temps -o simple_calculator simple_calculator.c basicArith_copy0.c
+  ```
+
+  ![스크린샷(20)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/45c19b8f-310f-40c7-ae94-63271187a178)<br>
+
+  ![스크린샷(21)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/3ec93a53-f448-4c2e-8e3d-95489b6fd32c)
 
 
