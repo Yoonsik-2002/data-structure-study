@@ -296,9 +296,12 @@ intdiv3.h 헤더파일을 include 하였다.
 
 Div val = Div int_div(6, 8);  
 
-printf("quotient : %d", val.remainder);
-printf("remainder : %d', val.remainder);
+printf("quotient : %d", val.quotient);
+printf("remainder : %d", val.remainder);
 ```
+<br>
+
+![Slide13](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/f9164d82-15d3-425e-97d6-e890f3ce9d25)<br>
 
 
 
