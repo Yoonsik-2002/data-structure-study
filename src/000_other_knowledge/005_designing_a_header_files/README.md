@@ -248,4 +248,58 @@ void main()
 
 다음 예시코드를 통해 한번 알아보도록 하자.<br> 
 
+##### [stdiv.h]
+```c
+// Div 구조체의 선언 및 정의문
+
+typedef struct def {
+  int quotient;
+  int remainder;
+} Div;
+```
+
+##### [intdiv3.h]
+```c
+// 헤더파일 stdiv.h에서 선언되어 있는 구조체 Div를 활용한 함수 int_div의 선언
+
+#include "stdiv.h"
+
+Div int_div(int num1, int num2); 
+```
+
+##### [intdiv3.c]
+```c
+// 헤더파일 stdiv.h에 정의되어 있는 구조체 Div를 활용한 함수인 int_div의 정의
+
+#include "stdiv.h"
+
+Div int_div(int num1, int num2) {
+  Div div;
+
+  div.quotient = num1 / num2;
+  div.remainder = num1 % num2;
+
+  return div;
+}
+```
+
+##### [main.c]
+```c
+/* 헤더파일 intdiv3.h 에서 선언하고 있는 함수 int_div를 해당 소스파일에서 호출하기 때문에
+intdiv3.h 헤더파일을 include 하였다.
+또, 해당 함수의 반환형이 구조체 Div 타입이기 때문에, 해당 구조체의 선언 및 정의문을 포함하고
+있는 헤더파일 stdiv.h를 include 하였다. */
+
+#include <stdio.h>
+#include "stdiv.h"
+#include "intdiv3.h"
+
+Div val = Div int_div(6, 8);  
+
+printf("quotient : %d", val.remainder);
+printf("remainder : %d', val.remainder);
+```
+
+
+
 
