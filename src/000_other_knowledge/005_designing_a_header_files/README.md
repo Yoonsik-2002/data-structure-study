@@ -144,5 +144,44 @@ extern int GetNum(void);  // 함수가 외부에 정의되었음을 헤더파일
 
 다음은 헤더파일을 사용하지 않고, 두 개의 소스파일 `intdiv.c`파일과 `main.c`파일에서 동일한 구조체 `Div`를 사용하는 예제 코드이다.<br>
 
+##### [intdiv.c]
+```c
+typedef struct def {
+  int quotient;
+  int remainder;
+} Div;
+
+// 구조체 Div타입의 int_div 함수 정의
+Div int_div (int num1, int num2) {
+  Div div;  // 구조체 Div 타입의 구조체 변수 div 선언
+  div.quotient = num1 / num2;
+  div.remainder = num1 % num2;
+}
+```
+##### [main.c]
+```c
+#include <stdio.h>
+
+/* 컴파일러는 파일단위로 컴파일을 하기 때문에, 외부 파일에 존재하는 구조체의 선언 및 정의를 참조하여 컴파일을 진행하지 않는다.
+때문에, intdiv.c 파일에 정의되어 있는 구조체 Div를 사용하고 싶으면, 해당구조체에 대한 선언을 이 main.c 파일에서도 해주어야 한다. */
+
+typedef struct def {
+  int quotient;
+  int remainder;
+} Div;
+
+extern Div int_div(int num1, int num2);  // 해당 파일(main.c) 외부에 정의되어 있는 함수 int_div를 사용하기 위해 extern 키워드를 이용하여 int_div 함수를 선언.
+
+void main()
+{
+  Div val = int_div(3, 8);
+
+  printf("몫: %d\n", val.quotient);
+  pritnf("나머지: %d\n", val.remainder);
+}
+```
+  
+
+
 
 
