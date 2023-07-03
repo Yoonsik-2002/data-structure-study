@@ -194,8 +194,47 @@ void main()
 에서는 아무리 동일한 구조체더라도, 두 소스파일에 각가 구조체 `Div`의 선언 및 정의를 해 주어야 하였다.<br>
 
 이때, 우리는 헤더파일을 만들어서 `Div`의 선언 및 정의가 프로그램 내에서 하나만 존재하도록 개선시킬 수 있다.<br>
+동일한 구조체의 선언 및 정의가 두 군데 이상 존재하면, 구조체의 수정 및 확장에 불편함이 생기기 때문에,<br>
+헤더파일을 이용한 아래와 같은 구조는 필수라고 할 수 있다.<br>
 
+다음은 헤더파일을 적용시킨 예시 코드이다.<br>
 
+##### [stdiv.h]
+```c
+typedef struct def {
+  int quotient;
+  int remainder;
+} Div;
+```
 
+##### [intdiv.c]
+```c
+#include "stdiv.h"
 
+Div int_div(int num1, num2) {
+  Div div;
+
+  div.quotient = num1 / num2;
+  div.remainder = num1 % num2;
+}
+```
+
+##### [main.c]
+```c
+#include "stdiv.h"
+#include <stdio.h>
+
+extern int_div(int num1, int num2);
+
+void main()
+{
+  Div val = int_div(6, 8);
+
+  printf("몫 : %d\n", val.quotient);
+  printf("나머지 : %d\n", val.remainder);
+}
+```
+
+위 예시코드에서 알 수 있듯이, 구조체의 선언 및 정의는 헤더파일에 삽입하는 것이 좋다. <br>
+그러나, 하나의 소스파일 내에서만 사용이 되는 구조체라면, 소스파일에 정의하는 것도 괜찮다.<br>
 
