@@ -301,7 +301,16 @@ printf("remainder : %d", val.remainder);
 ```
 <br>
 
+위에서 예시로 제시한 프로그램을 구성하는 소스 파일들(`stdiv.h`, `intdiv3.c`, `intdiv3.h`, `main.c`)의 관계를 그림으로 표현하면, 다음과 같다.<br>
+
 ![Slide13](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/f9164d82-15d3-425e-97d6-e890f3ce9d25)<br>
+
+먼저, `#include "stdiv.h"`를 통해, 구조체 `Div`의 선언 및 정의문이 `main.c`에 포함된다.<br>
+그리고, 또 `inlude "intdiv3.h"`를 통해 구조체 `Div`의 선언 및 정의문이 한번 더 `main.c`소스파일에 포함된다.<br>
+왜냐하면, 헤더파일 `intdiv3.h`가 `stdiv.h`를 포함하고 있기 때문이다.<br>
+
+**결국, `main.c` 소스파일에 구조체 `Div`가 두 번 정의된 형태가 되며, 이는 컴파일 에러를 발생시킨다.** 
+
 
 
 
