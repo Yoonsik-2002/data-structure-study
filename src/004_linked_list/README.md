@@ -233,8 +233,8 @@ Node Mynode;
   {
     free(Node);
   }
-  ```<br>
-<br>
+  ```
+  <br>
 
 ### 노드 추가 
 <br><br>
