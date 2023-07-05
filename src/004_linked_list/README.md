@@ -291,7 +291,7 @@ SSL_AppendNode(&List, NewNode); // 생성한 노드를 연결 리스트에 추�
   다음은 새 노드를 추가해주는 `SSL_AppendNode` 함수이다.<br>
  
   ```c
-  SSL_AppendNode(Node** Head, Node* NewNode) 
+  void SSL_AppendNode(Node** Head, Node* NewNode) 
   {
     if((*Head) == Null) // List(*Head)가 Null인 경우 - 헤드 포인터 List가 첫 번째 노드의 주소값을 저장하고 있지 않은 경우, 즉 List가 비어있는 경우
     {
