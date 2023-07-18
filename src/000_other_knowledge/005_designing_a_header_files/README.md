@@ -381,7 +381,7 @@ void ex_func(void)
   - 1) 헤더파일의 시작은 `#ifndef [헤더 구분자]`로 시작하여 끝은 `#endif`로 끝이 난다.<br>
   - 2) `#ifndef [헤더 구분자]` 바로 다음에는 `#define`문을 위치시킨다.<br>
 
-  이러한 `#ifndef`와 `#define`을 header gaurd라고 부르기도 한다.<br> 
+  이러한 `#ifndef`와 `#define`을 **header gaurd**라고 부르기도 한다.<br> 
 
 - #### 헤더파일 에서는 왜 `#ifndef ... #endif`를 사용하는가?
   `#if(#ifdef, #ifndef)`문 뒤에는 반드시 `#endif`문이 등장해야 하며, 이 두 지시자 사이에 존재하는 코드는<br>
