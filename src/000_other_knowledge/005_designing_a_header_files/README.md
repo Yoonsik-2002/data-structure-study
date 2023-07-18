@@ -359,7 +359,7 @@ void ex_func(void)
   일방적으로 헤더파일은 아래와 같은 형식을 가진다.<br>
 
   ```c
-  // The file name of this header fine is "sample.h"
+  // The file name of this header file is "sample.h"
 
   #ifndef __SAMPLE_H__
   #define __SAMPLE_H__
