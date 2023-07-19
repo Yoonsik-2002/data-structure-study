@@ -31,7 +31,5 @@ void SSL_AppendNode(Node** Head, Node* NewNode) {
 		}
 		
 		Tail -> NextNode = NewNode;
-		
-		
 	}
 }
