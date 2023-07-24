@@ -124,7 +124,14 @@ while(i++ <= 4) {
 ```
 해당 `while`문의 조건, `i++ <= 4` 에서, 연산의 우선순위는, **1)** `i++ (후위연산)`, **2)** `<= 4 (비교연산)` 임을 명심하자!<br>
 
-자, 이러한 연산의 우선순위를 기억하고, 다음 예시코드들을 보도록 하자.<br>
+자, 이러한 연산의 우선순위를 기억하고, 다음 예시그림들을 보도록 하자.<br><br>
+- ### while문과 전위연산자
+  ![Slide14 - 복사본](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/3e05f803-7369-4e36-ab3c-66b43e09f31a)<br>
+
+- ### while문과 후위연산자
+  ![Slide14](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/5d6b568b-feb7-4440-9b50-5b3afcfa8b48)
+
+
 
 
 
