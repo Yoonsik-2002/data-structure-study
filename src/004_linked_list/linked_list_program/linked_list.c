@@ -33,3 +33,13 @@ void SSL_AppendNode(Node** Head, Node* NewNode) {
 		Tail -> NextNode = NewNode;
 	}
 }
+
+// 노드 탐색
+Node* SSL_GetNodeAt(Node* Head, int Location) {
+	Node* Current = Head;
+	
+	// 탐색하기 위해서는 링크드 리스트에 노드가 존재해야 하기 때문에, Current != Null 이라는 조건을 줌. 그리고, Locaiton 만큼 반복하여 탐색 
+	while(Current!= Null && --Lcation > 0) {
+		
+	}
+}
