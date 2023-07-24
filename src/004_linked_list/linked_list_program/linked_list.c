@@ -37,9 +37,11 @@ void SSL_AppendNode(Node** Head, Node* NewNode) {
 // 노드 탐색
 Node* SSL_GetNodeAt(Node* Head, int Location) {
 	Node* Current = Head;
+	Location -= 1; // n번재 노드를 탐색하고 싶으면 Location에 n을 전달할 수 있도록 하기 위해 추가한 코드.(원래는 n번째 노드 탐색 시, n-1을 입력해야 했음)
 	
-	// 탐색하기 위해서는 링크드 리스트에 노드가 존재해야 하기 때문에, Current != Null 이라는 조건을 줌. 그리고, Locaiton 만큼 반복하여 탐색 
-	while(Current!= Null && --Lcation > 0) {
-		
+	while(Current != Null && (--Locaton) >= 0) { // 애초에 Head가 첫 번째 노드를 가리키고 있기 때문에, 첫 번째 노드는 탐색할 필요 X
+		Current = Current -> NextNode;
 	}
+	
+	return Current;
 }
