@@ -38,9 +38,8 @@ void SSL_AppendNode(Node** Head, Node* NewNode) {
 Node* SSL_GetNodeAt(Node* Head, int Location) {
 	Node* Current = Head; // 첫 번재 노드에서 부터 탐색을 시작
 	
-	/* 첫 번째 노드는 이미 헤더 포인터를 가리키고 있는 구조체 포인터 변수
-	Current가 가리키고 있기 때문에, 구지 탐색하지 않고 바로 Current를 
-	리턴해주면 됨 */
+	/* 첫 번째 노드는 이미 구조체 포인터 변수 Current가 가리키고 있기 때문에
+	구지 탐색하지 않고 바로 Current를 리턴해주면 됨 */
 	
 	while(Current != Null && (--Location) > 0) { 
 		Current = Current -> NextNode;
