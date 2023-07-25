@@ -34,6 +34,12 @@ void SSL_AppendNode(Node** Head, Node* NewNode) {
 	}
 }
 
+// 노드 삽입
+void SSL_InsertNodeAfter(Node* Current, Node* NewNode) {
+	NewNode -> NextNode = Current -> NextNode;
+	Current -> NextNode = NewNode;
+}
+
 // 노드 탐색
 Node* SSL_GetNodeAt(Node* Head, int Location) {
 	Node* Current = Head; // 첫 번재 노드에서 부터 탐색을 시작
