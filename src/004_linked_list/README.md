@@ -551,7 +551,7 @@ SSL_DestroyNode(MyNode);
 해당 작업을 수행하는 노드 삽입함수 `SSL_InsertAfter` 함수는 다음과 같이 구현이 가능하다. <br>
 <br>
 
-- #### 노드 삽입함수 `SSL_InsertAfter`
+- #### 양 노드 사이에 새 노드를 삽입하는 노드 삽입함수 `SSL_InsertAfter`
   ```c
   void SSL_InsertAfter(Node* Current, Node* NewNode)
   {
@@ -568,6 +568,39 @@ SSL_DestroyNode(MyNode);
   `Current->NextNode = NewNode`를 먼저 해버리면, 원래 `Current`의 다음 노드에 대한 주소값 정보가 사라져버려서 `NewNode`와<br>
   `Current` 다음의 노드를 연결 할 수가 없다!<br>
 <br>
+
+- #### 새 헤드(새 첫 번째 노드)를 삽입하는 노드 삽입함수 'SSL_InsertNewHead'
+  해당 함수가 종료된 후, 해당 노드를 포함하는 링크드 리스트의 헤드 포인터는 새로 삽입한 첫 번째 노드를 가리키고 있어야 한다!<br>
+  ```c
+  SSL_InsertNewHead(Node** Head, Node NewNode) {
+    if(*Head != Null) {
+      (*Head) = NewNode;
+    }
+
+    else {
+      NewNode -> NextNode = (*Head);
+      (*Head) = NewNode;
+    }
+  }
+  ```
+  이 `SSL_InseretNewHead` 함수가 종료된 다음에도 해당 링크드 리스트의 헤드 포인터가 새로 삽입된 첫 번째 노드를 가리키고 있어야<br>
+  하기 때문에, 매개변수로 이중 포인터 `Head`를 이용하여, 헤드 포인터의 주소값을 인자로 전달받았다.<br>
+
+  이를 통해, 포인터를 참조하는 이중 포인터 `Head`가 직접 헤드 포인터 `List`가 첫 번째 노드를 가리키게 해준다.<br>
+
+  주소값이 함수의 인자로서 전달되는 경우, `Call by Address`에 의해, 해당 주소값은 복사되어 함수의 매개변수로 전달되기 때문에,<br>
+  `SSL_InsertNewHead`의 매개변수 `Head`를  이중 포인터로 해주지 않으면, 이 주소값을 복사하여 전달한 헤드 포인터 `List`와<br>
+  `Head`는 따로 놀게 된다.<br>
+
+  `Head`는 **복사된** `List`의 주소값을 통해 해당 함수의 동작을 수행하고, 해당 함수가 종료되면 자동적으로 Stack 메모리에서 삭제된다.<br>
+
+  그리고, 주소값을 복사해 준, `List`는, 주소값만 복사해서 전달해 주었을 뿐, 다른 동작은 `Head`가 수행하였지만, 함수가 종료되고<br>
+  `Head`는 삭제되기 때문에, 그냥, 초기 상태 그대로 있게 된다.<br>
+  
+  이러한 이유로 인해, `SSL_InsertNewHead`함수가 수행되고 나서도 헤드 포인터가 새로 삽입된 첫 번째 노드를 가리키고 있게 하기 위해선<br>
+  헤드포인터의 주소값을 전달받는 매개변수 `Head`를 이중포인터로 선언해 주어야 한다.<br>
+<br>
+  
 
 ### 노드의 개수 세기
 노드의 개수를 세는 작업을 수행하는 함수 또한 구현이 간단하다. `while`문을 이용하여 첫 번째 노드부터 마지막 노드까지 순차적으로, 노드를 <br>
