@@ -35,9 +35,22 @@ void SSL_AppendNode(Node** Head, Node* NewNode) {
 }
 
 // 노드 삽입
+// 일반적으로, 양 노드 사이에 새 노드를 삽입하는 경우
 void SSL_InsertNodeAfter(Node* Current, Node* NewNode) {
 	NewNode -> NextNode = Current -> NextNode;
 	Current -> NextNode = NewNode;
+}
+
+// 링크드 리스트의 새 헤드(새 첫번째 노드)를 삽입하는 경우
+void SSL_InsertNewHead(Node** Head, Node* NewNode) {
+	if(*Head == Null) {
+		(*Head) = NewNode;
+	}
+	
+	else {
+		NewNode -> NextNode = (*Head);
+		(*Head) = NewNode;
+	}
 }
 
 // 노드 탐색
