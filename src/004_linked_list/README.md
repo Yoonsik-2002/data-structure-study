@@ -569,7 +569,7 @@ SSL_DestroyNode(MyNode);
   `Current` 다음의 노드를 연결 할 수가 없다!<br>
 <br>
 
-- #### 새 헤드(새 첫 번째 노드)를 삽입하는 노드 삽입함수 'SSL_InsertNewHead'
+- #### 새 헤드(새 첫 번째 노드)를 삽입하는 노드 삽입함수 `SSL_InsertNewHead`
   해당 함수가 종료된 후, 해당 노드를 포함하는 링크드 리스트의 헤드 포인터는 새로 삽입한 첫 번째 노드를 가리키고 있어야 한다!<br>
   ```c
   SSL_InsertNewHead(Node** Head, Node NewNode) {
