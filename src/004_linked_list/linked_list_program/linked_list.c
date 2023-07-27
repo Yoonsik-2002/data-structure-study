@@ -10,7 +10,7 @@ Node* SSL_CreateNode(ElementType NewData) {
 	return NewNode;
 }
 
-// 노드 소멸
+// Head 영역에서의 노드 삭제
 void SSL_DestroyNode(Node* Node) {
 	free(Node);
 }
@@ -52,6 +52,26 @@ void SSL_InsertNewHead(Node** Head, Node* NewNode) {
 		(*Head) = NewNode;
 	}
 }
+
+// 링크드 리스트 에서의 노드 삭제
+void SSL_RemoveNode(Node** Head, Node* Remove) {
+	if(*Head == Remove) {
+		(*Head) = Remove -> NextNode;
+	}
+	
+	else {
+		Node* Current = (*Head);
+		
+		while(Current != Null && Current -> NextNode != Remove) {
+			Current = Current -> NextNode;
+		}
+		
+		if(Current != Null) {
+			Current -> NextNode = Remove -> NextNode;
+		}
+	}
+}
+
 
 // 노드 탐색
 Node* SSL_GetNodeAt(Node* Head, int Location) {
