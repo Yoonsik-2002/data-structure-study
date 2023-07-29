@@ -86,3 +86,17 @@ Node* SSL_GetNodeAt(Node* Head, int Location) {
 	
 	return Current;
 }
+
+// 노드 수 세기
+int SSL_GetNodeCount(Node* Head) {
+	int Count = 0;
+	
+	Node* Current = Head;
+	
+	while(Current != Null) {
+		Current = Current -> NextNode;
+		Count++;
+	}
+	
+	return Count;
+}
