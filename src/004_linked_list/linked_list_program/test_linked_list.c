@@ -47,4 +47,6 @@ void main()
 		
 		printf("List[%d] : %d \n", i, Current -> Data);
 	}
+	
+	
 }
