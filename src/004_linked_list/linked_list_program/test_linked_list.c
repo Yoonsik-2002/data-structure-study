@@ -48,5 +48,21 @@ void main()
 		printf("List[%d] : %d \n", i, Current -> Data);
 	}
 	
+	// 링크드 리스트 내의 모든 노드를 메모리에서 제거
+	printf("\n Destroying List ...\n");
 	
+	for (i = 0; i < Count; i++) {
+		Node* Current = SSL_GetNodeAt(List, 1);
+		
+		if(Current != NULL) {
+			SSL_RemoveNode(&List, Current);
+			SSL_DestroyNode(Current);
+		}
+	}
+	
+	// 모든 노드 소멸 확인 
+	if(List == NULL) {
+		printf("\n-----------------------------------------------\n");
+		printf("\n\n All nodes in the linked list have been deleted. \n\n");
+	}
 }
