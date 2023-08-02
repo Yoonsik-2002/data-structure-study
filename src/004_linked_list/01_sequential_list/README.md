@@ -77,6 +77,7 @@ void PutMoney(Wallet * pw, int coinNum, int billNum);    // 돈을 넣는 연산
 
 이러한 두 리스트는 구현 방법에서의 차이에 따라 나눠진 것이기 때문에, 이 두 자료구조의 순수한 기능을 정의하는 ADT가 동일하더라도<br>
 이는 문제가 되지 않는다.<br>
+
 하지만, 또, 각 자료구조의 특성적 차이에 의한 ADT의 차이를 두기도 한다.<br>
 
 결국, 해당 자료구조의 기본적인 특성에서 벗어나지 않는 선에서 필요에 따라 ADT에도 차이가 난다. 자료구조의 순수한 기능을 정의하는<br>
@@ -128,6 +129,7 @@ typedef ArrayList List;
 이러한 순차 리스트 자료구조 모델을 그림으로 표현하면 다음과 같다.<br>
 
 ![sequential list](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/1d254584-1902-4f46-80eb-a8fe4afafe4f) <br>
+<br>
 
 이러한 형태를 띄는 순차 리스트의 ADT(순수한 기능)은 어떻게 될까?<br>
 데이터를 나란히 저장하고, 이러한 데이터들의 중복을 허용하는 해당 자료구조의 기본적인 특성을 기반으로, 순차 리스트의 ADT를 한번 <br>
