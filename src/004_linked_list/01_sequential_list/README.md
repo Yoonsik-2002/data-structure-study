@@ -131,9 +131,11 @@ typedef ArrayList List;
 ![sequential list](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/1d254584-1902-4f46-80eb-a8fe4afafe4f) <br>
 <br>
 
-이러한 형태를 띄는 순차 리스트의 ADT(순수한 기능)은 어떻게 될까?<br>
+이러한 형태를 띄는 순차 리스트의 ADT(순수한 기능)는 어떻게 될까?<br>
 데이터를 나란히 저장하고, 이러한 데이터들의 중복을 허용하는 해당 자료구조의 기본적인 특성을 기반으로, 순차 리스트의 ADT를 한번 <br>
-정의해 보도록 하겠다. 
+정의해 보도록 하겠다.<br>
+
+
 
 
 
