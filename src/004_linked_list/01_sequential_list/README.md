@@ -208,7 +208,7 @@ ADT의 내용에선 차이가 생길 수 있다.<br>
 >   ![Slide14](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/f29143b3-d313-4771-b311-b1e80411bcd0)
 >
 >   첫 번째 데이터 이후의 데이터를 탐색하여 반환하고 싶은 경우, `LNext` 함수를 사용한다.<br>
->   때문에, 첫 번째 이후의 데이터를 탐색하여 초기화 해주는 `LNext` 함수를 실행하기 위해서는 우선적으로, `LFirst` 함수가<br>
+>   이, 첫 번째 이후의 데이터를 탐색하여 초기화 해주는 `LNext` 함수를 실행하기 위해서는 우선적으로, `LFirst` 함수가<br>
 >   먼저 실행되어야 한다.<br>
 >     - #### 기능 3-1) 저장된 데이터들 중, 첫 번째 데이터 반환<br>
 >       **`int LFirst(List* pList, LData* pData);`**<br><br>
