@@ -20,7 +20,7 @@ typedef struct __ArrayList {
 typedef ArrayList List;  // ArrayList에 List라는 별도의 이름을 부여 - main 함수를 변경하지 않고도 main함수 내에서 사용하는 리스트를 다른 것으로 변경이 가능함.
 
 void ListInit(List * plist);  // 리스트의 생성 및 초기화
-void LInsert(List * plist, LData data);  // 생성된 데이터에 데이터 저장
+void LInsert(List * plist, LData data);  // 생성된 리스트에 데이터 저장
 
 int LFirst(List * plist, LData * pdata);  // 첫 데이터 참조
 int LNext(List * plist, LData * pdata);  // 두 번째 데이터 참조
