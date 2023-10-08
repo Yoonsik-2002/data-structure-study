@@ -25,11 +25,10 @@ void LInsert(List * plist, LData data);  // 생성된 리스트에 데이터 저
 int LFirst(List * plist, LData * pdata);  // 첫 데이터 참조
 int LNext(List * plist, LData * pdata);  // 두 번째 데이터 참조
 
-Ldata LRemove(List * plist);  // 참조한 데이터 삭제
+LData LRemove(List * plist);  // 참조한 데이터 삭제
 int LCount(List * plist);  // 저장된 데이터의 개수 반환
 
 #endif  // #if(ifndef, ifdef)문 뒤에는 반드시 #endif문이 등장해야 하며, 이 두 지시자 사이에 존재하는 코드는 조건에 따라 삽입 및 삭제가 가능하다. 
-
 
 
 
