@@ -17,7 +17,7 @@ void LInsert(List * plist , LData data) {
 	
 	plist -> arr[plist -> numOfData] = data; 
 	/* 어쨋든 배열 내의 데이터는 index 0부터 순차적으로 저장된다. 그렇기 때문에, 초기값 0부터 시작하여
-	데이터가 추가될 때 마다 1씩 늘어나는 numOfData를 저장위치(index)로 지정*/
+	데이터가 추가될 때 마다 1씩 늘어나는 numOfData를 저장위치(index)로 지정 하였다.*/
 	
 	(plist -> numOfData)++; // 데이터를 추가한 뒤에는 +1
 }
