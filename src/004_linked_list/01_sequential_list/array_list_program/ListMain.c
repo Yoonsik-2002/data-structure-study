@@ -38,10 +38,10 @@ int main(void)
 		}
 	}
 	
-	// 삭제 후 남은 데이터의 개수 출력
+	// 삭제 후 저장공간에 남은 데이터의 개수 출력
 	printf("현재 데이터 수 : %d \n", LCount(&list));
 	
-	// 삭제 후 남은 데이터들을 모두 출력
+	// 삭제 후 저장공간에 남은 데이터들을 모두 출력
 	if(LFirst(&list, &data))
 	{
 		printf("%d\n", data);
