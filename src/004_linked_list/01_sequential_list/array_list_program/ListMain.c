@@ -39,9 +39,9 @@ int main(void)
 	}
 	
 	// 삭제 후 남은 데이터 전체 출력
-	printf("현재 데이터 수 : %d \n", Lcount(&list));
+	printf("현재 데이터 수 : %d \n", LCount(&list));
 	
-	if(LFirst(&list, data))
+	if(LFirst(&list, &data))
 	{
 		printf("%d ", data);
 		
