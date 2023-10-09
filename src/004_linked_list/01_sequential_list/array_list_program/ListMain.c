@@ -6,7 +6,7 @@ int main(void)
 	// ArrayList의 생성 및 초기화
 	List list;  // 리스트의 생성
 	int data;
-	ListInit(&list);  // 리스트의 초기화 - 그저 데이터만 담기는 것이 아니라, 해당 데이터를 효율적으로 저장 및 참조하는데 쓰이는 데이터까지 초기화 한다.
+	ListInit(&list);  // 리스트의 초기화 - 그저 데이터만 담기는 것이 아니라, 해당 데이터를 효율적으로 저장 및 참조하는데 쓰이는 데이터(curPosition, numOfData)까지 초기화 한다.
 	
 	// 5개의 데이터를 저장
 	LInsert(&list, 11); LInsert(&list, 11);
