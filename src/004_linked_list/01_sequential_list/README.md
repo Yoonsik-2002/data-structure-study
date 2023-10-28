@@ -265,8 +265,23 @@ ADT의 내용에선 차이가 생길 수 있다.<br>
 <br>
 
 ## 리스트에 구조체 변수 저장하기 I : 구조체 Point와 관련 함수들의 정의
+실제로, 리스트에는 구조체 변수를 비롯한 각종 데이터들이 저장된다.<br>
+따라서 이번에는 리스트에 구조체 변수의 주소값을 저장해 보려 한다.<br>
 
+이를 위해, 아래와 같은 구조체를 정의해 보았다.<br>
 
+```c
+typedef struct _Point {
+  int xpos;
+  int ypos;
+} Point;
+```
+<br>
+
+해당 구조체를 다루는 함수는 다음과 같다.<br>
+- `void SetPointPos(Point * ppos, int xpos, int ypos); // 구조체 변수에 xpos, ypos 값을 저장`<br>
+- `void ShowPointPos(Point* ppos); // 정보 출력`<br>
+- `void PointComp(Point * pos1, Point * pos2); // Point 타입의 구조체 변수 pos1과 pos2에 저장되어 있는 값을 비교.`<br>
 
 	
 
