@@ -1,90 +1,17 @@
-## 📄 자료구조란 무엇인가?
-자료구조가 무엇인지는 다음 **프로그램의 정의** 에서 찾아볼 수 있다.<br>
-> *프로그램이란 데이터를 표현하고, 그렇게 표현된 데이터를 처리하는 것이다.*
+# 💻 Table of Contents
+공부한 내용을 다시 쉽게 찾아볼 수 있도록 링크를 통해 목차를 정리해 보았다.📌<br>
+<br>
 
-여기서 *`데이터를 표현한다`* 라는 말은 *`데이터를 저장한다`* 라는 의미를 내포한다.<br>
-예를 들어 설명해 보면, 우리가 코드상에서 숫자 7 을 표현하기 위해서는 어떻게 하는가? 그냥 숫자 7을 코드상에 입력하는 것이 아니라, **`int`** 형 변수에 해당 숫자 7을 저장하여 표현한다. 
-```c
-int num = 7;
-printf("%d", num);
-```
-즉, 프로그램에 있어 데이터를 표현하고 싶으면, 데이터의 저장이라는 개념을 통해 표현이 가능하다는 것이다.  
+## Call-by-value 와 Call-by-reference
+- ### [Call-by-value](https://github.com/Yoonsik-2002/data-structure-study/tree/main/src/000_other_knowledge/000_call_by_value_and_call_by_reference#call-by-value)
+- ### [Call-by-reference](https://github.com/Yoonsik-2002/data-structure-study/tree/main/src/000_other_knowledge/000_call_by_value_and_call_by_reference#call-by-reference)
+<br><br>
 
-**자료구조**는 프로그램에 있어, '데이터의 저장(표현)'을  담당하는 것으로, 넓은 의미에서는 int형 변수, 구조체 정의, 배열 또한 데이터를 저장 및 표현하는 방법이기 때문에 자료구조에 속한다.
+## C 프로그램의 메모리 구조
+- ### [메모리의 구성 및, 매모리 공간을 나눠놓은 이유](https://github.com/Yoonsik-2002/data-structure-study/tree/main/src/000_other_knowledge/001_memory_area_of_c_program#%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%9D%98-%EA%B5%AC%EC%84%B1)
+<br><br>
 
-```c
-Ex.1
-
-int main(void)
-{
-	int num = 10; // 데이터 저장
-}
-```
-
-```c
-Ex.2
-
-typedef struct person 
-{
-	char name [10];	
-    cahr address [10];  
-    int age;			
-} person;
-
-```
-
-학문적으로 체계화된 자료구조로는 **선형구조**, **비선형구조**, **파일구조**, **단순구조** 가 있다.<br/>
-- #### 선형구조
-	- 리스트, 스택, 큐<br/>
-    
-- #### 비선형 구조
-	- 트리, 그래프<br/>
-    
-- #### 파일구조
-	- 순차파일, 색인파일, 직접파일<br/>
-    
-- #### 단순구조
-	- 정수, 실수, 문자, 문자열<br/>
-
-
-### 선형 자료구조
-이름이 의미하듯이 자료를 표현/저장하는 방식이 선형이다. 즉, 데이터를 선의 형태로 **나란히 저장**하는 방식이다.
-
-### 비선형 자료구조
-선형 자료구조와는 반대로, 데이터를 **나란히 저장하지 않는** 구조이다.
-
-### 자료구조와 알고리즘
-프로그램에 있어, **데이터의 저장(표현)** 을 담당하는 것이 자료구조 였다면, 알고리즘은 표현 및 저장된 데이터를 대상으로 하는 **문제 해결 방법**을 뜻한다. 간단히 자료구조에 의해 저장된 데이터를 처리하는 역할을 한다고 생각하면 쉽다.
-자료구조가 결정되어야 그에 따른 효율적인 알고리즘을 결정할 수 있기 때문에 이 둘은 밀접한 관계를 갖는다.
-
-```c
-Ex.3  
-
-//프로그램에서 자료구조와 알고리즘의 간단한 예시 코드
-
-1. int main(void)
-2. {
-3. 		int sum = 0;
-4.     
-5. 		int array[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};	// 자료구조적 측면의 코드
-6.     
-7.     	for (int i = 0; i < 10; i++) { 	  // 알고리즘적 측면의 코드
-8.     		sum += array[i];
-9. 		}
-10. 
-11.		return 0;
-12. }
-```
-
-- 다음 코드에서 5번째줄 코드 
-`int array[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};` 은 10개의 정수형 데이터를 프로그램에 저장하는 **자료구조적 측면의 코드**이다.
-
-- 7 ~ 8번째 코드는
- ```c
- for (int i = 0; i < 10; i++) {
- 	sum += array[i];
- }
- ```
-배열에 저장된 모든 값을 더하는 코드로, 프로그램에 저장된 데이터를 처리하는 **알고리즘 측면의 코드**이다.
-
----
+## `malloc()` 함수
+- ### [형(Type)이 존재하지 않는 `void`형 포인터](https://github.com/Yoonsik-2002/data-structure-study/tree/main/src/000_other_knowledge/002_malloc_function#%ED%98%95type%EC%9D%B4-%EC%A1%B4%EC%9E%AC%ED%95%98%EC%A7%80-%EC%95%8A%EB%8A%94-void-%ED%98%95-%ED%8F%AC%EC%9D%B8%ED%84%B0)
+- ### [`malloc()`함수 와 `free()`함수 - 자유 저장소(힙 영역)의 메모리 공간 할당과 해제](https://github.com/Yoonsik-2002/data-structure-study/tree/main/src/000_other_knowledge/002_malloc_function#%EC%9E%90%EC%9C%A0-%EC%A0%80%EC%9E%A5%EC%86%8C%ED%9E%99-%EC%98%81%EC%97%AD%EC%9D%98-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B3%B5%EA%B0%84-%ED%95%A0%EB%8B%B9%EA%B3%BC-%ED%95%B4%EC%A0%9C)
+<br><br>
