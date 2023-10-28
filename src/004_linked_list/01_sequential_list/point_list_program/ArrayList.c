@@ -12,7 +12,7 @@ void LInsert(List * plist , LData data) {
 	// 저장공간이 꽉 차 있는 경우 
 	if(plist -> numOfData == LIST_LEN) {
 		printf("저장공간이 가득 차 있어, 저장이 불가능 합니다.\n");
-		return; // 함수 종료
+		return; 
 	}
 	
 	plist -> arr[plist -> numOfData] = data; 
