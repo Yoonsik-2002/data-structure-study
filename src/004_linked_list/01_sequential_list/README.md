@@ -256,13 +256,15 @@ ADT의 내용에선 차이가 생길 수 있다.<br>
 >   **`int LCount(List* pList);`**<br>
 >   리스트에 저장되어 있는 데이터의 수를 반환한다.<br>
 
+<br>
+
+다음 링크는  해당 ADT를 이용하여 구현한 배열 기반 리스트 프로그램이다.<br>
+[array list program](https://github.com/Yoonsik-2002/data-structure-study/tree/main/src/004_linked_list/01_sequential_list/array_list_program)<br>
+
 ---
 <br>
 
-## 리스트에 구조체 변수 저장하기 1 : 구조체 Point와 관련 함수들의 정의
-
-
-
+## 리스트에 구조체 변수 저장하기 I : 구조체 Point와 관련 함수들의 정의
 
 
 
