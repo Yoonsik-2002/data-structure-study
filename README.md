@@ -1,5 +1,5 @@
 # 💻 Table of Contents
-공부한 내용을 다시 쉽게 찾아볼 수 있도록 링크를 통해 목차를 정리해 보았다.📌<br>
+공부한 내용을 다시 쉽게 찾아볼 수 있도록 링크를 통해 목차를 정리해 보았다. 📌<br>
 <br>
 
 ## Call-by-value 와 Call-by-reference
