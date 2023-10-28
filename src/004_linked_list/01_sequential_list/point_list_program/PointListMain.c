@@ -43,4 +43,5 @@ int main(void) {
 			ShowPointPos(ppos); // 두 번째로 저장되어 있는 데이터를 하나하나씩 넘어가면서 출력해줌 탐색 -> 반환(*pdata(ppos) = plist -> arr[plist -> curPosittion])
 	}
 	printf("\n");
+	
 }
