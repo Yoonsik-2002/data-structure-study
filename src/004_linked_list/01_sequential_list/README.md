@@ -279,10 +279,13 @@ typedef struct _Point {
 <br>
 
 해당 구조체를 다루는 함수는 다음과 같다.<br>
-- `void SetPointPos(Point * ppos, int xpos, int ypos); // 구조체 변수에 xpos, ypos 값을 저장`<br>
-- `void ShowPointPos(Point* ppos); // 정보 출력`<br>
-- `void PointComp(Point * pos1, Point * pos2); // Point 타입의 구조체 변수 pos1과 pos2에 저장되어 있는 값을 비교.`<br>
-
+- **`void SetPointPos(Point * ppos, int xpos, int ypos); // 구조체 변수에 xpos, ypos 값을 저장`<br>**
+- **`void ShowPointPos(Point* ppos); // 정보 출력`<br>**
+- **`void PointComp(Point * pos1, Point * pos2); // Point 타입의 구조체 변수 pos1과 pos2에 저장되어 있는 값을 비교.`<br><br>**
+    - `두 Point 변수의 멤버 xpos만 같으면 1 반환`
+    - `두 Point 변수의 멤버 ypos만 같으면 2 반환`
+    - `둘 다 같으면 0 반환`
+    - `둘 다 다르면 -1 반환`
 	
 
 
