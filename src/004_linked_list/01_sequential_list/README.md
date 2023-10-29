@@ -264,12 +264,17 @@ ADT의 내용에선 차이가 생길 수 있다.<br>
 ---
 <br>
 
-## 리스트에 구조체 변수 저장하기 I : 구조체 Point와 관련 함수들의 정의
-실제로, 리스트에는 구조체 변수를 비롯한 각종 데이터들이 저장된다.<br>
-따라서 이번에는 리스트에 구조체 변수의 주소값을 저장해 보려 한다.<br>
+## 구조체 변수를 저장하는 리스트 프로그램 구현하기 - `point list program`
+이번에는, 구조체 변수를 저장하는 리스트 프로그램을 구현해 보도록 하겠다.<br>
+보통 구조체는 멤버 변수가 여러 개 들어있어서, 크기가 큰 편이다. 그래서 구조체 변수를 일일이 선언해서 사용하는 것보다는 포인터에<br> 메모리를 할당해서 사용하는 편이 효율적이다.<br>
+
+일단, 이 점을 기억하고, 구조체 데이터를 저장하는 리스트 프로그램을 구현해 보도록 하자.<br>
 <br>
 
-### 구조체 변수를 저장하는 리스트 프로그램 구현하기 - `point list program`
+### 리스트에 구조체 변수 저장하기 I : 구조체 Point와 관련 함수들의 정의 - `Point.h`, `Point.c`
+실제로, 리스트에는 구조체 변수를 비롯한 각종 데이터들이 저장된다.<br>
+따라서 이번에는 리스트에 구조체 변수의 주소값을 저장해 보려 한다.<br>
+
 이를 위해, 아래와 같은 구조체를 정의해 보았다.<br>
 
 ```c
@@ -288,35 +293,57 @@ typedef struct _Point {
     - `두 Point 변수의 멤버 ypos만 같으면 2 반환`
     - `둘 다 같으면 0 반환`
     - `둘 다 다르면 -1 반환`
+<br>
 
 해당 내용을 가지고, 구조체 `Point`의 선언과 해당 구조체를 다루는 함수(`SetPointPos`, `ShowPointPos`, `PointComp`)메서드의<br>
 선언은 `Point.h`헤더파일에 담았고, `Point`구조체를 다루는 함수들의 정의는 `Point.c`소스파일에 담아 주었다.<br>
 
-- #### [헤더파일 `Point.h`와 소스파일 `Point.c`]
+완성된 `Point.h`파일과 `Point.c`파일은 아래와 같다.<br>
   **[`Point.h`](https://github.com/Yoonsik-2002/data-structure-study/blob/main/src/004_linked_list/01_sequential_list/point_list_program/Point.h)**
   **[`Point.c`](https://github.com/Yoonsik-2002/data-structure-study/blob/main/src/004_linked_list/01_sequential_list/point_list_program/Point.c)**
 <br><br>
 
+### 리스트에 구조체 변수 저장하기 II : 구조체 Point와 관련 함수들의 정의 - `ArrayList.h`, `ArrayList.c` 
 그리고, 기존에 만들어둔 배열 기반 리스트의 헤더파일(`ArrayList.h`)과 소스파일(`ArrayList.c`)에 담겨있는 코드가 `Point`구조체<br>
 변수를 저장할 수 있도록 변경해 보도록 하겠다.<br>
+<br>
 
-무엇을 변경하면 될까? 먼저, 우리가 해당 배열기반 리스트 프로그램에서 데이터를 저장하는 곳이 어디인지 생각해보면 알 수 있다.<br>
+### 어디에 구조체 데이터를 저장하는가?
+먼저, 무엇을 변경하면 좋을까? 이는, 우리가 해당 배열기반 리스트 프로그램에서 데이터를 저장하는 곳이 어디인지<br>
+생각해보면 알 수 있다.<br>
 
-바로, `ArrayList.h`헤더파일에 선언되어 있는 구조체 `ArrayList`라고 할 수 있다.<br>
-정확히는, 이 `ArrayList`구조체의 멤버인 `LData arr[LIST_LEN]`이라고 할 수 있다.<br>
+바로, `ArrayList.h`헤더파일에 선언되어 있는 구조체 `ArrayList`의 멤버인 `LData arr[LIST_LEN]`이라고 할 수 있다.<br>
 
-이 때, `LData`는 무엇인가? `typedef`를 통해, 우리가 자유자재로 정의해 줄 수 있는 자료형이다.<br>
+구조체 `ArrayList`는 데이터를 저장하는 공간 `arr[LIST_LEN]`과 해당 데이터들의 관리를 도와주는 변수 `numOfData`,<br>
+`curPosition`을 멤버로 가지며, 해당 멤버들을 이용하여, 데이터들을 효율적으로 관리한다.<br>
+<br>
 
-`typdedef int LData`의 경우, int형이 `LData`로 정의되는 것이고, `typedef double LData`의 경우, double형이 `LData`로<br>
-정의되는 것이다.<br>
+### `typedef`를 통해 구조체 데이터를 저장할 수 있도록 `ArrayLIst`구조체의 멤버 arr의 자료형 변경하기 
+이때, `arr[LIST_LEN]`앞의 `LData`는 무엇인가? `typedef`를 통해, 우리가 자유자재로 정의해 줄 수 있는 자료형이다.<br>
 
-이를 통해, `LData`를 우리가 다루고픈 구조체 `Point`형으로 정의해주면, 해당 `typedef`정의문이 속한`ArrayList.h`헤더 파일을<br>
-사용하는 모든 파일들은 `LData`를 `Point`형으로 사용하게 된다.<br>
+`typdedef int LData`의 경우, int형이 `LData`로 정의되는 것이고, `typedef double LData`의 경우, double형이 `LData`로 정의되는 <br>
+것이다.<br>
 
-즉, `ArrayList.h`파일의 기존 `typedef int LData`를 `typedef Point LData`로 변경해주면, 해당 헤더 파일을 가져다 사용하는<br>
-모든 파일엔 해당 변경사항이 적용되어, `Point`타입의 구조체 변수를 다룰 수 있는 프로그램으로 만드는 것이 가능해지는 것이다!<br>
+자, 그럼 우리는 구조체 데이터가 저장되는 `ArrayList`구조체의 멤버 `arr[LIST_LEN]`의 타입을 기존 int형 에서(`typedef int LData`)<br>
+`typedef`를 통해 무엇으로 정의해주면 좋을까?<br>
 
-추가적으로, `ArrayLIst.h`파일에 새로운 `Point`라는 구조체의 이름이 등장하였으니, 해당 구조체가 선언되어 있는 `Point.h`헤더<br>
+위에서 언급하였듯이, 멤버의 개수가 많은 구조체의 경우, 크기가 크기 때문에, 구조체 변수를 일일이 선언해서 사용하는 것보다는 포인터에<br>
+메모리를 할당하여 사용하는 것이 효율적이다.<br>
+
+때문에, 우리는 `malloc()`함수를 이용하여 메모리의 생성과 소멸이 자유로운 자유 메모리(Heap 영역)에 구조체의 크기만큼 메모리를 할당<br>
+해 놓은 뒤, 해당 메모리 공간의 주소값을 해당 구조체의 주소값을 저장하는 구초제 포인터 변수(`Point *`)에 저장하여 사용할 예정이다.<br>
+
+그리고, 이렇게 Heap영역에 할당되어 있는 구조체 메모리의 주소값을 저장하고 있는 구조체 포인터 변수들을 `arr[LIST_LEN]`에 저장해 줄<br>
+것이다.<br>
+
+그렇다면, 이 `arr[LIST_LEN]`은 무슨 타입의 배열이 되어야 할까?<br>
+
+그렇다. Heap영역에 메모리 공간을 할당한 구조체의 주소값을 저장하고 있는 구조체 포인터 변수들을 저장하는 `Point *`타입의 구조체 포인터<br> 배열이 되어야 한다.<br>
+
+따라서, 해당 배열의 타입인 `LData`는 `typedef Point * LData`를 통해, `Point *`타입으로 변경해 주어야 한다.<br>
+이제 `LData arr[LIST_LEN]`은  `Point`구조체를 가리키는 `Point *`타입의 구조체 포인터 변수를 저장할 수 있다.<br>
+
+마지막 으로, `ArrayLIst.h`파일에 새로운 `Point`라는 구조체의 이름이 등장하였으니, 해당 구조체가 선언되어 있는 `Point.h`헤더<br>
 파일을 `ArrayList.h`헤더파일에 반드시 include하여 추가해 주어야 한다.<br>
 
 이러한 헤더파일에 선언되어 있는 자원들을 사용하여 함수들을 정의하는 `ArrayList.c`소스파일은 따로 변경해주지 않아도 된다.<br>
