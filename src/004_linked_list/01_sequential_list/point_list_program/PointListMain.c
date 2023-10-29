@@ -14,11 +14,11 @@ int main(void) {
 	ppos = (Point*)malloc(sizeof(Point)); 
 	/* 
 	Point 구조체 만큼의 크기를 가진 메모리 공간을 자유 메모리(Heap)에 할당. 
-	해당 메모리 공간을 이루는 첫 번째 바이트의 주소값을 반환하여 Point타입의 구조체 포인터 변수
+	해당 메모리 공간을 이루는 첫 번째 바이트의 주소값을 반환하여 Point * 타입의 구조체 포인터 변수
 	ppos에 저장
 	*/
 	SetPointPos(ppos, 2, 1); // heap에 생성된 첫 번째 구조체의 멤버 xpos, ypos를 각각 2, 1로 초기화
-	LInsert(&list, ppos); // 해당 구조체의 주소값(ppos)을 list의 Point타입(LData) 배열형태의 저장공간 arr에 저장.
+	LInsert(&list, ppos); // 해당 구조체의 주소값(ppos)을 list의 Point * 타입(typedef Point * LData) 배열형태의 저장공간 arr에 저장.
 	
 	ppos = (Point*)malloc(sizeof(Point));
 	SetPointPos(ppos, 2, 2);
