@@ -460,7 +460,39 @@ int main(void)
 - 3-3) `LInsert`함수를 통해 구조체 `list`의 멤버, 구조체 포인터 배열 `arr[LIST_LEN]`에 `ppos`값을 저장
 > Heap영역에 구조체 생성 및 `ppos`에 주소값 저장 -> 해당 구조체의 멤버(`ppos -> xpos`, `ppos -> ypos`)의 초기화 -> 초기화<br>
 된 구조체의 주소값(ppos)을 `list`의 멤버, 구조체 포인터 배열 `LData arr[LIST_LEN]`의 요소로 저장
+<br>
 
+```c
+ppos = (Point*)malloc(sizeof(Point));
+SetPointPos(ppos, 2, 1);
+LInsert(&list, ppos);
+```
+<br>
 
+해당 코드의 동작 방식은 코드 위 설명만 읽어도 충분히 이해가 가능하다 생각한다.<br>
 
+위 코드에서 사용되는 함수 `SetPointPos`, `LInsert`는 각각 `Point.c`소스파일, `ArrayLIst.c`소스파일에 정의되어 있는<br>
+함수이다.<br>
 
+두 소스파일에 정의되어 있는 함수들이 하나의 소스파일에 등장하다 보니 헷갈릴 수 있다.<br>
+
+이때, 두 소스파일의 쓰임에 대해 명확히 이해해두면, 수월하게 이해하는 것이 가능하다.<br>
+
+- `Point.h` 헤더파일은 우리가 실질적으로 저장할 구조체 데이터인 `Point`구조체와 해당 구조체를 다루는 함수들이 선언되어 있다.<br>
+  `Point.c` 소스파일은 `Point.h`헤더파일에 선언되어 있는 함수들을 정의해준다.<br>
+  우리는 `Point.c`소스파일에 정의되어 있는 함수들을 통해 `Point`구조체를 초기화하고, 해당 구조체의 멤버의 값을 출력하고, <br>
+  `Point`구조체를 비교하는 작업을 할 수 있다.<br>
+  
+  > 결국, `PointListMain.c` 프로그램에서 저장하고자 하는 구조체 데이터인 `Point`구조체와 관련된 작업을 수행할 때 `Point.h`,<br>
+  `Point.c`가 사용됨
+
+<br>
+
+- `ArrayList.h`헤더파일은 데이터를 저장하는 `ArrayList`구조체와 관련 자료형의 `typedef`정의, `ArrayList`구조체를 다루는 <br>
+  함수들이 선언되어 있다.<br>
+  `ArrayLIst.c`소스파일은 이렇게 `ArrayList.h`헤더파일에 선언되어 있는 함수들을 정의해준다.<br>
+  우리는 `ArrayList.c`소스파일에 정의되어 있는 함수들을 통해 `list`구조체를 생성 및 초기화 하고, 데이터를 저장하고, 데이터를<br>
+  탐색하여 반환하고, 저장되어 있는 데이터를 삭제하고, 저장공간에 존재하는 데이터의 개수를 반환할 수 있다.
+  
+  > 결국, `PointListMain.c` 프로그램에서 `list`구조체의 생성 및 초기화, `list`구조체에 데이터 저장, 데이터 탐색, 저장된<br>
+  데이터를 삭제하는 등, 전제적인 배열기반 리스트의 동작과 관련된 작업을 수행할 때 `ArrayList.h`, `ArrayLIst.c`가 사용됨
