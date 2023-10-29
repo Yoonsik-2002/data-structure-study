@@ -363,9 +363,15 @@ typedef struct _Point {
 <br><br>
 
 ## main 함수 작성하기 - `PointListMain.c`
+자, 이제 `point list program`의 실행을 위한 main 함수를 작성해 보도록 하겠다.<br>
+<br>
 
 ### 1) `PointListMain.c` 파일을 실행시키는데 필요한 표준 라이브러리 + 헤더파일 포함시키기
-자, 이제 `point list program`의 실행을 위한 main 함수를 작성해 보도록 하겠다.<br>
+- `<stdio.h>` 표준 라이브러리(header file) 추가
+- `<stdlib.h>` 표준 라이브러리(header file) 추가
+- `ArrayList.h` 헤더파일 추가
+- `Point.h` 헤더파일 추가
+<br>
 
 ```c
 #include <stdio.h>
@@ -385,11 +391,32 @@ typedef struct _Point {
 
 <br>
 
-그리고, 배열 기반 리스트(Array List)를 구현하는데 필요한 매크로 정의, `LData`에 대한 `typedef`선언, 구조체의 선언과 해당 구조체를<br>
-다루는 함수들의 선언이 들어있는 `ArrayList.h`헤더파일을 포함해 주었다.<br>
+그리고, 배열 기반 리스트(Array List)를 구현하는데 필요한 매크로 정의, `LData`에 대한 `typedef`선언, `ArrayList`구조체의<br>
+선언과 해당 구조체를 다루는 함수들의 선언이 들어있는 `ArrayList.h`헤더파일을 포함해 주었다.<br>
 
-마지막으로는, 우리가 `ArrayList`에 저장하고자 하는 `Point`구조체의 선언, 해당 구조체의 멤버들을 초기화 하고, 구조체 변수의 멤버에<br> 저장되어 있는 값을 출력해주고, 두 구조체 변수의 비교를 해주는, 즉, `Point`구조체를 다루는 여러 함수들의 선언까지 포함된 `Point.h`<br>
-헤더파일까지 포함해 주었다.<br>
+마지막으로는, 우리가 `ArrayList`에 저장하고자 하는 `Point`구조체의 선언, 해당 구조체의 멤버들을 초기화 하고, 구조체 변수의<br>
+멤버에 저장되어 있는 값을 출력해주고, 두 구조체 변수의 비교를 해주는, 즉, `Point`구조체를 다루는 여러 함수들의 선언까지 포함된<br>
+`Point.h`헤더파일을 포함시켜 주었다.<br>
+<br>
+
+### 2) `point list program`에 쓰이는 구조체 변수, 구조체 포인터 변수의 생성 그리고 구조체 변수의 초기화
+- `LData arr[LIST_LEN]`, `numOfData`, `curPosition` 멤버들을 지닌 구조체 데이터를 저장하고 관리하는 `List`구조체의<br>
+  구조체 변수 `list` 생성
+- `Point`구조체의 구조체 변수 `compPos` 생성
+- Heap영역에 할당받은 구조체 크기 메모리의 주소값을 저장하는 `Point`구조체의 구조체 포인터 변수 `ppos` 생성
+- `ListInit`함수를 통한 구조체 변수 `list`의 초기화
+> **참고:** 구조체 변수는 결국 해당 구조체의 인스턴스라 할 수 있다.
+<br>
+
+```c
+int main(void)
+{
+  List list;
+  Point compPos;
+  Point * ppos;
+
+  ListInit(&list);
+```
 <br>
 
 
