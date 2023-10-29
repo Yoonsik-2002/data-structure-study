@@ -1,4 +1,4 @@
-## 추상자료형(Abstract Data Type)
+# 추상자료형(Abstract Data Type)
 > 구체적인 기능의 완성과정을 언급하지 않고, 순수하게 기능이 무엇인지를 나열한 것을 가리켜, 추상자료형 또는 ADT 라고한다.
 
 - 예시) 지갑의 추상자료형
@@ -99,7 +99,7 @@ ADT라고 해서, 각종 자료구조들의 ADT는 무조건 표준이라 할 �
 ---
 <br>
 
-## 순차 리스트 (Sequential List)
+# 순차 리스트 (Sequential List)
 순차 리스트란, 순차적인 메모리 공간을 할당하여 구현하는 리스트로, 보통 배열을 기반을 구현된다.<br>
 
 - #### 순차 리스트의 장/단점
@@ -264,14 +264,14 @@ ADT의 내용에선 차이가 생길 수 있다.<br>
 ---
 <br>
 
-## 구조체 변수를 저장하는 리스트 프로그램 구현하기 - `point list program`
+# 구조체 변수를 저장하는 리스트 프로그램 구현하기 - `point list program`
 이번에는, 구조체 변수를 저장하는 리스트 프로그램을 구현해 보도록 하겠다.<br>
 보통 구조체는 멤버 변수가 여러 개 들어있어서, 크기가 큰 편이다. 그래서 구조체 변수를 일일이 선언해서 사용하는 것보다는 포인터에<br> 메모리를 할당해서 사용하는 편이 효율적이다.<br>
 
 일단, 이 점을 기억하고, 구조체 데이터를 저장하는 리스트 프로그램을 구현해 보도록 하자.<br>
-<br>
+<br><br>
 
-### 리스트에 구조체 변수 저장하기 I : 구조체 Point와 관련 함수들의 정의 - `Point.h`, `Point.c`
+## 리스트에 구조체 변수 저장하기 I : 구조체 Point와 관련 함수들의 정의 - `Point.h`, `Point.c`
 실제로, 리스트에는 구조체 변수를 비롯한 각종 데이터들이 저장된다.<br>
 따라서 이번에는 리스트에 구조체 변수의 주소값을 저장해 보려 한다.<br>
 
@@ -300,10 +300,10 @@ typedef struct _Point {
 
 완성된 `Point.h`파일과 `Point.c`파일은 아래와 같다.<br>
   **[`Point.h`](https://github.com/Yoonsik-2002/data-structure-study/blob/main/src/004_linked_list/01_sequential_list/point_list_program/Point.h)**
-  **[`Point.c`](https://github.com/Yoonsik-2002/data-structure-study/blob/main/src/004_linked_list/01_sequential_list/point_list_program/Point.c)**
+  **[`Point.c`](https://github.com/Yoonsik-2002/data-structure-study/blob/main/src/004_linked_list/01_sequential_list/point_list_program/Point.c)** <br>
 <br><br>
 
-### 리스트에 구조체 변수 저장하기 II : 구조체 Point와 관련 함수들의 정의 - `ArrayList.h`, `ArrayList.c` 
+## 리스트에 구조체 변수 저장하기 II : 구조체 Point와 관련 함수들의 정의 - `ArrayList.h`, `ArrayList.c` 
 그리고, 기존에 만들어둔 배열 기반 리스트의 헤더파일(`ArrayList.h`)과 소스파일(`ArrayList.c`)에 담겨있는 코드가 `Point`구조체<br>
 변수를 저장할 수 있도록 변경해 보도록 하겠다.<br>
 <br>
@@ -337,7 +337,8 @@ typedef struct _Point {
 때문에, 구조체 변수를 일일이 선언해서 사용하는 것보다는 포인터에 메모리를 할당하여 사용하는 것이 효율적이라 할 수 있다.<br>
 
 때문에, 우리는 `malloc()`함수를 이용하여 메모리의 생성과 소멸이 자유로운 자유 메모리(Heap 영역)에 구조체의 크기만큼 메모리를 할당<br>
-해 놓은 뒤, 반환받은 해당 메모리 공간의 주소값을 해당 구조체의 주소값을 저장하는 구초제 포인터 변수(`Point *`)에 저장하여 사용할<br> 예정이다.<br>
+해 놓은 뒤, 반환받은 해당 메모리 공간의 주소값을 해당 구조체의 주소값을 저장하는 구초제 포인터 변수(`Point *`)에 저장하여 사용할<br>
+예정이다.<br>
 
 그리고, 이렇게 Heap영역에 할당되어 있는 구조체 메모리의 주소값을 저장하고 있는 구조체 포인터 변수들을 `arr[LIST_LEN]`에 저장해<br>
 줄 것이다.<br>
@@ -358,10 +359,38 @@ typedef struct _Point {
 
 - #### [헤더파일 `ArrayList.h`와 소스파일 `ArrayList.c`]
   **[`ArrayList.h`](https://github.com/Yoonsik-2002/data-structure-study/blob/main/src/004_linked_list/01_sequential_list/point_list_program/ArrayList.h)**
-  **[`ArrayLIst.c`](https://github.com/Yoonsik-2002/data-structure-study/blob/main/src/004_linked_list/01_sequential_list/point_list_program/ArrayList.c)**
+  **[`ArrayLIst.c`](https://github.com/Yoonsik-2002/data-structure-study/blob/main/src/004_linked_list/01_sequential_list/point_list_program/ArrayList.c)** <br>
 <br><br>
 
+## main 함수 작성하기 - `PointListMain.c`
 
+### 1) `PointListMain.c` 파일을 실행시키는데 필요한 표준 라이브러리 + 헤더파일 포함시키기
+자, 이제 `point list program`의 실행을 위한 main 함수를 작성해 보도록 하겠다.<br>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include "ArrayList.h"
+#include "Point.h"
+```
+<br>
+
+먼저, 위와 같이 `PointListMain.c`소스파일을 작성하는데 필요한 표준 라이브러리(header file) `<stdio.h>`, `<stdlib.h>`를 포함<br>
+시켜 주었다.<br>
+
+  > #### `<stdlib.h>`
+  > `<stdlib.h>`는 C언어에서 기본적으로 제공해주는 표준 라이브러리(header file)중 하나로, 해당 헤더파일에는 메모리 관리, 난수 생성<br>
+  > 문자열 변환 등과 같은 유용한 함수들이 포함되어 있다.<br>
+  > 해당 함수들 중, 우리가 사용할 함수로는 **메모리 관리 : `malloc()`, `free()` 함수가 있다.**<br>
+
+<br>
+
+그리고, 배열 기반 리스트(Array List)를 구현하는데 필요한 매크로 정의, `LData`에 대한 `typedef`선언, 구조체의 선언과 해당 구조체를<br>
+다루는 함수들의 선언이 들어있는 `ArrayList.h`헤더파일을 포함해 주었다.<br>
+
+마지막으로는, 우리가 `ArrayList`에 저장하고자 하는 `Point`구조체의 선언, 해당 구조체의 멤버들을 초기화 하고, 구조체 변수의 멤버에<br> 저장되어 있는 값을 출력해주고, 두 구조체 변수의 비교를 해주는, 즉, `Point`구조체를 다루는 여러 함수들의 선언까지 포함된 `Point.h`<br>
+헤더파일까지 포함해 주었다.<br>
+<br>
 
 
 
