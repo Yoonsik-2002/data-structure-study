@@ -10,7 +10,7 @@
 #define FALSE	0  // 거짓을 표현하기 위한 메크로 정의
 
 #define LIST_LEN	100  // 구현하고자 하는 배열기반의 리스트의 배열의 크기
-typedef Point LData;  // LData에 대한 typedef 선언 - 구조체 Point 타입으로 지정
+typedef Point * LData;  // LData에 대한 typedef 선언 - 구조체 Point 타입으로 지정
 
 typedef struct __ArrayList {
 	LData arr[LIST_LEN];  // 리스트의 저장소인 배열
