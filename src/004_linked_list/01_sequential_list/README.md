@@ -452,6 +452,15 @@ int main(void)
 <br>
 
 
+### 3) `list`구조체에 4개의 데이터 저장하기 
+- 3-1) `malloc`함수를 통해 Heap영역에 `Point`구조체 크기의 메모리 공간을 할당하고, 해당 메모리 공간의 주소값을 `Point`구조체<br>
+  포인터 변수 `poss`에 저장
+- 3-2) `Point.c`파일에 정의되어 있는 `SetPointPos` 함수를 호출하여, 구조체 포인터 변수 `ppos`가 가리키고 있는 Heap영역에 <br>
+  생성된 구조체의 멤버 `ppos -> xpos`, `ppos -> ypos`를 매개변수로 전달받은 값으로 초기화 해줌
+- 3-3) `LInsert`함수를 통해 구조체 `list`의 멤버, 구조체 포인터 배열 `arr[LIST_LEN]`에 `ppos`값을 저장
+> Heap영역에 구조체 생성 및 `ppos`에 주소값 저장 -> 해당 구조체의 멤버(`ppos -> xpos`, `ppos -> ypos`)의 초기화 -> 초기화<br>
+된 구조체의 주소값(ppos)을 `list`의 멤버, 구조체 포인터 배열 `LData arr[LIST_LEN]`의 요소로 저장
+
 
 
 
