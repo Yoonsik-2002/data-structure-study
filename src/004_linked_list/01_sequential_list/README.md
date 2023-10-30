@@ -531,7 +531,71 @@ if(LFirst(&list, &ppos) {
     ShowPointPos(ppos)
   }
 }
+
+printf("\n");
 ```
 <br>
+
+해당 작업이 코드상에서 어떻게 동작하는지 한번, 정리해 보도록 하겠다.<br>
+필요한 코드는 다음과 같다.<br>
+
+- `ArrayList.c`소스파일에서의 `LFirst`함수의 정의
+- `Point.c`소스파일에서의 `ShowPiontPos`함수의 정의
+<br>
+
+#### `ArrayList.c` - `LFirst`함수의 동작
+먼저, 해당 함수는 `PointListMain.c`파일에서 아래 호출문을 통해 호출된다.<br>
+
+```c
+if(LFirst(&list, &ppos)
+```
+<br>
+
+자, 그럼 이제 `LFirst`함수가 어떻게 정의 되어있는지 한번 보도록 하자.<br>
+해당 코드는 아래와 같다.<br>
+
+```c
+void LFirst(List * plist, Ldata * pdata) {
+  if(plist -> numOfData == 0) {
+    printf("리스트에 데이터가 존재하지 않습니다.\n");
+    return False;
+  }
+
+  (plist -> curPosition) = 0;
+
+  *pdata = plist -> arr[plist -> curPosition];
+  return True;
+}
+```
+<br>
+
+먼저, 매개변수 부터 보자.<br>
+- `List * plist` - 구조체 `List`타입의 구조체 포인터 변수 `plist`이다. 구조체 변수 `list`의 주소값을 전달받는다.<br>
+- `LData * pdata`-  `Point **` 타입의 구조체 이중 포인터 변수 `pdata`이다. 구조체 포인터 `ppos`의 주소값을 전달받는<br>
+  구조체 이중 포인터 변수이다.<br>
+  (`LData`는 `ArrayList.h`헤더파일에서, `typedef Point * LData`문에 의해, 기본적으로 `Point`구조체 포인터 변수로 <br>
+  자료형이 정의되어있다. 이 상태에서 `LData * pdata`는 결국, `Point ** pdata`를 뜻하게 된다.)
+<br>
+
+`LFirst	함수는 리스트 내에 데이터가 존재하는 경우, `list`구조체의 멤버 구조체 포인터 배열 `arr`의 인덱스 0에 위치하는<br>
+구조체 데이터를 반환해준다.<br>
+
+이때, 반환방식을 보면, 구조체 포인터 변수 `ppos`를 가리키는 구조체 이중 포인터 변수 `pdata`를 이용하여, `*pdata`에<br>
+`arr`의 첫번째 인덱스에 저장되어 있는 구조체 데이터를 저장시키는 방식으로 `ppos`가 해당 구조체 주소값을 저장하여<br>
+가리키게 한다.<br>
+
+왜 `ppos`의 주소값을 매개변수에 전달받아 사용하는 방식으로 `ppos`가 `arr`의 첫 번째 인덱스에 저장되어 있는 구조체의<br>
+주소값을 저장하게 하는지는 몇 번 다뤄본 비슷한 주제이긴 하지만, 간단히 설명해 보도록 하겠다.<br>
+
+왜 `ppos`를 그냥 매개변수에 전달해주지 않고, `ppos`의 주소값을 전달해 주는 것일까?<br>
+
+해당 질문에 대한 답은 매개변수에 값을 전달 할 때, 해당 값은 복사되어 전달된다는 점에 있다.<br>
+
+`LFirst`함수를 조금 변경하여 다음과 같의 정의했다고 하였을 때, 발생하는 문제점이 무엇인지 알아보자.<br>
+
+```c
+
+
+
 
 
