@@ -503,17 +503,22 @@ LInsert(&list, ppos);
 - 4-1) `ArrayList.c`소스파일에 정의되어 있는 리스트에 저장되어 있는 데이터의 수를 반환해주는 `LCount`메서드를 통해 현재<br>
   데이터의 수를 출력해준다.<br>
 - 4-2) `ArrayList.c`소스파일에 정의되어 있는, `LFirst`함수를 사용하여, 구조체 `list`의 구조체 데이터를 저장하는 멤버<br>
-  `Point *` 타입의 구조체 포인터 배열 `arr[LIST_LEN]`에 첫 번째 인덱스`0 (list -> curposition = 0)`에 저장되어 있는<br>
-  Heap 영역에 할당된 구조체의 주소값을 `Point`구조체 포인터 변수 `ppos`가 가리키게 한다.<br>
+  `Point *` 타입의 구조체 포인터 배열 `arr[LIST_LEN]`의 첫 번째 인덱스인,<br>
+  
+  `arr[list -> curposition] // curPosition = 0`에 저장되어 있는 Heap 영역에 할당된 구조체의 주소값을 `Point`구조체<br>
+  포인터 변수 `ppos`가 가리키게 한다.<br>
   
   그리고, `Point.c`소스파일에 정의되어 있는 `ShowPointPos`함수를 이용하여, `ppos`가 가리키고 있는 `arr[LIST_LEN]`<br>
   첫 번째 인덱스에 주소값이 저장되어 있는 구조체의 멤버 `xpos`,`ypos`값을 출력해준다.<br>
 - 4-3) `ArrayList.c`소스파일에 정의되어 있는, `LNext`함수를 사용하여, 구조체 `list`의 구조체 데이터를 저장하는 멤버<br>
-  `Point *` 타입의 구조체 포인터 배열 `arr[LIST_LEN]`에 첫번째 인덱스 이후, 두 번째 인덱스 `1 (plist -> curPosition)++;`<br>
-  에 저장되어 있는 Heap 영역에 할당된 구조체의 주소값을 `Point`구조체 포인터 변수 `ppos`가 가리키게 한다.<br>
+  `Point *` 타입의 구조체 포인터 배열 `arr[LIST_LEN]`의 첫번째 인덱스 이후, 두 번째 인덱스인,<br>
+  
+  `arr[list -> curPotision] // curPotition = 1`에 저장되어 있는 Heap 영역에 할당된 구조체의 주소값을 `Point`구조체<br>
+  포인터 변수 `ppos`가 가리키게 한다.<br>
 
   그리고, `Point.c`소스파일에 정의되어 있는 `ShowPointPos`함수를 이용하여, `ppos`가 가리키고 있는 `arr[LIST_LEN]`<br>
   에 주소값이 저장되어 있는 구조체의 멤버 `xpos`와 `ypos`의 값을 출력해준다.<br>
+  
   해당 과정은, 현재 `ppos`가 가리키고 있는 구조체 포인터 배열 `arr[LIST_LEN]`의 인덱스를 의미하는 `curPosition`값이<br>
   총 저장된 데이터의 수를 의미하는 `numOfData`에 -1을 한 값과 같거나 커지면, 종료된다.<br>
 <br>
