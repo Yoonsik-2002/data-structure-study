@@ -635,5 +635,8 @@ void LFirst(List * plist, LData pdata) {
 직접 `arr`의 첫 번째 구조체의 주소값을 저장할 수 있도록 하였다.<br>
 <br>
 
+### 5) `xpos`가 2인 모든 데이터 삭제
+- 5-1) 먼저, `xpos`가 2인 `Point`구조체 `compPos`를 생성하고, 해당 값으로 초기화 해준다.(`compPos -> xpos = 2; , compPos -> ypos = 0`)
+- 5-2) 
 
 
