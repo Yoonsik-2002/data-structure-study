@@ -636,7 +636,16 @@ void LFirst(List * plist, LData pdata) {
 <br>
 
 ### 5) `xpos`가 2인 모든 데이터 삭제
-- 5-1) 먼저, `xpos`가 2인 `Point`구조체 `compPos`를 생성하고, 해당 값으로 초기화 해준다.(`compPos -> xpos = 2; , compPos -> ypos = 0`)
-- 5-2) 
+- 5-1) 먼저, `xpos`가 2인 `Point`구조체 `compPos`를 생성하고, 해당 값으로 초기화 해준다.<br>
+  (`compPos -> xpos = 2; , compPos -> ypos = 0`)
+- 5-2) `ArrayList.c`소스파일에 정의되어 있는 `LFirst`함수를 통해, `list`구조체의 멤버, `arr`의 첫번째 인덱스에 저장되어 있는<br>
+  Heap영역에 할당되어 있는 `Point`구조체의 주소값을 구조체 포인터 변수 `ppos`가 저장하게 한다.<br>
+- 5-3) `Point.c`소스파일에 정의되어 있는 `PointComp`함수를 통해, `xpos`값이 2로 초기화 되어 있는 구조체 `compPos`의 `xpos`값과<br>
+  `ppos`가 가리키고 있는 구조체의 멤버 `xpos`의 값을 비교하여, 리턴된 값이 1인 경우<br>
+  (compPos -> xpos == ppos -> xpos로, `ppos`가 가리키고 있는 구조체의 멤버 `xpos`값이 2인 경우)<br>
+  
+  `ppos`가 가리키고 있는 구조체의 주소값을 `list`의 `arr`에서 삭제한 뒤, Heap영역에서도 할당받은 해당 구조체의 메모리 공간을<br>
+  소멸시켜준다.<br>
 
-
+- 5-4) 
+  
