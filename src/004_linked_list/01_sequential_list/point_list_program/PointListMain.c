@@ -44,4 +44,36 @@ int main(void) {
 	}
 	printf("\n");
 	
+	// 3) xpos값이 2인 모든 데이터 삭제 
+	compPos -> xpos = 2;
+	compPos -> ypos = 0; 
+	
+	if(LFirst(&list, &ppos)) // arr에 첫 번째 인덱스에 존재하는 구조체의 주소값을 탐색하여 구조체 포인터 변수 ppos가 가리키게 함.(이때 curPositonr값은 0)
+	{
+		if(PointComp(ppos, &compPos) == 1) // ppos가 가리키고 있는 구조체의 멤버xpos의 값이 2인 경우 LRemove함수와 free함수를 통해 해당 구조체를 삭제
+		{
+			ppos = LRemove(&list); 
+			/*
+			LRemove를 통해, arr에서 ppos가 저장하고 있는 주소값을 삭제, 삭제가 이루어지기 전,
+			해당 함수의 지역변수 rdata에 해당 주소값이 저장되고, ppos는 rdata값을 리턴받아, 해당
+			값을 가지고, free함수를 호출하여 Heap메모리에서까지 완전히 삭제
+			*/
+			
+			free(ppos); // ppos가 주소값을 저장하고 있는 구조체를 Heap영역에서까지 완전히 삭제
+			
+			/*
+			LFirst 함수에서 탐색해낸 list -> arr[0] 에 저장되어 있는 구조체 주소값에 해당되는 구조체의 멤버 xpos가
+			2를 저장하고 있는 경우, 해당 구조체를 삭제하는 과정인 것이다!
+			*/
+		}
+		
+		while(LNext(&list, &ppos)) {
+			if(PointComp(ppos, &compPos) == 1)
+			{
+				ppos = LRemove(&list);
+				free(ppos);
+			}
+		}
+	}
+	
 }
