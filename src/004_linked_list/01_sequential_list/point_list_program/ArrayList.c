@@ -56,11 +56,13 @@ int LNext(List * plist, LData * pdata) {
 	return TRUE;
 }
 
-// 4) 저장되어 있는 데이터 삭제
+// 4) 저장되어 있는 데이터 삭제	
 LData LRemove(List * plist) {
 	int rpos = plist -> curPosition;
 	int num = plist -> numOfData;
 	int i;
+	
+	LData rdata = plist -> arr[rpos]; // 데이터를 삭제하기 전, 현재 curPosition에 존재하는 데이터를 rdata에 저장. 
 	
 	for(i = rpos; i < (num - 1); i++) {
 		plist -> arr[i]  = plist -> arr[i + 1];
@@ -68,6 +70,8 @@ LData LRemove(List * plist) {
 	
 	(plist -> curPosition)--;
 	(plist -> numOfData)--;
+	
+	return rdata; // 삭제하기 전 데이터를 저장하고 있는 rdata를 반환
 }
 
 // 5) 저장공간에 존재하는 데이터의 개수 반환 
