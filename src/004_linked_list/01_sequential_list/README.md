@@ -648,10 +648,20 @@ void LFirst(List * plist, LData pdata) {
   소멸시켜준다.<br>
 
 - 5-4) `ArrayList.c`소스파일에 정의되어 있는 `LNext`함수를 통해, `list`의 `arr`의 첫 번째 이후(두번째) 인덱스에 저장되어 있는<br>
-  구조체의 주소값부터 `ppos`가 저장하고(가리키고) `Point.c`소스파일에 정의되어 있는 `PointComp`함수를 통해 구조체 `compPos`의<br>
-  `xpos`값과 `ppos`가 가리키고 있는 구조체의 `xpos`값을 비교하여, 리턴되는 값이 1인 경우,<br>
+  구조체의 주소값을 `Point`구조체 포인터 변수 `ppos`가 저장하게하고, `Point.c`소스파일에 정의되어 있는 `PointComp`함수를 통해<br>
+  구조체 `compPos`의 `xpos`값과 `ppos`가 가리키고 있는 구조체의 `xpos`값을 비교하여, 리턴되는 값이 1인 경우,<br>
   
   `ppos`가 가리키고 있는 구조체의 주소값을 `list`의 `arr`에서 삭제한 뒤, Heap영역에서도 할당받은 해당 구조체의 메모리 공간을<br>
   소멸시켜주는 과정을 현재 `ppos`가 가리키고 있는 구조체 포인터 배열 `arr[LIST_LEN]`의 인덱스를 의미하는 `curPosition`값이<br>
-  총 저장된 데이터의 수를 의미하는 `numOfData`에 -1을 한 값보다 작을동안 반복해준다.<br>
+  총 저장된 데이터의 수를 의미하는 `numOfData`에 -1을 한 값보다 작을동안 다음 인덱스로 넘어가며 반복해준다.<br>
 <br>
+
+```c
+// compPos 구조체 초기화
+compPos -> xpos = 2;
+compPos -> ypos = 0;
+
+if(LNext(&list, &ppos) {
+  if(PointComp(ppos, &compPos) == 1) {
+    ppos = LRemove(&list);
+    free(ppos);
