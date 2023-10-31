@@ -666,7 +666,7 @@ if(LFirst(&list, &ppos)) // arr의 첫 번째 구조체 데이터(구조체 주�
   if(PointComp(ppos, &compPos) == 1) // PointComp의 리턴값이 이면,(탐색한 구조체의 xpos값이 2라면)
   {
     ppos = LRemove(&list); // 해당 구조체의 주소값을 arr에서 삭제하고, 삭제한 구조체의 주소값을 ppos에 리턴
-    free(ppos); // 리턴받은 Heap영역의 구조체 메모리 공간을 free함수로 소멸(완전히 삭제)
+    free(ppos); // 리턴받은 Heap영역의 구조체 메모리 공간을 `free`함수로 소멸(완전히 삭제)
   }
 
   while(LNext(&list, &ppos))
@@ -679,4 +679,12 @@ if(LFirst(&list, &ppos)) // arr의 첫 번째 구조체 데이터(구조체 주�
   }
 }
 ```
+<br>
+
+해당 기능이 무슨 기능인가? 구조체데이터가 담겨있는 `list`구조체의 멤버 `arr`에서 멤버 `xpos`값이 2인 구조체를 탐색하여 해당<br>
+구조체의 주소값을 `arr`에서 삭재한 후, Heap영역에서 해당 구조체 메모리를 free함수로 소멸 시켜줌으로써, `xpos`값이 2인 구조체<br>
+를 완전히 삭제 시켜주는 기능이다. <br>
+
+- 구조체 데이터(구조체 주소값)를 저장하는 `list`의 멤버 구조체 포인터 배열 `arr`에서 `xpos`값이 2인 구조체의 주소값을 삭제
+- 해당 주소값에 해당하는 Heap영역에 할당된 구조체 메모리 공간을 `free`함수를통해 완전히 소멸
 <br>
