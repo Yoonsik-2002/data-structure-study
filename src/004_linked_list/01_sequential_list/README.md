@@ -700,5 +700,35 @@ if(LFirst(&list, &ppos)) // arr의 첫 번째 구조체 데이터(구조체 주�
 자료구조 에서는, 이러한 기능(리스트의 현재 위치를 첫 번째 지점으로 옮겨주고, 첫 번째 지점에 위치하는 데이터를 탐색해주는 기능)을<br>
 가진 함수가 필수적으로 필요하다.<br>
 
-아무튼, 이러한 이유로, 
+이러한 이유로, 먼저,`LFirst`함수를 호출하여, `arr`의 첫번째 인덱스(`list -> arr[0]`)에 위치하는 구조체의 주소값을 구조체 포인터<br>
+변수 `ppos`가 가리키게 한다.<br>
 
+그리고, `ppos`가 가리키고 있는 구조체의 멤버, `xpos`의 값이 2인지 확인해주는 함수인 `PointComp`함수를 호출하여 확인한다.<br>
+만약 해당 함수의 리턴값이 1로, `ppos`가 가리키고 있는 구조체의 멤버 `xpos`값이 2인경우, **해당 구조체의 삭제를 진행한다.**<br>
+
+- #### 배열 기반 리스트에서의 삭제
+  다음은 `ArrayList.c`소스파일에 정의되어 있는 `LRemove`함수이다.<br>
+
+  ```c
+  LData LRemove(List * plist) {
+    int rpos = plist -> curPosition;
+    int num = plist -> numOfData;
+    int i;
+	
+    LData rdata = plist -> arr[rpos]; // 데이터를 삭제하기 전, 현재 curPosition에 존재하는 데이터를 rdata에 저장. 
+	
+    for(i = rpos; i < (num - 1); i++) {
+      plist -> arr[i]  = plist -> arr[i + 1];
+    }
+	
+    (plist -> curPosition)--;
+    (plist -> numOfData)--;
+	
+    return rdata; // 삭제하기 전 데이터를 저장하고 있는 rdata를 반환
+  }
+  ```
+  <br>
+
+  자, 지금 이 `LRemove`함수를 호출하는 시점이 어떤시점인가? 바로, `LFirst`함수를 통해 `List -> arr[0]`에 주소값이 저장되어 있는<br>
+  구조체를 `ppos`가 가리키게 하고, 이 `ppos`가 가리키고 있는 구조체의 멤버, `xpos`의 값이 2임을 `PointComp`함수를 통해 확인한<br>
+  상황이다.<br>
