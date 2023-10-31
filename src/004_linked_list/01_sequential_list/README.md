@@ -661,7 +661,22 @@ void LFirst(List * plist, LData pdata) {
 compPos -> xpos = 2;
 compPos -> ypos = 0;
 
-if(LNext(&list, &ppos) {
-  if(PointComp(ppos, &compPos) == 1) {
-    ppos = LRemove(&list);
-    free(ppos);
+if(LFirst(&list, &ppos)) // arr의 첫 번째 구조체 데이터(구조체 주소값)를 탐색
+{
+  if(PointComp(ppos, &compPos) == 1) // PointComp의 리턴값이 이면,(탐색한 구조체의 xpos값이 2라면)
+  {
+    ppos = LRemove(&list); // 해당 구조체의 주소값을 arr에서 삭제하고, 삭제한 구조체의 주소값을 ppos에 리턴
+    free(ppos); // 리턴받은 Heap영역의 구조체 메모리 공간을 free함수로 소멸(완전히 삭제)
+  }
+
+  while(LNext(&list, &ppos))
+  {
+    if(PointComp(ppos, &compPos) == 1)
+    {
+      ppos = LRemove(&list);
+      free(ppos);
+    }
+  }
+}
+```
+<br>
