@@ -71,7 +71,7 @@ LData LRemove(List * plist) {
 	(plist -> curPosition)--;
 	(plist -> numOfData)--;
 	
-	return rdata; // 삭제하기 전 데이터를 저장하고 있는 rdata를 반환
+	return rdata; // 삭제하기 전 데이터를 저장하고 있는 rdata를 반환(Heap영역에서의 해당 구조체 메모리의 해제과정을 위함)
 }
 
 // 5) 저장공간에 존재하는 데이터의 개수 반환 
