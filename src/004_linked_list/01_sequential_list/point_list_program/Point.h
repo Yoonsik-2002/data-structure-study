@@ -14,7 +14,7 @@ void SetPointPos(Point * ppos, int xpos, int ypos);
 void ShowPointPos(Point * ppos);
 
 // 두 Point 타입 구조체 변수의 비교
-void PointComp(Point * pos1, Point * pos2);
+int PointComp(Point * pos1, Point * pos2);
 
 #endif
 

@@ -27,7 +27,7 @@ void LInsert(List * plist , LData data) {
 // 3-1) 첫 번째 데이터를 탐색하여 반환
 int LFirst(List * plist, LData * pdata) {
 	if(plist -> numOfData == 0) {
-		printf("저장공간이 비어있습니다.\n");
+		//printf("저장공간이 비어있습니다.\n");
 		return FALSE;
 	}
 	
@@ -43,7 +43,7 @@ int LFirst(List * plist, LData * pdata) {
 // 3-2) 첫 번째 데이터 이후의 데이터들을 탐색하여 반환
 int LNext(List * plist, LData * pdata) {
 	if(plist -> curPosition >= (plist -> numOfData - 1)){
-		printf("탐색 범위를 벗어났습니다.\n");
+		//printf("탐색 범위를 벗어났습니다.\n");
 		return FALSE;
 	}
 	

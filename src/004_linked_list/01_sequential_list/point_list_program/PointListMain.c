@@ -9,7 +9,7 @@ int main(void)
 	Point compPos;
 	Point * ppos; // Point 타입의 구조체를 가리키는 구조체 포인터 변수 ppos
 	
-	ListInit(*list); // list 구조체의 멤버들의 값을 초기값으로 초기화
+	ListInit(&list); // list 구조체의 멤버들의 값을 초기값으로 초기화
 	
 	// 1) 4개의 데이터 저장
 	ppos = (Point*)malloc(sizeof(Point)); 
@@ -40,14 +40,14 @@ int main(void)
 	{
 		ShowPointPos(ppos); // 구조체 포인터 변수 ppos가 가리키고 있는 첫 번째 데이터를 출력해줌
 		
-		while(LNext(&jlist, &ppos)) 
+		while(LNext(&list, &ppos)) 
 			ShowPointPos(ppos); // 두 번째로 저장되어 있는 데이터를 하나하나씩 넘어가면서 출력해줌 탐색 -> 반환(*pdata(ppos) = plist -> arr[plist -> curPosittion])
 	}
 	printf("\n");
 	
 	// 3) xpos값이 2인 모든 데이터 삭제 
-	compPos -> xpos = 2;
-	compPos -> ypos = 0; 
+	compPos.xpos = 2;
+	compPos.ypos = 0; 
 	
 	if(LFirst(&list, &ppos)) // arr에 첫 번째 인덱스에 존재하는 구조체의 주소값을 탐색하여 구조체 포인터 변수 ppos가 가리키게 함.(이때 curPositonr값은 0)
 	{
@@ -91,6 +91,6 @@ int main(void)
 	}
 	printf("\n");
 	
-	reutrn 0;
+	return 0;
 	
 }
