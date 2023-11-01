@@ -777,4 +777,24 @@ if(LFirst(&list, &ppos)) // arr의 첫 번째 구조체 데이터(구조체 주�
   ```c
   printf("현재 데이터의 수 : %d\n", LCount(&list));
 
+  if(LFirst(&list, &ppos) {
+    ShowPointPos(ppos);
+
+    while(LNext(&list, &ppos) {
+    ShowPointPos(ppos);
+  }
+  printf("\n");
+  ```
+  <br>
+
+  데이터의 삭제 후, `arr`에 남아있는 데이터(구조체의 주소값)의 수와, 해당 데이터(구조체의 주소값)에 해당 하는 구조체의 멤버<br>
+  `xpos`, `ypos`의 값을 출력해주는 코드이다.<br>
+
+  간단히 말해, `arr`에 저장되어 있는 첫 번째 데이터의 경우, `LFirst`함수를 통해 탐색하고 해당 데이터를 `ppos`가 가리키게 한다.<br>
+  그리고, `ppos`를 `ShowPointPos`함수의 매개변수로 하고 호출하여, 해당 `ppos`가 가리키고 있는 구조체의 멤버값 `xpos`, `ypos`값을<br>
+  출력해 준다.<br>
+
+  `arr`의 두 번째 인덱스에 해당하는 데이터 부터는 `LNext`함수를 통해 탐색하고, 같은 방식으로 해당 구조체의 멤버값들을 출력해 준다.<br>
+  <br>
+
   
