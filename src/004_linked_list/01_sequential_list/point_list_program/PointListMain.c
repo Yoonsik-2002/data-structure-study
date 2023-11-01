@@ -3,7 +3,8 @@
 #include "Point.h"
 #include "ArrayList.h"
 
-int main(void) {
+int main(void) 
+{
 	List list;  // list 구조체 변수 생성
 	Point compPos;
 	Point * ppos; // Point 타입의 구조체를 가리키는 구조체 포인터 변수 ppos
@@ -67,7 +68,8 @@ int main(void) {
 			*/
 		}
 		
-		while(LNext(&list, &ppos)) {
+		while(LNext(&list, &ppos)) 
+		{
 			if(PointComp(ppos, &compPos) == 1)
 			{
 				ppos = LRemove(&list);
@@ -75,5 +77,20 @@ int main(void) {
 			}
 		}
 	}
+	
+	// 4) 삭제 후 남은 데이터 전체 출력
+	printf("현재 데이터의 수 : %d\n", LCount(&list));
+	
+	if(LFirst(&list, &ppos)) 
+	{
+		ShowPointPos(ppos);
+		
+		while(LNext(&list, &ppos)) {
+			ShowPointPos(ppos);
+		}
+	}
+	printf("\n");
+	
+	reutrn 0;
 	
 }
