@@ -24,3 +24,8 @@ int NameCompare(NameCard * pcard, char * name) {
 	
 	return result;
 }
+
+// ChangePhoneNumber - 전화번호 정보를 변경
+void ChangePhoneNumber(NameCard * pcard, char * phone) {
+	strcpy(pcard -> phone , phone);  // phone에 담긴 문자열 정보를 pcard -> phone에 복사
+}
