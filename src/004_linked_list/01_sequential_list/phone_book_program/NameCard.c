@@ -17,3 +17,10 @@ NameCard * MakeNameCard(char * name, char * point) {
 void ShowNameCardInfo(NameCard * pcard) {
 	printf("name : %s\n phone number : %s\n", pcard -> name, pcard -> phone);
 }
+
+// NameCompare - 매개변수로 전달받은 이름값이 같으면 0, 다르면 다른 값 반환
+int NameCompare(NameCard * pcard, char * name) {
+	int result = strcmp(pcard -> name, name);
+	
+	return result;
+}
