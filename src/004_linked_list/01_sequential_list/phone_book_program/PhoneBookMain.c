@@ -21,12 +21,26 @@ void main() {
 	pcard = MakeNameCard("장준혁", "010-2343-3333");
 	LInsert(&list, pcard);
 	
+	// 기능 1-1) 전화번호부에 저장되어 있는 모든 정보를 출력
+	if(LFirst(&list, &pcard))
+	{
+		printf("A LIST OF PHONE BOOKS"\n);
+		printf("---------------------"\n);
+		ShowNameCardInfo(pcard);
+		
+		while(LNext(&list, &pcard))
+		{
+			ShowNameCardInfo(pcard);
+		}
+	}
+	
 	// 기능 2) 특정 이름을 대상으로 탐색을 진행하여 그 사람의 정보 출력(김소정)
 	if(LFirst(&list, &pcard))
 	{
 		if(!NameCompare(pcard, "김소정"))
 		{
 			ShowNameCardInfo(pcard);
+			printf("\n");
 		}
 		else 
 		{
@@ -35,6 +49,7 @@ void main() {
 				if(!NameCompare(pcard, "김소정")) 
 				{
 					ShowNameCardInfo(pcard);
+					printf("\n");
 					break;
 				}
 			}
@@ -44,24 +59,27 @@ void main() {
 	// 기능 3) 특정 이름을 대상으로 탐색을 진행하여 그 사람의 전화번호를 변경 (장준혁)
 	if(LFirst(&list, &pcard))
 	{
-		if(!NameCompare(pcard, "장준혁"))
+		if(!NameCompare(pcard, "김소정"))
 		{
-			printf("enter the phone number : ");
+			printf("enter %s's new phone number : ", pcard -> name);
 			scanf("%s", tempArr);
 			
 			ChangePhoneNumber(pcard, tempArr);
+			
+			printf("\n");
 		}
 		else
 		{
 			while(LNext(&list, &pcard)) 
 			{
-				if(!NameCompare(pcard, "장준혁"))
+				if(!NameCompare(pcard, "김소정"))
 				{
-					pritnf("enter the phone number : ");
+					printf("enter %s's new phone number : ", pcard -> name);
 					scanf("%s", tempArr);
 					
 					ChangePhoneNumber(pcard, tempArr);
 					
+					printf("\n");
 					break;
 				}
 			}
@@ -74,17 +92,23 @@ void main() {
 		if(!NameCompare(pcard, "장준혁")) 
 		{
 			pcard = LRemove(&list);
+			printf("deled %s's information\n", pcard -> name);
+			printf("\n");
+			
 			free(pcard);
 		}
 		else 
 		{
 			while(LNext(&list, &pcard)) 
 			{
-				if(!NmaeCompare(pcard, "장준혁"))
+				if(!NameCompare(pcard, "장준혁"))
 				{
 					pcard = LRemove(&list);
+					printf("deleted %s's information\n", pcard -> name);
+					printf("\n");	
 					free(pcard);
-			
+					
+		
 					break;
 				}
 			}
@@ -94,6 +118,8 @@ void main() {
 	// 기능 5) 삭제 후, 남아있는 데이터들을 출력해준다. 
 	if(LFirst(&list, &pcard))
 	{
+		printf("[A LIST OF PHONE BOOKS]\n");
+		printf("-----------------------\n");
 		ShowNameCardInfo(pcard);
 		
 		while(LNext(&list, &pcard))

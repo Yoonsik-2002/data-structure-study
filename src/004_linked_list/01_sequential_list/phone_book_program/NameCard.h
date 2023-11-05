@@ -7,7 +7,7 @@
 typedef struct __namecard
 {
 	char name[NAME_LEN];
-	char phone[PHONE_LEN]
+	char phone[PHONE_LEN];
 } NameCard;
 
 
@@ -21,5 +21,5 @@ void ShowNameCardInfo(NameCard * pcard);
 int NameCompare(NameCard * pcard, char * name);
 
 // 전화번호 정보를 변경
-void ChangePhoneNum(NameCard * pcard, char * phone);
+void ChangePhoneNumber(NameCard * pcard, char * phone);
 #endif
