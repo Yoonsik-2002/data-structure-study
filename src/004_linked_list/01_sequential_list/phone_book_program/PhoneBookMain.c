@@ -65,22 +65,31 @@ void main() {
 			}
 		}
 	}
-}
-
-// 기능 4) 특정 이름을 대상으로 탐색을 진행하여, 그 사람의 정보 삭제(장준혁)
-if(LFirst(&list, &pcard)) {
-	if(!NameCompare(pcard, "장준혁")) {
-		pcard = LRemove(&list);
-		free(pcard);
-	}
-}
-else {
-	while(LNext(&list, &pcard)) {
-		if(!NmaeCompare(pcard, "장준혁")) {
+	
+	// 기능 4) 특정 이름을 대상으로 탐색을 진행하여, 그 사람의 정보 삭제(장준혁)
+	if(LFirst(&list, &pcard)) 
+	{
+		if(!NameCompare(pcard, "장준혁")) 
+		{
 			pcard = LRemove(&list);
 			free(pcard);
+		}
+		else 
+		{
+			while(LNext(&list, &pcard)) 
+			{
+				if(!NmaeCompare(pcard, "장준혁"))
+				{
+					pcard = LRemove(&list);
+					free(pcard);
 			
-			break;
+					break;
+				}
+			}
 		}
 	}
+	
+	
+	
 }
+
