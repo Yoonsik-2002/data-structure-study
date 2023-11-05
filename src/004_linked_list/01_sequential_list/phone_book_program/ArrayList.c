@@ -48,7 +48,7 @@ int LNext(List * plist, LData * pdata) {
 	}
 	
 	(plist -> curPosition)++; 
-	/* 기존 LFirst 함수를 실행한 뒤, 첫 번째 저장공간(index = 0)을 가리키고 있는 curPosition 값을 하나 늘려 줌. 이후 부터, 호출될 때마다 한 칸씩 넘어감.
+	/* 기존 LFirst 함수를 실행한 뒤, 첫 번째 저장공간(index = 0)을 가리키고 있는 curPosition 값을 하나 늘려 줌. 이후부터, 호출될 때마다 한 칸씩 넘어감.
 	다음으로 인텍스로 넘어가 해당 데이터를 참조함 */
 	
 	*pdata = plist -> arr[plist -> curPosition];
