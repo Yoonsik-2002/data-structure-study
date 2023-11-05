@@ -7,7 +7,7 @@
 NameCard * MakeNameCard(char * name, char * phone) {
 	NameCard * newCard = (NameCard *)malloc(sizeof(NameCard));
 	
-	strcpy(newCard -> name, name);  // name에 저장되어 있는 문자열 전체를 newCard -> name에 복사 하는 방식으로 초기화.
+	strcpy(newCard -> name, name);  // name에 저장되어 있는 문자열 전체를 newCard -> name에 복사 하는 방식으로 초기화
 	strcpy(newCard -> phone, phone);
 	
 	return newCard;
