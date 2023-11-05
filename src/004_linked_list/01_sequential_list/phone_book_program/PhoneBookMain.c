@@ -38,11 +38,11 @@ void main() {
 	// 기능 2) 특정 이름을 대상으로 탐색을 진행하여 그 사람의 정보 출력(김소정)
 	if(LFirst(&list, &pcard))
 	{
-		printf("%s's information output\n", pcard -> name);
-		printf("-----------------------\n");
-		
 		if(!NameCompare(pcard, "김소정"))
 		{
+			printf("%s's information output\n", pcard -> name);
+			printf("---------------------------\n");
+			
 			ShowNameCardInfo(pcard);
 			printf("\n");
 		}
@@ -52,6 +52,9 @@ void main() {
 			{
 				if(!NameCompare(pcard, "김소정")) 
 				{
+					printf("%s's information output\n", pcard -> name);
+					printf("---------------------------\n");
+					
 					ShowNameCardInfo(pcard);
 					printf("\n");
 					break;
