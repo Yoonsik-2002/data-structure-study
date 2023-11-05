@@ -31,6 +31,7 @@ void main() {
 		while(LNext(&list, &pcard))
 		{
 			ShowNameCardInfo(pcard);
+			printf("\n");
 		}
 	}
 	
@@ -39,6 +40,8 @@ void main() {
 	{
 		if(!NameCompare(pcard, "김소정"))
 		{
+			printf("%s's information output\n", pcard -> name);
+			printf("-----------------------\n");
 			ShowNameCardInfo(pcard);
 			printf("\n");
 		}
