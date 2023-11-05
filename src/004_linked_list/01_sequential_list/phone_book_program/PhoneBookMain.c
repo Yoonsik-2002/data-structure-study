@@ -26,6 +26,7 @@ void main() {
 	{
 		printf("A LIST OF PHONE BOOKS\n");
 		printf("---------------------\n");
+		
 		ShowNameCardInfo(pcard);
 		
 		while(LNext(&list, &pcard))
@@ -98,6 +99,9 @@ void main() {
 	{
 		if(!NameCompare(pcard, "장준혁")) 
 		{
+			printf("delete %s's information\n");
+			printf("---------------------------\n");
+			
 			pcard = LRemove(&list);
 			printf("deled %s's information\n", pcard -> name);
 			printf("\n");
@@ -110,6 +114,9 @@ void main() {
 			{
 				if(!NameCompare(pcard, "장준혁"))
 				{
+					printf("delete %s's information\n");
+					printf("---------------------------\n");
+					
 					pcard = LRemove(&list);
 					printf("deleted %s's information\n", pcard -> name);
 					printf("\n");	
