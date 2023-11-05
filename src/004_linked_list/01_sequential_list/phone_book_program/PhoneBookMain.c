@@ -61,6 +61,8 @@ void main() {
 					scanf("%s", tempArr);
 					
 					ChangePhoneNumber(pcard, tempArr);
+					
+					break;
 				}
 			}
 		}
