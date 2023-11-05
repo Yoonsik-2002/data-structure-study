@@ -24,8 +24,8 @@ void main() {
 	// 기능 1-1) 현재 전화번호부에 저장되어 있는 모든 정보를 출력
 	if(LFirst(&list, &pcard))
 	{
-		printf("A LIST OF PHONE BOOKS"\n);
-		printf("---------------------"\n);
+		printf("A LIST OF PHONE BOOKS\n");
+		printf("---------------------\n");
 		ShowNameCardInfo(pcard);
 		
 		while(LNext(&list, &pcard))
