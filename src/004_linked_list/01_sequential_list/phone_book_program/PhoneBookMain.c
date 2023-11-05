@@ -21,7 +21,7 @@ void main() {
 	pcard = MakeNameCard("장준혁", "010-2343-3333");
 	LInsert(&list, pcard);
 	
-	// 기능 1-1) 전화번호부에 저장되어 있는 모든 정보를 출력
+	// 기능 1-1) 현재 전화번호부에 저장되어 있는 모든 정보를 출력
 	if(LFirst(&list, &pcard))
 	{
 		printf("A LIST OF PHONE BOOKS"\n);
