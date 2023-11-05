@@ -92,10 +92,12 @@ void main() {
 	}
 	
 	// 기능 5) 삭제 후, 남아있는 데이터들을 출력해준다. 
-	if(LFirst(&list, &pcard)) {
+	if(LFirst(&list, &pcard))
+	{
 		printf("name : %s, phone number : %s\n", pcard -> name, pcard -> phone);
 		
-		while(LNext(&list, &pcard)) {
+		while(LNext(&list, &pcard))
+		{
 			printf("name : %s, phone number: %s\n", pcard -> name, pcard -> phone);
 		}
 	}
