@@ -33,7 +33,7 @@ void main() {
 		{
 			ShowNameCardInfo(pcard);
 		}
-		printf("\n");
+		printf("\n\n");
 	}
 	
 	// 기능 2) 특정 이름을 대상으로 탐색을 진행하여 그 사람의 정보 출력(김소정)
@@ -74,7 +74,7 @@ void main() {
 			
 			ChangePhoneNumber(pcard, tempArr);
 			
-			printf("\n");
+			printf("\n\n");
 		}
 		else
 		{
@@ -87,7 +87,7 @@ void main() {
 					
 					ChangePhoneNumber(pcard, tempArr);
 					
-					printf("\n");
+					printf("\n\n");
 					break;
 				}
 			}
@@ -103,8 +103,8 @@ void main() {
 			printf("---------------------------\n");
 			
 			pcard = LRemove(&list);
-			printf("deled %s's information\n", pcard -> name);
-			printf("\n");
+			printf("[deleted %s's information]\n", pcard -> name);
+			printf("\n\n");
 			
 			free(pcard);
 		}
@@ -118,8 +118,8 @@ void main() {
 					printf("---------------------------\n");
 					
 					pcard = LRemove(&list);
-					printf("deleted %s's information\n", pcard -> name);
-					printf("\n");	
+					printf("[deleted %s's information]\n", pcard -> name);
+					printf("\n\n");	
 					free(pcard);
 					
 		
