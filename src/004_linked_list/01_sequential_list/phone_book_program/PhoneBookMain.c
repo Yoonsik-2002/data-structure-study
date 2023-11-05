@@ -99,7 +99,7 @@ void main() {
 	{
 		if(!NameCompare(pcard, "장준혁")) 
 		{
-			printf("delete %s's information\n");
+			printf("delete %s's information\n", pcard -> name);
 			printf("---------------------------\n");
 			
 			pcard = LRemove(&list);
@@ -114,7 +114,7 @@ void main() {
 			{
 				if(!NameCompare(pcard, "장준혁"))
 				{
-					printf("delete %s's information\n");
+					printf("delete %s's information\n", pcard -> name);
 					printf("---------------------------\n");
 					
 					pcard = LRemove(&list);
