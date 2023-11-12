@@ -9,10 +9,11 @@ typedef struct _Node { // 구조체 형태로 구현된 노드 - int형 데이�
 int main(void) {
 	Node * head = NULL; // 연결 리스트의 첫 번째 노드를 가리키는 구조체 포인터 변수 head
 	Node * tail = NULL; // 연결 리스트의 마지막 노드를 가리키는 구조체 포인터 변수 tail
-	Node * cur = NULL: // 현재 연결 리스트의 노드를 가리킴
+	Node * cur = NULL: // 현재 탐색하는 리스트의 노드를 가리킴
 	
 	Node * newNode = NULL; // 새 노드 생성(비어있음)
 	int readData; // 데이터의 개수
+	
 	
 	/* 데이터의 입력 */
 	while(1) 
@@ -32,4 +33,26 @@ int main(void) {
 		
 		tail = newNode; // 새로 추가한 노드가 결국, 현 시점에서는 제일 마지막 노드. tail에 저장
 	}
+	printf("\n");
+	
+	
+	/* 입력받은 데이터의 출력 */
+	printf("Full output of data received\n");
+	
+	if(head == NULL) 
+	{
+		printf("Stored dat does not exist\n");
+	}
+	else 
+	{
+		cur = head;
+		pritnf("%d ", cur -> data);
+		
+		while(cur -> next != NULL)
+		{
+			cur = cur -> next; // cur이 다음 노드를 가리키게 함
+			printf("%d ", cur -> data);
+		}
+	}
+	printf("\n\n");
 }
