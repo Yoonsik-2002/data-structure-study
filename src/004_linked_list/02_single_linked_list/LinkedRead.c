@@ -25,6 +25,7 @@ int main(void) {
 		
 		newNode = (Node *)malloc(sizeof(Node)); // 새 노드 생성
 		newNode -> data = readData;
+		newNode -> next = NULL;
 		
 		if(head == NULL)
 			head = newNode; // 링크드 리스트가 비어있는 경우 - 첫 번째 노드를 가리키는 head에 newNode저장
