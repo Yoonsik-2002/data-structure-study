@@ -55,4 +55,26 @@ int main(void) {
 		}
 	}
 	printf("\n\n");
+	
+	
+	/* 메모리 해제 */
+	if(head == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		Node * delNode = head;
+		Node * delNodeNext = delNode -> next;
+		
+		printf("delete %d.\n", delNode -> data);
+		
+		while(delNodeNext != NULL)
+		{
+			delNode = delNodeNext;
+			delNodeNext = delNode -> next;
+			
+			printf("delete %d.\n", delNode -> data);
+		}
+	}
 }
