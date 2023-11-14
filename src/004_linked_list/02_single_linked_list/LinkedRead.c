@@ -43,7 +43,7 @@ int main(void) {
 	
 	if(head == NULL) 
 	{
-		printf("Stored dat does not exist\n");
+		printf("Stored data does not exist\n");
 	}
 	else 
 	{
