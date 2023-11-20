@@ -83,20 +83,20 @@ void SetSortRule(List * plist, int (*comp)(LData d1, LData d2));
 ```c
 int /*(*comp)(LData d1, LData d2)*/
 ```
-반환형이 `int`이고<br>
+> 반환형이 `int`이고<br>
 <br>
 
 ```c
 /*int (*comp)*/(LData d1, LData d2)
 ```
-`LData`형 인자 2개를 전달받는<br>
+> `LData`형 인자 2개를 전달받는<br>
 <br>
 
 
 ```c
 /*int*/(*comp)/*(LData d1, Ldata d2)*/
 ```
-함수의 주소값을 포인터 변수 `comp`에 저장하라!<br>
+> 함수의 주소값을 포인터 변수 `comp`에 저장하라!<br>
 <br>
 
 
