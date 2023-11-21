@@ -137,7 +137,9 @@ void SetSortRule(List * plist, int (*comp)(LData d1, LData d2));
 이때, 함수 포인터 변수 `comp`에 전달될 수 있는 함수의 조건은 다음과 같다.<br>
 
 **반환형은 int형 이어야 하고, 매개변수에 인자로 전달되는 값은 `LData`타입의 변수 2개여야 한다.** <br>
+<br>
 
+### 정렬기준이 되는 함수의 정의
 자, 그럼 한번 `SetSortRule`함수의 두번째 인자로 전달되는 함수를 한번 정의해 보도록 하겠다.<br>
 
 `typedef int LData` <- 노드의 저장되는 데이터의 값이 int형이라 가정하고, 해당 연결리스트의 노드가 저장하고 있는 데이터 기준,<br>
