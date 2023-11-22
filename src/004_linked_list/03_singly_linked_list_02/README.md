@@ -182,6 +182,8 @@ int WhoIsPrecede(LData d1, LData d2) {
 ![스크린샷(1)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/73983a9b-cfdd-4fba-81d6-04f8046191a7)
 <br>
 
+[일반적인 `head`와 `tail`기반의 단순 연결 리스트](https://github.com/Yoonsik-2002/data-structure-study/blob/main/src/004_linked_list/02_singly_linked_list_01/LinkedRead.c)
+
 이 경우, **"연결리스트의 첫 번째 노드는 포인터 변수 `head`가 가리켜야 한다"** 라는 하나의 제약사항이 생기게 된다.<br>
 
 때문에, 코드 상에서 첫 번째 노드와 그 이후의 두 번째 노드 부터 나머지 노드의 처리 방식이 나뉘어지게 되어, 각가 탐색, 추가 ,삭제<br>
@@ -199,6 +201,8 @@ int WhoIsPrecede(LData d1, LData d2) {
 
 ![스크린샷(3)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/a596b057-23bc-4fb4-834f-5a730fa15796)
 <br>
+
+[더미 노드(Dummy Node)를 추가한 `head`와 `tail`기반의 단순 연결 리스트](https://github.com/Yoonsik-2002/data-structure-study/blob/main/src/004_linked_list/03_singly_linked_list_02/LinkedReadUseDummyNode.c)
 
 링크드 리스트의 노드를 앞에서 부터(`head`부터)추가하는 경우, 해당 링크드 리스트의 첫 번째 노드는 포인터 변수 `head`가 가리키게<br>
 되고, 여기서 첫 번째 노드와 그 이후의 노드 간의 처리 방식의 일관성이 깨지게 된다.<br>
