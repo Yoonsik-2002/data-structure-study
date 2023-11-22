@@ -196,7 +196,9 @@ int WhoIsPrecede(LData d1, LData d2) {
 ### 더미 노드(Dummy Node) 기반의 단순 연결 리스트
 이러한 문제점을 해결하기 위해, 아래와 같은 형태의 더미 노드 기반의 단순 연결 리스트를 만들어 보려 한다.<br>
 
-![스크린샷(1)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/33018914-83a6-4b2f-a939-cfa4260ef72a)
+![스크린샷(3)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/a596b057-23bc-4fb4-834f-5a730fa15796)
+<br>
+
 
 
   
