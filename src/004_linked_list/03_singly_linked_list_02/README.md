@@ -271,6 +271,8 @@ typedef struct _linkedList {
 ```
 <br>
 
+연결 리스트를 생성하기 원한다면, 이 연결 리스트를 표현하는 구조체 `LinkedList`의 변수를 선언하거나 동적으로 할당하면 된다.<br>
+
 
 
   
