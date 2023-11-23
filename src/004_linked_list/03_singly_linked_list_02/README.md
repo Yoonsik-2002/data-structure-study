@@ -310,7 +310,7 @@ typedef struct _linkedList {
 
 이러한 초기화 작업을 담당하는 함수는 아래와 같다.<br>
 
-##### ListInit
+##### 리스트의 초기화 - ListInit 함수
 ```c
 void ListInit(List * plist) {
   plist -> head = (*Node)malloc(sizeof(Node));  // 유효한 데이터를 저장하고 있지 않은 Dummy Node의 생성
@@ -358,7 +358,7 @@ Dummy Node는 유효한 데이터를 저장하고 있지 않으므로, 연결 �
 따라서 리스트에 노드 삽입 작업을 담당하는 함수를 작성하는데 있어, 해당 두 가지의 경우를 적용하여 정의해 주어야 한다. 이러한 조<br>
 건을 토대로, 리스트에 노드 삽입을 담당하는 함수 `LInsert`를 정의해 보면, 다음과 같은 형태를 띄게 될 것이다.<br>
 
-##### LInsert
+##### 리스트에 노드 삽입 - LInsert 함수
 ```c
 void LInsert(List * plist, LData data) {
   if(plist -> comp == NULL) { // 연결 리스트의 정렬 기준이 정해지지 않은 경우
