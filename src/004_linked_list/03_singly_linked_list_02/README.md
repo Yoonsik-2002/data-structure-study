@@ -395,10 +395,10 @@ void FInsert(List * plist, LData data) {
 않은 경우, 위 `FInsert`함수가 호출되어, 새 노드가 연결 리스트의 머리(더미 노드 바로 다음)에 삽입되는 방식의 노드 삽입이 이루어진다.<br>
 
 즉, 최근에 삽입된 노드일수록, 연결 리스트의 머리에 가까운 형태의 정렬상태를 가지게 되는 것이다. `LInsert`함수의 동작을 그림으로 나<br>
-타내면 아래와 같다.<br>
+타내면 아래와 같다.<br><br>
 
 ![스크린샷(2)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/101a6f05-e32f-41b6-a55d-cf62f382c9f4)
-<br>
+<br><br>
 
 위 내용을 보면 알 수 있듯이, 연결 리스트의 `head`는 항상 `DummyNode`를 가리키고 있다. 새 연결 리스트가 생성될 때마다, `ListInit`함수를<br>
 통해, `head`가 `DummyNode`를 가리키도록 초기화 되고, 유효한 데이터를 지닌 모든 노드들은 Dummy Node 다음 노드로 삽입되기 때문이다.<br>
