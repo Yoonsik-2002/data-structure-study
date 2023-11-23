@@ -272,6 +272,71 @@ typedef struct _linkedList {
 <br>
 
 연결 리스트를 생성하기 원한다면, 이 연결 리스트를 표현하는 구조체 `LinkedList`의 변수를 선언하거나 동적으로 할당하면 된다.<br>
+<br><br>
+
+## 더미 노드(Dummy Node) 기반의 단순 연결 리스트의 구현 
+헤드 포인터가 가리키고 있는 연결 리스트의 첫 번째 노드를, 유효한 데이터가 저장되어 있지 않은 더미 노드로 가지고, 그 이후, 두 번<br>
+째 노드 부터는 유효한 데이터를 가지는 노드를 저장하여, 유효한 데이터를 저장하는 노드끼리는 일관된 추가, 삭제, 탐색 방식을 적용<br>
+하는 것이 가능한 더미 노드 연결 리스트를 만들어 보도록 하겠다.<br>
+
+먼저, 해당 연결 리스트에 사용되는 구조체는 다음과 같다. <br>
+##### 1. 노드를 표현하는 구조체 - `Node`
+   ```c
+   typedef struct _node {
+     LData data;
+     struct _node * next;
+   } Node;
+   ```
+   
+##### 2. 연결 리스트를 표현하는 구조체 - `LinkedList`
+   ```c
+   typedef struct _linkedList {
+     Node * head;
+     Node * cur;
+     Node * before;
+     int numOfData;
+     int (*comp)(LData d1, LData d2);
+   } LinkedList;
+
+   typedef LinkedList List;
+
+   // 연결 리스트를 생성하기 원한다면, `List`구조체의 변수를 선언하거나 동적으로 할당하면 된다.
+   ```
+<br>
+
+### 생성할 리스트의 초기화
+연결 리스트를 표현하는 구조체 `List`의 변수가 선언되어, 연결 리스트가 생성되면, 해당 리스트를 대상으로, 연결 리스트의 처리 작업<br>
+을 위한, 기본적인 초기화가 이루어져야 한다.<br>
+
+이러한 초기화 작업을 담당하는 함수는 아래와 같다.<br>
+
+##### ListInit
+```c
+void ListInit(List * plist) {
+  plist -> head = (*Node)malloc(sizeof(Node));  // 유효한 데이터를 저장하고 있지 않은 Dummy Node의 생성
+  plist -> head -> next = NULL;
+  plist -> comp = NULL;
+  plist -> numOfdata = NULL;
+}
+```
+<br>
+
+위의 초기화 결과를 그림으로 나타내 보면, 다음과 같다.<br>
+
+![스크린샷(1)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/eec0abb5-95d3-49b2-bd24-3469cc9fd23d)
+<br>
+
+유효한 데이터를 저장하고 있지 않은, Dummy Node를 연결 리스트의 첫 번째 노드로 추가하여, 연결 리스트의 첫 번째 노드를 가리키는 <br>
+포인터 변수 `head`가 해당 Dummy Node를 가리키게 하였다.<br>
+
+이를 통해, 해당 Dummy Node 이후에 연결 리스트에 삽입되는 유효한 데이터를 지닌 노드들은 모두 일관된 처리방식을 통해 추가, 삭제<br>
+탐색 작업이 이루어지게 된다.<br>
+
+
+  
+
+   
+
 
 
 
