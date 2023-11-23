@@ -362,12 +362,48 @@ Dummy Node는 유효한 데이터를 저장하고 있지 않으므로, 연결 �
 ```c
 void LInsert(List * plist, LData data) {
   if(plist -> comp == NULL) { // 연결 리스트의 정렬 기준이 정해지지 않은 경우
-    // 새로운 노드를 앞에서 부터(Dummy Node서 부터) 추가
+    FInsert(plist , data); // 새로운 노드를 head에 추가(Dummy Node 바로 다음 노드로) 추가
   }
   else { // 연결 리스트의 정렬 기준이 정해진 경우
-    // comp에 전달된 기준에 맞게 노드를 삽입하여 정렬
+  SInsert(plist , data); // comp에 전달된 기준에 맞게 노드를 삽입하여 정렬
   }
 ```
+<br>
+
+이렇게, `List`의 노드 삽입 작업은 리스트의 멤버`comp`에 무엇이 저장되어 있느냐에 따라, `FInsert`함수 또는 `SInsert`함수를 통해서<br>
+이루어진다.<br>
+
+이때, `FInsert`함수와 `SInsert`함수는 헤더파일에 정의된 함수가 아니다. 이는, 해당 리스트를 사용하는 프로그래머는 이 두 함수를 직<br>
+접 호출하여 사용하는 것이 불가능하다는 것을 의미한다. 이 함수들은 리스트 내부적으로 호출이 되도록 정의된 함수들이기 때문이다.<br>
+
+다음은 연결 리스트의 정렬 기준이 정해지지 않은 경우, 즉 `plist -> comp == NULL`인 경우 `LInsert`함수 내부에서 호출되는 함수인<br>
+`FInsert`함수이다. 새로운 노드를 생성하고, 이를 리스트의 머리(head), Dummy Node바로 다음 노드로 추가해준다.<br>
+<br>
+
+##### LInsert 함수 - case 1. 연결 리스트의 정렬 기준이 정해지지 않은 경우 : FInsert 함수
+```c
+void FInsert(List * plist, LData data) {
+  newNode = (*Node)malloc(sizeof(Node)); // 새로운 노드의 생성
+  newNode -> data = data;
+  newNode -> next = plist -> head -> next; // 새로운 노드가 DummyNode 바로 다음 노드를 가리키게 함
+  plist -> head -> next = newNode; // DummyNode가 새로운 노드를 가리키게 함
+}
+```
+<br>
+
+이렇게, `LInsert`함수에 인자로 전달된 `List`변수(연결 리스트)의 멤버인 `comp`가 `NULL`인 경우, 즉, 연결 리스트의 정렬 기준이 정해지지<br>
+않은 경우, 위 `FInsert`함수가 호출되어, 새 노드가 연결 리스트의 머리(더미 노드 바로 다음)에 삽입되는 방식의 노드 삽입이 이루어진다.<br>
+
+즉, 최근에 삽입된 노드일수록, 연결 리스트의 머리에 가까운 형태의 정렬상태를 가지게 되는 것이다. `LInsert`함수의 동작을 그림으로 나<br>
+타내면 아래와 같다.<br>
+
+![스크린샷(2)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/101a6f05-e32f-41b6-a55d-cf62f382c9f4)
+<br>
+
+
+
+
+
 
 
 
