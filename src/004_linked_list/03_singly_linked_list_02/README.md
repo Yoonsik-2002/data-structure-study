@@ -429,14 +429,14 @@ void FInsert(List * plist, LData data) {
 어주기 위함일 뿐이지, **두 함수의 데이터 탐색 및 조회 작업의 구현에 있어서는 일관된 방식을 통한 구현이 가능하다.**<br>
 <br>
 
-##### 첫 번째 데이터의 탐색 및 조회
+##### 첫 번째 데이터의 탐색 및 조회 - LFirst 함수
 ```c
 int LFirst(List * plist, LData * pdata) {
   if(plist -> head -> next == NULL) // Dummy Node 다음 노드가 존재하지 않는다면, FALSE를 리턴하고 종료
     reutrn FALSE;
 
-  plist -> before = plist -> head; // 포인터 before는 DummyNode를 가리키게함
-  plist -> cur = plist -> head -> next; // 포인터 cur는 유효한 데이터를 저장하고 있는 첫 번째 노드를 가리키게 함
+  plist -> before = plist -> head; // 구조체 포인터 before는 DummyNode를 가리키게함
+  plist -> cur = plist -> head -> next; // 구조체 포인터 cur는 유효한 데이터를 저장하고 있는 첫 번째 노드를 가리키게 함
 
   *pdata = plist -> cur -> data; // 함수 외부에 정의되어 있는 int형 변수 data에 포인터 *pdata를 통해 첫 번째 노드의 데이터를 반환
 
@@ -447,12 +447,60 @@ int LFirst(List * plist, LData * pdata) {
 
 해당 연결 리스트의 데이터의 탐색 및 조회 작업에는 위 코드를 보면 알 수 있듯이, 구조체 포인터 `before`과 `cur`가 사용된다. `before`가 `cur`이<br>
 가리키고 있는 노드보다 앞선 노드를 가리키는 방식으로 작동한다.<br>
+<br>
+
+이 `First`함수에서는 이와 같은 작동방식을 구현해낸 아래 코드가 핵심이라 할 수 있다. 이러한 처리 방식은 `LNext`에서도 일관되게 사용된다.<br>
+```c
+plist -> before = plist -> head; // 구조체 포인터 before가 DummyNode를 가리킴
+plist -> cur = plist -> head -> next; // 구조체 포인터 cur이 유효한 데이터를 저장하고 있는 첫 번째 노드(DummyNode 다음 노드)를 가리킴
+```
+<br>
 
 `LFirst`함수의 동작과정을 그림으로 나타내면 아래와 같다.<br>
 <br>
 
 ![스크린샷(1)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/8812474a-5c4c-4523-b534-a4f66de53516)
+<br><br>
 
+##### 두 번째 데이터와 그 이후 데이터들의 탐색 및 조회 - LNext 함수
+```c
+int LNext(List * plist , LData * pdata) {
+  if(plist -> cur -> next == NULL) // 현재 노드를 가리키는 cur의 다음 노드가 존재하지 않는 경우, FALSE를 리턴하고 종료
+    return FALSE;
+
+  plist -> before = plist -> cur; // before가 기존에 cur이 가리키고 있던 노드를 가리키게 함 
+  plist -> cur = plist -> before -> next; // cur은 (before가 가리키고 있는 노드의) 그 다음 노드를 가리키게 함
+
+  *pdata = plist -> cur -> data; // 함수 외부에 정의되어 있는 int형 변수 data에 포인터 *pdata를 통해 첫 번째 노드의 데이터를 반환
+  return TRUE; // 연결 리스트의 데이터의 탐색 및 조회에 성공. TRUE를 반환
+}
+```
+<br>
+
+해당 함수를 보면, 구조체 포인터 기본적으로 `before`는 구조체 포인터 `cur`의 바로 이전 노드를 가리키며, 다음 노드를 탐색하게 될 때 마다,<br>
+`before` 가 현재 `cur`이 가리키고 있는 노드를 가리키고, `cur`은 `before`가 가리키고 있는 노드의 다음 노드를 가리키는 방식으로 노드를 하<br>
+나씩 오른쪽으로 옮겨가며 탐색 한다는 것을 알 수 있다.<br>
+<br>
+
+때문에, 위의 `LNext`함수의 핵심코드 또한 아래와 같은 처리방식을 띄며, 이는 `LFirst`의 핵심 코드와 똑같은(일관된)형태를 가진다는 것을 알<br>
+수 있다.<br>
+```c
+plist -> before = plist -> cur; // 구조체 포인터 before가 기존에 cur이 가리키고 있던 노드를 가리킴
+plist -> cur = plist -> before -> next; // cur은 그 다음 노드(plist -> before -> next)를 가리킴
+```
+<br>
+
+`LNext`함수의 동작과정을 그림으로 나타내면 다음과 같다.<br>
+```
+
+
+
+// ppt 그림 추가
+
+
+
+```
+<br>
 
 
 
