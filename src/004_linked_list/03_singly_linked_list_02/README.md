@@ -425,8 +425,23 @@ void FInsert(List * plist, LData data) {
 일관된 방식으로 구현하는 것이 가능한 DummyNode 기반의 연결리스트이다.<br>
 
 따라서, `LFirst`함수와 `LNext`함수를 따로 정의한 이유는, 다시 첫 번째 데이터부터 조회하고자 할 때, 조회의 시작점이라는 하나의 기준을 만들<br>
-어주기 위함일 뿐이지, 두 함수의 데이터 탐색 및 조회 작업의 구현에 있어서는 일관된 방식을 통한 구현이 가능하다.<br>
+어주기 위함일 뿐이지, **두 함수의 데이터 탐색 및 조회 작업의 구현에 있어서는 일관된 방식을 통한 구현이 가능하다.**<br>
 
+##### 첫 번째 데이터의 탐색 및 조회
+```c
+int LFirst(List * plist, LData * pdata) {
+  if(plist -> head -> next == NULL) // Dummy Node 다음 노드가 존재하지 않는다면, FALSE를 리턴하고 종료
+    reutrn FALSE;
+
+  plist -> before = plist -> head; // 포인터 before는 DummyNode를 가리키게함
+  plist -> cur = plist -> head -> next; // 포인터 cur는 유효한 데이터를 저장하고 있는 첫 번째 노드를 가리키게 함
+
+  *pdata = plist -> cur -> data; // 함수 외부에 정의되어 있는 int형 변수 data에 포인터 *pdata를 통해 첫 번째 노드의 데이터를 반환
+
+  return TRUE; // 연결 리스트의 첫 번째 데이터의 탐색 및 조회에 성공. TRUE를 반환
+}
+```
+<br>
 
 
 
