@@ -459,7 +459,8 @@ plist -> cur = plist -> head -> next; // 구조체 포인터 cur이 유효한 �
 `LFirst`함수의 동작과정을 그림으로 나타내면 아래와 같다.<br>
 <br>
 
-![스크린샷(1)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/8812474a-5c4c-4523-b534-a4f66de53516)
+![스크린샷(1)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/38702182-814e-4e28-b6bd-daa73a9525df)
+
 <br><br>
 
 ##### 두 번째 데이터와 그 이후 데이터들의 탐색 및 조회 - LNext 함수
