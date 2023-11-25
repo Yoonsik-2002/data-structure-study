@@ -21,7 +21,7 @@ void main()
 	
 	/* 저장된 데이터의 전체 출력 */
 	printf("[full output of stored data]\n");
-	printf("---------------------------\n");
+	printf("----------------------------\n");
 	printf("number of data : %d\n", LCount(&list));
 	
 	if(LFirst(&list, &data)) {
