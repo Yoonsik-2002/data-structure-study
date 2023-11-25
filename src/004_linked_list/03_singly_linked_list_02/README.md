@@ -272,6 +272,8 @@ typedef struct _linkedList {
 <br>
 
 연결 리스트를 생성하기 원한다면, 이 연결 리스트를 표현하는 구조체 `LinkedList`의 변수를 선언하거나 동적으로 할당하면 된다.<br>
+완성된 더미 노드 기반의 단순 연결 리스트 프로그램의 헤더파일은 아래 링크를 클릭하면 볼 수 있다.<br>
+[`DlilnkedList.h`](https://github.com/Yoonsik-2002/data-structure-study/blob/main/src/004_linked_list/03_singly_linked_list_02/dummy_node_based_singly_linked_list_program/DLinkedList.h)
 <br><br>
 
 ## 더미 노드(Dummy Node) 기반의 단순 연결 리스트의 구현 
