@@ -73,7 +73,7 @@ LData LRemove(List * plist, LData * pdata) {
 	
 	plist -> before -> next = plist -> cur -> next; 
 	/* 삭제하고자 하는 노드(cur)의 이전 노드(before)가 삭제하고자 하는 노드(cur)의 다음 노드로 연결됨.
-	cur의 이전 노드가 cur을 건너뛰고 연결되기 때문에, cur이 자연스럽게 연결 리스트에서 연결이 끊기게 됨.*/
+	cur의 이전 노드(before)가 cur을 건너뛰고 연결되기 때문에, cur이 자연스럽게 연결 리스트에서 연결이 끊기게 됨.*/
 	
 	plist -> cur = plist -> before; 
 	/* 노드 삭제 후, cur이 before다음 노드를 가리키면 아직 탐색(참조)되지 않은 노드를 탐색해버린 꼴이
