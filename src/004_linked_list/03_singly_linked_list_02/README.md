@@ -368,6 +368,7 @@ void LInsert(List * plist, LData data) {
   else { // 연결 리스트의 정렬 기준이 정해진 경우
   SInsert(plist , data); // comp에 전달된 기준에 맞게 노드를 삽입하여 정렬
   }
+}
 ```
 <br>
 
@@ -556,7 +557,7 @@ LData LRemove (List * plist, LData * pdata) {
   List * rpos = plist -> cur;
   LData rdata = rpos -> data;
 
-  plist -> before = plist -> cur -> next;
+  plist -> before -> next = plist -> cur -> next;
   plist -> cur = plist -> before;
 
   free(rpos);
