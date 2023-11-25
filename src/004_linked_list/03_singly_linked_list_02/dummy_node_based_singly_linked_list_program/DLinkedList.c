@@ -52,6 +52,32 @@ int LFirst(List * plsit, LData * pdata) {
 }
 
 int LNext(List * plist, LData * pdata) {
-	if(plist -> cur -> next == NULL);
+	if(plist -> cur -> next == NULL) // 연결 리스트의 노드를 순차적으로 탐색해내는데 있어, 현재 노드를 가리키는 cur의 다음 노드가 존재하지 않는 경우, 즉, 마지막 노드인 경우 
+		return False; 
 	
+	plist -> before = plist -> cur; // 첫 번째 노드 이후의 노드를 탐색하는데 있어, 구조체 포인터 before는 현재 cur이 가리키고 있는 노드를 가리킴
+	plist -> cur = plist -> before -> next; // before를 통해, 기존 cur이 가리키던 노드의 다음 노드를 cur이 가리키게 됨
+	
+	*pdta = plist -> cur -> data;
+	return TRUE;
+}
+
+
+/* 리스트에 저장되어 있는 데이터의 삭제 */ 
+LData LRemove(List * plist, LData * pdata) {
+	// 삭제하고자 하는 노드의 주소값과 데이터를 미리 저장
+	List * rpos = plist -> cur;
+	LData rdata = rpos -> data;
+	
+	plist -> before = plist -> cur -> next; 
+	/* 삭제하고자 하는 노드(cur)의 이전 노드(before)가 삭제하고자 하는 노드(cur)의 다음 노드로 연결됨.
+	cur의 이전 노드가 cur을 건너뛰고 연결되기 때문에, cur이 자연스럽게 연결 리스트에서 연결이 끊기게 됨.*/
+	
+	plist -> cur = plist -> before; 
+	/* 노드 삭제 후, cur이 before다음 노드를 가리키면 아직 탐색(참조)되지 않은 노드를 탐색해버린 꼴이
+	되어버림. 떄문에, 왼쪽으로 한칸 이동하여 before와 같은 노드를 가리킴*/ 
+	
+	free(rpos); // 노드(데이터)를 heap 메모리에서 완전히 소멸 시킴
+	(plist -> numOfData)--; // 노드(데이터)를 삭제하였으니, 연결 리스트에 저장되어 있는 노드의 개수에서도 -1
+	*pdata = rdata; // 삭제한 데이터값을 리턴
 }
