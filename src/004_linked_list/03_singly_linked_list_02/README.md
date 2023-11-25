@@ -504,8 +504,9 @@ plist -> cur = plist -> before -> next; // cur은 그 다음 노드(plist -> bef
 
 
 ```
-<br>
+<br><br>
 
+### 리스트에 저장되어 있는 노드(데이터)의 삭제
 
 
 
