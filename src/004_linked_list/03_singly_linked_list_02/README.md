@@ -667,6 +667,36 @@ void SetSortRule(List * plist, int (*comp)(LData d1, LData d2)) {
 <br>
 
 ##### 정렬 기준이 리스트에 등록되어 있는 경우(`plist -> comp != NULL`), 해당 정렬 기준을 토대로 데이터를 삽입하여 정렬하는 함수 - `SInsert` 함수
+`SInsert`함수의 작동과정을 그림과 함께 이해해 보도록 하겠다. 먼저, 아래와 같이 오름차순으로 정렬되어 있는 연결 리스트가 존재한다고 해보자. 해당 연결 리스트의 이름은 `slist`이다.<br>
+<br>
+
+![스크린샷(2)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/92a5b74b-1e08-4436-9081-d012fd39556b).<br>
+<br>
+
+이 상태에서, 아래와 같이 `SInsert`함수의 호출이 이루어 졌다고 해보자.<br>
+```c
+SInsert(&slist, 5); // 리스트에 데이터5를 지닌 노드를 추가
+```
+<br>
+
+그러면, 새 노드를 생성하여 추가하는 `LInsert`함수의 내부에서 호출되어 작동하는 `SInsert`함수에서는, 다음과 같이 새 노드를 생성하고, 노드를 추가하는데 사용되는 구조체 포인터 변수 `pred`를 초기화 하고, 새로 생성된 노드에 데이터를 저장하는 작업이 먼저 이루어져야 할 것이다.<br>
+```c
+void SetSortRule(List * plist, LData data) {
+  Node * newNode = (Node*)malloc(sizeof(Node)); // 새 노드 생성
+  Node * pred = plist -> head; // pred는 더미 노드를 가리킴
+  newNode -> data = data; // 새 노드의 data에 5 저장
+  // ...
+}
+```
+<br>
+
+해당 작업이 모두 이루어지고 나면, 아래와 같은 상태가 될 것이다.<br>
+<br>
+
+![스크린샷(3)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/a0056408-0f24-4b37-900b-62994a082695)<br>
+<br>
+
+
 
 
 
