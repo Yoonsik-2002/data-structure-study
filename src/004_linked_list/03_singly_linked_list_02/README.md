@@ -602,10 +602,58 @@ plist -> cur = plist -> before;
 ```
 <br>
 
+### 연결 리스트의 정렬기준 삽입의 구현
+자, 이제 연결 리스트의 마지막 기능의 구현이 남았다. 해당 연결 리스트의 마지막 기능으로, 프로그래머가 직접 리스트의 정렬기준을 설정할 수 있도록, 정렬의 기준이 되는 함수를 리스트에 등록하여(정렬기준의 설정) 리스트의 정렬이 이루어질 수 있도록 ADT를 정의하였었는데,<br>
 
+이제, 해당 기능을 구현해 보도록 하겠다.<br>
+<br>
 
+##### 구현할 연결 리스트에서 정렬기준의 설정과 관련된 부분
+지금 구현하고 있는 연결 리스트에서 정렬기준의 설정과 관련된 부분은 다음과 같다. 이들을 하나로 묶어서 생각하면 이해가 쉽다.<br>
 
+- 연결 리스트의 정렬 기준이 되는 함수를 등록하는 **`SetSortRule`** 함수<br>
+
+  ``` c
+  void SetSortRule(List * plist , int (*comp)(LData d1, LData d2));
+  ```
+<br>
+
+- `SetSortRule`함수를 통해서 정렬 기준이 되는 함수를 저장하는(가리키는) 함수 포인터 **`comp`**, 연결 리스트를 표현하는 구조체 `LinkedList`의 멤버이다.<br>
+
+  ``` c
+  typedef struct _linkedList {
+    Node * head;
+    Node * cur;
+    Node * before;
+    int numOfData;
+    int (*comp)(LData d1, LData d2);
+  } LinkedList;
+
+  // SetSortRule 함수룰 통해, 정렬 기준이 되는 함수가 LinkedList 구조체의 멤버인comp에 저장됨
+  ```
+<br>
+
+- `comp`에 저장되어 있는 정렬 기준이 되는 함수를 근거로, 데이터를 저장(삽입)하는 **`SInsert`** 함수. 어떠한 기준으로 데이터의 삽입이 이루어졌느냐에 따라, 데이터의 정렬상태가 달라지는 것이다. 해당 함수는 `comp`가 NULL이 아닐 시, `LInsert`함수 내부에서 호출되어 작동한다.<br>
   
+  ```c
+  void LInsert(List * plist, LData data) {
+    if(plist -> comp == Null) {
+      FInsert(plist, data);
+    }
+    else {
+      SInsert(plist, data);
+    }
+  }
+  ```
+<br>
+
+위 세 부분을 하나의 문장으로 정리해 보면, 다음과 같다.<br>
+> "`SetSortRule` 함수가 호출되면서, 연결 리스트의 정렬의 기준이되는 함수가 리스트 구조체 멤버인 함수 포인터 `comp`에 등록되면, `LInsert`함수에서는 내부적으로 `SInsert`함수를 호출하여, `comp`에 등록된 함수를 근거로 데이터를 삽입하여 정렬해 나간다."
+
+연결 리스트의 정렬 기준 설정과 관련된 부분이 무엇이 있는지 정리해 보았으니, 이제 `SetSortRule`함수와 `SInsert`함수를 마저 완성해 보도록 하겠다.<br>
+<br>
+
+##### 연결 리스트의 정렬기준이 되는 함수를 전달받아, List(`typedef LinkedList List`)의 멤버변수 `comp`에 저장해주는 함수 - S
 
 
 
