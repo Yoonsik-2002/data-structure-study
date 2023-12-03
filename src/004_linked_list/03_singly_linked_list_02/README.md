@@ -812,6 +812,27 @@ WhoIsPrecede(int d1, int d2) {
 ```
 <br>
 
+마지막으로 위에서 이해한 내용을 토대로, `SInsert`함수를 완성해 보도록 하겠다.<br>
+```c
+void SInsert(List * plist, LData data) {
+  /* 새 노드의 생성 */
+  Node * newNode = (Node*)malloc(sizeof(Node));
+  Node * pred = plist -> head;
+  Node * newNode = data;
+
+  /* 새 노드의 추가 위치 탐색 */ 
+  while(pred -> next != NULL, comp(data, pred -> next -> data) != 0) {
+    pred = pred -> next;
+  }
+
+  /* 새 노드의 추가 */
+  newNode -> next = pred -> next;
+  pred -> next = newNode;
+
+  (plist -> numOfData)++;
+}
+```
+<br>
 
 
 
