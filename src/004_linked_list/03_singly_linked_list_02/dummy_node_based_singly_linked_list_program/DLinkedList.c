@@ -32,7 +32,7 @@ void SInsert(List * plist, LData data) {
 	Node * pred = plist -> head; // 먼저, pred는 기본적으로 dummy node부터 가리킴. 새 노드의 삽입은 pred가 가리키고 있는 노드 기준 오른쪽에 추가됨
 	newNode -> data = data;
 	
-	while(pred -> next != NULL && comp(data, pred -> next -> data) != 0) {
+	while(pred -> next != NULL && plist -> comp(data, pred -> next -> data) != 0) {
 		pred = pred -> next;
 	}
 	

@@ -3,9 +3,9 @@
 
 #include "DLinkedList.h"
 
-/* 오름차순으로 노드를 삽입하여 정렬하게 하는 함수 - WhoIsPrecede */
+/* 으로 노드를 삽입하여 정렬하게 하는 함수 - WhoIsPrecede */
 int WhoIsPrecede(LData d1, LData d2) {
-	if(d1 < d2) 
+	if(d1 > d2) 
 		return 0;
 	else 
 		return 1;
