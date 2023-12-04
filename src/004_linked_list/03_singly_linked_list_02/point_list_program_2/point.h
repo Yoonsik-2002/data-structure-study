@@ -1,7 +1,7 @@
 #ifndef __POINT_H__ 
 #define __POINT_H__
 
-// Point 구조체 정의
+// 2차원 좌표위의 점을 나타내는 Point 구조체 정의
 typedef struct _Point {
 	int xpos;
 	int ypos;
