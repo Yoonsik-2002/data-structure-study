@@ -14,7 +14,6 @@ void ListInit(List * plist) {
 
 
 /* 리스트에 노드 삽입(데이터 저장) */
-
 void FInsert(List * plist , LData data) {
 	Node * newNode = (Node *)malloc(sizeof(Node)); // 유효한 데이터를 저장하는 노드 생성
 	newNode -> data = data; // 해당 노드에 데이터를 저장
