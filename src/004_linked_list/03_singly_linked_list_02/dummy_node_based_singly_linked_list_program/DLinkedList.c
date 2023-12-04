@@ -19,7 +19,7 @@ void FInsert(List * plist , LData data) {
 	Node * newNode = (Node *)malloc(sizeof(Node)); // 유효한 데이터를 저장하는 노드 생성
 	newNode -> data = data; // 해당 노드에 데이터를 저장
 	
-	// 노드의 삽입(정렬) 기준이 정해지지 않은 경우 새롭게 생성된 노드를 연결 리스트의 head(DummyNode)에 추가한다.
+	/* 노드의 삽입(정렬) 기준이 정해지지 않은 경우 새롭게 생성된 노드를 연결 리스트의 head(DummyNode)에 추가한다. */
 	
 	newNode -> next = plist -> head -> next; // 새롭게 생성된 노드가 DummyNode 바로 다음 노드를 가리키게 함. 
 	plist -> head -> next = newNode; // DummyNode가 새롭게 생성된 노드를 가리키게 함.
@@ -27,16 +27,27 @@ void FInsert(List * plist , LData data) {
 	(plist -> numOfData)++;
 }
 
-/* void SInsert(List * plist , Ldata data) {
-	// ...
-} */ 
+void SInsert(List * plist, LData data) {
+	Node * newNode = (Node *)malloc(sizeof(Node));
+	Node * pred = plist -> head; // 먼저, pred는 기본적으로 dummy node부터 가리킴. 새 노드의 삽입은 pred가 가리키고 있는 노드 기준 오른쪽에 추가됨
+	newNode -> data = data;
+	
+	while(pred -> next != NULL && comp(data, pred -> next -> data) != 0) {
+		pred = pred -> next;
+	}
+	
+	newNode -> next = pred -> next;
+	pred -> next = newNode;
+	
+	(plist -> numOfData)++;
+}
 
 void LInsert(List * plist, LData data) {
 	if(plist -> comp == NULL) { // 노드의 삽입(정렬) 기준이 정해지지 않은 경우
 		FInsert(plist, data);
 	}
 	else {
-		/* SInsert(plist , data);  // 노드의 삽입(정렬) 기준이 정해진 경우 */
+		SInsert(plist, data);
 	}
 }
 
@@ -89,3 +100,9 @@ LData LRemove(List * plist, LData * pdata) {
 int LCount(List * plist) {
 	return plist -> numOfData;
 }
+
+/* 연결 리스트의 정렬 기준이되는 함수를 연결 리스트 구조체에 등록 */
+void SetSortRule(List * plist, int (*comp)(LData d1, LData d2)) {
+	plist -> comp = comp;
+}
+

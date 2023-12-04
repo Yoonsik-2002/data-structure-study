@@ -3,6 +3,14 @@
 
 #include "DLinkedList.h"
 
+/* 오름차순으로 노드를 삽입하여 정렬하게 하는 함수 */
+int WhoIsPrecede(LData d1, LData d2) {
+	if(d1 < d2) 
+		return 0;
+	else 
+		return 1;
+}
+
 void main()
 {
 	List list;
@@ -12,6 +20,8 @@ void main()
 	/* 리스트의 생성 및 초기화 */
 	ListInit(&list);
 	
+	/* 연결 리스트의 정렬 기준을 나타내는 함수를 등록 */
+	SetSortRule(&list, WhoIsPrecede); // C언어에서 함수의 이름은 배열의 이름과 마찬가지로 함수의 시작주소를 나타내는 포인터 상수로 간주된다.
 	
 	/* 5개의 데이터를 저장 */
 	LInsert(&list, 11); LInsert(&list, 11);
