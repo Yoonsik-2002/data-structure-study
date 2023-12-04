@@ -6,7 +6,7 @@
 
 #include "point.h"
 
-typedef Point * LData; // Node 구조체가 Point 구조체 변수를 저장하도록 변경
+typedef Point * LData; // Node 구조체의 멤버 data가 Point 구조체 변수를 저장하도록 변경
 
 typedef struct _node {
 	LData data;
