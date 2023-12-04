@@ -1,4 +1,3 @@
-// 헤더가드(header guard)
 #ifndef __POINT_H__ 
 #define __POINT_H__
 
