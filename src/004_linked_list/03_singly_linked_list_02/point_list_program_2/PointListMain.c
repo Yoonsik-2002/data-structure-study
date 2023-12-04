@@ -49,7 +49,7 @@ int main(void)
 	{
 		if(PointComp(ppos, &compPos) == 1) // ppos가 가리키고 있는 구조체의 멤버xpos의 값이 2인 경우 LRemove함수와 free함수를 통해 해당 구조체를 삭제
 		{
-			ppos = LRemove(&list, &ppos); 
+			ppos = LRemove(&list); 
 			free(ppos);
 		}
 		
@@ -57,7 +57,7 @@ int main(void)
 		{
 			if(PointComp(ppos, &compPos) == 1)
 			{
-				ppos = LRemove(&list, &ppos);
+				ppos = LRemove(&list);
 				free(ppos);
 			}
 		}
