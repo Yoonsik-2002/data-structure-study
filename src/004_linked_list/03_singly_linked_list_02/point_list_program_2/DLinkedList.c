@@ -92,7 +92,7 @@ LData LRemove(List * plist) {
 	
 	free(rpos); // 노드(데이터)를 heap 메모리에서 완전히 소멸 시킴
 	(plist -> numOfData)--; // 노드(데이터)를 삭제하였으니, 연결 리스트에 저장되어 있는 노드의 개수에서도 -1
-    return rdata;
+    return rdata; 
 }
 
 
