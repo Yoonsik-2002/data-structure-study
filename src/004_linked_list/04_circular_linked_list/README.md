@@ -72,6 +72,33 @@
 
 ![스크린샷(2)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/fdcf5faf-e7b1-4c37-99d7-3346dc091b1f)<br>
 
-이렇게 작성한 ADT를 토대로, 헤더파일을 작성하면, 아래 링크와 같이 작성하는 것이 가능하다.<br>
-[CLinkedList.h](
+이렇게 작성한 ADT를 토대로, 헤더파일을 작성하면, 아래 링크의 헤더파일과 같이 작성하는 것이 가능하다.<br>
+[CLinkedList.h](https://github.com/Yoonsik-2002/data-structure-study/blob/main/src/004_linked_list/04_circular_linked_list/circular_linked_list_program/CLinkedList.h)<br>
+
+헤더파일을 완성하였으니, 이제 본격적으로 변형된 원형 연결 리스트를 구현해보도록 하겠다.<br>
+<br>
+
+### 1) 원형 연결 리스트의 초기화와 노드의 삽입
+
+###### 원형 연결 리스트의 초기화
+원형 연결 리스트의 초기화 또한, 단순 연결 리스트의 초기화와 같이 간단하다. 아래와 같이, 원형 연결 리스트 구조체의 멤버들을 `NULL` 혹은 `0`과 같은 초기값으로 초기화 해주면 된다.<br>
+
+```c
+void ListInit(List * pList) {
+  pList -> cur = NULL;
+  pList -> before = NULL;
+  pList -> tail = NULL;
+  pList -> numOfData = 0;
+}
+```
+<br>
+
+###### 새 노드 생성 및 삽입 
+```c
+
+// ppt 자료 추가
+
+```
+
+
 
