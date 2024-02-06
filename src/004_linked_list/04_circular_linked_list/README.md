@@ -110,4 +110,24 @@ void ListInit(List * pList) {
 이렇게 빈 원형 연결리스트에 새로운 첫 번째 노드를 추가하는 경우, `LInsert`함수를 사용하든, `LInsertFront`함수를 사용하든 같은 형태의 결과가 나오기 때문에, 이 두 함수는 해당 경우에 대한 서로 공통적인 코드 내용을 가지게 된다.<br>
 
 - ###### `LInsert`함수와 `LInsertFront`함수의 공통부분
+  비어있는 원형 연결 리스트에 새로운 첫 번째 노드를 추가하는 경우에 대한 `LInsert`함수와 `LInsertFront`함수의 공통부분은 아래 코드와 같다.<br>
+
+  ```c
+  void LInser~(List * pList, Data data) {
+    Node * newNode = (Node *)malloc(sizeof(Node));  // 새 노드를 생성하여, heap영역에 메모리 할당
+    newNode -> data = data;  // 새 노드에 데이터 저장
+
+    if(pList -> tail == NULL) {  // 원형 연결 리스트가 비어있는 경우, 새 노드 추가
+      /* 새 노드 그 자체로 원형 연결 리스트의 꼬리이자, 머리가 됨 */
+      pList -> tail = newNode;  // tail이 새 노드를 가리킴
+      newNode -> next = newNode;  // 새 노드가 자기 스스로를 가리킴
+    }
+
+    else {
+      /* 차이가 나는 부분 */
+    }
+
+    (pList -> numOfData)++;
+  }
+  ```
   
