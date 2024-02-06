@@ -137,4 +137,59 @@ void ListInit(List * pList) {
   ![스크린샷(2)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/e83fe85b-e8b3-4cdd-8fd7-8ba685653d8c)<br>
 
   다시한번 강조하지만, 비어있는 원형 연결 리스트에 첫 번째로 새롭게 추가된 노드는 그 자체로, 원형 연결 리스트의 머리이자, 꼬리이다.<br>
+  <br>
+  
+- ###### 원형 연결 리스트가 비어있지 않은 경우, 새 노드를 원형 연결 리스트의 머리에 추가하는 경우 - `LInsertFront`
+  이제, `LInsert`함수와 `LInsertFront`함수 간의 차이가 나는 부분을 작성해 보도록 하겠다.<br>
+
+  두 함수는 원형 연결 리스트가 비어있지 않은 상황에서 새 노드를 머리에 추가하느냐, 꼬리에 추가하느냐에 대한 기능적 차이가 발생하게 된다.<br>
+  
+  먼저, 원형 연결 리스트가 비어있지 않은 경우, 새 노드를 원형 연결 리스트의 머리에 추가하는 경우에 대해 알아보도록 하겠다.<br>
+  <br>
+
+  아래 그림과 같이, 원형 연결 리스트에 노드 2개가 추가되어 있는 상황이라 해보자.<br>
+
+  ![스크린샷(2)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/0b2c4d51-1994-43e7-baad-f36baaefabf0)<br>
+
+  이러한 경우, 새 노드를 위 연결 리스트의 머리에 추가하기 위해서는 일단 우선적으로, 아래와 같이 새 노드를 생성해 주어야 할 것이다. 새롭게 추가할 노드에 들어가는 데이터는 7로 해주도록 하겠다.<br>
+
+  ![스크린샷(3)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/f5f3a4a0-084b-45c0-8aa9-5dae4b24fb47)<br>
+
+  이렇게 데이터 7을 저장하고 있는 새 노드를 생성해 주었고, 이제, 해당 노드를 노드 2개가 추가되어 있는 원형 연결 리스트에 추가해 주도록 하겠다.<br>
+
+  ![스크린샷(5)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/f7d189da-82ed-4b6c-b745-6360b9930f83)<br>
+
+  ![스크린샷(6)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/241bbca3-6367-4622-8161-836bc5dc85e0)<br>
+
+  먼저, 새 노드를 연결 리스트의 머리인 `pList -> tail -> next`를 가리키게 하여 연결 해준 뒤, 마지막 노드인 `tail`이 이렇게 머리에 연결된 새 노드를 가리키게 하여 원형 연결 리스트의 형태가 만들어질 수 있도록 하였다.<br>
+
+  완성된, 새 노드를 원형 연결 리스트의 머리에 추가해주는 `LInsertFront` 함수는 아래와 같다.<br>
+
+  ```c
+  void LInsertFront(List * pList, Data data) {
+    Node * newNode = (Node *)malloc(sizeof(Node));
+    newNode -> data = data;
+
+    if(pList -> tail == NULL) {
+      pList -> tail = newNode;
+      newNode -> next = newNode;
+    }
+
+    else {
+      newNode -> next = pList -> tail -> next;
+      pList -> tail -> next = newNode;
+    }
+
+    (pList -> numOfData)++;
+  }
+  ```
+  
+
+  
+
+
+  
+
+  
+
   
