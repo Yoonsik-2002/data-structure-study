@@ -108,6 +108,7 @@ void ListInit(List * pList) {
 <br>
 
 이렇게 빈 원형 연결리스트에 새로운 첫 번째 노드를 추가하는 경우, `LInsert`함수를 사용하든, `LInsertFront`함수를 사용하든 같은 형태의 결과가 나오기 때문에, 이 두 함수는 해당 경우에 대한 서로 공통적인 코드 내용을 가지게 된다.<br>
+<br>
 
 - ###### `LInsert`함수와 `LInsertFront`함수의 공통부분
   비어있는 원형 연결 리스트에 새로운 첫 번째 노드를 추가하는 경우에 대한 `LInsert`함수와 `LInsertFront`함수의 공통부분은 아래 코드와 같다.<br>
@@ -130,4 +131,10 @@ void ListInit(List * pList) {
     (pList -> numOfData)++;
   }
   ```
+
+  비어있는 원형 연결 리스트에 `LInsert`함수나 `LInsertFront`함수를 활용하여, 첫 번째 새 노드를 추가하는 경우, 공통적으로 위 코드가 실행되어, 아래 그림과 같은 결과가 나오게 될 것이다.<br>
+
+  ![스크린샷(2)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/e83fe85b-e8b3-4cdd-8fd7-8ba685653d8c)<br>
+
+  다시한번 강조하지만, 비어있는 원형 연결 리스트에 첫 번째로 새롭게 추가된 노드는 그 자체로, 원형 연결 리스트의 머리이자, 꼬리이다.<br>
   
