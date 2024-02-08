@@ -297,8 +297,33 @@ typedef struct _CLL {
   ```
 <br>  
 
-  
-  
+- ###### `LFirst`함수를 시작으로, `cur`과 `before`을 한 칸씩 다음 노드로 이동시키며 원형 연결 리스트의 노드 탐색 및 데이터 반환을 수행하는 - `LNext`
+  `LFirst`함수의 호출을 통해 `cur`과 `before`의 위치가 탐색의 시작 위치로 초기화된 상태에서, `LNext`함수를 이용하여 `cur`과 `before`을 한 칸 씩 다음 노드로 이동시키며 원형 연결 리스트의 노드를 탐색해 나간다.<br>
+
+  ![스크린샷(4)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/33da913f-4694-43e5-986c-5e8bef51525f)<br>
+
+  위 그림과 같이, `cur`과 `before`이 이동한 다음에는 `cur`이 가리키는 노드의 데이터를 반환해 주어야 한다.<br>
+
+  즉, 호출될 때마다, `cur`과 `before`을 다음 노드로 이동시킨 뒤, `cur`이 가리키는 노드의 데이터를 반환해 주는 것이다. 이러한 `LNext`함수를 정의해 보면 다음과 같다.<br>
+
+  ```c
+  int LNext(List * pList, Data * pData) {
+    if(pList -> tail == NULL) {
+      return FALSE;
+    }
+
+    pList -> before = pList -> cur;
+    pList -> cur = pList -> before -> next;
+
+    *pData -> data = pList -> cur -> data;
+    return TRUE;
+  }
+  ```
+
+  위의 `LNext`함수에는 원형 연결 리스트의 끝을 검사하는 코드가 존재하지 않는다. 때문에, 무한으로 반복하여 호출하는 것이 가능하다.<br>
+
+  원형 연결 리스트는 머리와 꼬리가 연결되어 있는 형태로, 마지막 노드의 탐색이 이루어진 후에는, 다시 첫 번째 노드에서부터의 탐색이 이루어지게 된다.<br>
+
 
 
 
