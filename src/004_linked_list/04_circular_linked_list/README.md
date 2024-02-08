@@ -230,6 +230,33 @@ void ListInit(List * pList) {
 
   위 그림과 같이, 새롭게 추가한 7을 저장하는 노드를 원형 연결 리스트의 마지막으로 옮겨 주어도, 해당 노드들이 가리키고 있는 노드의 순서는 둘다 `7` -> `2` -> `4` -> `7`로, 동일하다. `tail`도 7을 저장하는 새 노드를 가리키고 있으므로, 두 그림은 같은 상황이라 할 수 있다.<br>
 
+  원형 연결 리스트에 새 노드를 꼬리에 추가했을 때와 머리에 추가했을 때의 유일한 차이점은 `tail`이 가리키는 노드가 다르다는 점이다. 완성된 새 노드를 원형 연결 리스트의 꼬리에 추가해주는 `LInsert` 함수는 아래와 같다.<br>
+
+  ```c
+  void LInsert(List * pList, Data data) {
+    Node * newNode = (Node*)malloc(sizeof(Node));
+    newNode -> data = data;
+
+    if(pList -> tail == NULL) {
+      pList -> tail -> next = newNode;
+      newNode -> next = pList -> tail;
+    }
+
+    else {
+      newNode -> next = pList -> tail -> next;
+      pList -> tail -> next = newNode;
+      pList -> tail = newNode;
+    }
+
+    (pList -> numOfData)++;
+  }
+  ```
+  <br>
+
+  
+
+  
+
 
   
   
