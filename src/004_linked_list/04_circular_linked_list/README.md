@@ -78,7 +78,7 @@
 헤더파일을 완성하였으니, 이제 본격적으로 변형된 원형 연결 리스트를 구현해보도록 하겠다.<br>
 <br>
 
-### 1) 원형 연결 리스트의 초기화와 노드의 삽입
+### 1. 원형 연결 리스트의 초기화와 노드의 삽입
 
 ###### 원형 연결 리스트의 초기화
 원형 연결 리스트의 초기화 또한, 단순 연결 리스트의 초기화와 같이 간단하다. 아래와 같이, 원형 연결 리스트 구조체의 멤버들을 `NULL` 혹은 `0`과 같은 초기값으로 초기화 해주면 된다.<br>
@@ -253,10 +253,49 @@ void ListInit(List * pList) {
   ```
   <br>
 
-  
+### 2. 원형 연결 리스트의 데이터 탐색 및 조회
 
-  
+###### 원형 연결 리스트를 나타내는 구조체 `CList`의 멤버, `cur`과 `before`
+원형 연결 리스트를 나타내는 구조체인 `CList`는 다음과 같이 정의되어 있다.<br>
 
+```c
+typedef struct _CLL {
+  Node * tail;
+  Node * cur;
+  Node * before;
+  int numOfData;
+} CList;
+```
+
+`CList`의 멤버인 `cur`과 `before`은 단순 연결 리스트를 구현했을 때와 마찬가지로, `cur`은 현재 노드를, `before`은 이전 노드를 가리킨다.<br>
+<br>
+
+- ###### `cur`과 `before`을 탐색의 시작 위치로 초기화 하고, 원형 연결 리스트의 첫 번째 노드의 데이터를 반환 - `LFirst`
+  탐색의 시작점이자, 원형 연결 리스트의 첫 번째 노드를 탐색하여 데이터를 반환해주는 `LFirst`함수를 호출하는 경우, 아래와 같이, `cur`은 원형 연결 리스트의 첫 번째 노드를 가리키고, `before`은 이전 노드인 원형 연결 리스트의 마지막 노드를 가리키도록 초기화 되어야 한다.<br>
+
+  ![스크린샷(2)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/7d2742d6-e884-40e3-982d-404be08bcf67)<br>
+
+  `LFirst`함수의 호출 결과는 위와 같고, 이 상태가 원형 연결 리스트의 노드 탐색의 처음 시작 상태가 된다.<br>
+
+  이렇게 `cur`과 `before`이 초기화 되면, `LFirst`함수는 `cur`이 가리키고 있는 원형 연결 리스트의 첫 번째 노드의 데이터를 반환한다. 이러한 `LFirst`함수는 `cur`과 `before`을 탐색의 처음 시작 위치로 초기화 시켜주고, 첫 번째 노드의 데이터를 반환하는 기능을 수행한다.<br>
+
+  `LFirst`함수를 정의하면, 다음과 같다.<br>
+
+  ```c
+  int LFirst(List * pList , Data * pData) {
+    if(pList -> tail == NULL) {
+    return FALSE;
+    }
+  
+    pList -> before = pList -> tail;
+    pList -> cur = pList -> tail -> next;
+
+    *pData -> data = pList -> cur -> data;
+
+    return TRUE;
+  }
+  ```
+<br>  
 
   
   
