@@ -326,6 +326,8 @@ typedef struct _CLL {
 <br>
 
 ### 3. 원형 연결 리스트의 노드의 삭제
+
+###### 더미 노드 기반의 단순 연결 리스트와 원형 연결 리스트의 `LRemove`함수 구현시 발생하는 차이점
 이전에 구현 하였던 더미 노드(dummy node)기반의 단순 연결 리스트의 노드 삭제 함수`LRemove`는 다음 네 가지 기능으로 이루어져 있었다.<br>
 
 1) 삭제할 노드와 해당 노드의 데이터를 임시 저장
@@ -350,9 +352,83 @@ LData LRemove(List * pList) {
 }
 ```
 
+원형 연결 리스트는 머리와 꼬리가 연결되어 있다는 점에서 단순 연결 리스트와의 차이가 존재하지만, 이러한 특징은 노드 삭제의 과정에 있어, 큰 영향을 미치지 않는다.<br>
+
+때문에, 단순 연결 리스트의 `LRemove`함수를 원형 연결 리스트에 적용하여도, 노드의 삭제가 이루어진다. 하지만 완전하지는 않다. 그 이유는, **단순 연결 리스트에는 존재하는 더미 노드가 원형 연결 리스트에는 존재하지 않기 때문이다.** <br>
+
+이러한 이유로, 원형 연결 리스트의 `LRemove`함수를 구현하는 데에는 다음과 같은 예외 사항을 추가로 구현해 주어야 한다.<br>
+<br>
+
+###### 원형 연결 리스트의 `LRemove`함수 구현에 있어 발생하는 예외사항
+
+- ###### 1) 삭제할 노드를 `tail`이 가리키고 있는 경우 
+  더미 노드가 존재하는 경우에는, 삭제할 노드를 `head`가 직접 가리키지 않고, `cur`과 삭제할 노드 이전 노드 혹은 더미 노드가 가리키기 때문에, `head`가 삭제할 노드를 직접 가리키는 상황이 발생하지 않았다.<br>
+
+  ![스크린샷(6)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/79567984-7dbe-4e50-9e76-0627fe8a29ef)<br>
+  <br>
+  
+  ![스크린샷(7)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/abad157f-b2b4-4caa-977c-d1b5bcbec1eb)<br>
+  <br>
+
+  하지만, 원형 연결 리스트에는 이러한 더미 노드가 존재하지 않아, `tail`이 삭제할 노드를 직접 가리키는 상황이 발생하게 된다.
+
+  ![스크린샷(10)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/38774ba6-ae0b-4b7b-8465-e75c61e75111)<br>
+
+  해당 경우, `tail`이 가리키는 노드는 삭제 되므로, `tail`은 삭제할 노드의 이전 노드를 가리켜 주어야 한다.<br>
+  <br>
+
+- ###### 2) 삭제할 노드가 원형 연결 리스트에 홀로 남은 경우
+  더미 노드가 존재하는 경우에는 삭제할 노드가 연결 리스트에 홀로 남은 경우, `head`는 그대로 더미 노드를 가리키고, `cur`은 삭제하고자 하는 더미 노드의 다음 노드를, `before`은 그 이전 노드인 더미 노드를 가리키면 되었다.<br>
+
+  ![스크린샷(12)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/3936baf2-be9c-4d4c-8b5c-816a9c1e104e)<br>
 
 
+  그리고, 삭제가 이루어진 뒤에는 `cur`도 다시 이전 노드인 `before`이 가리키는 더미 노드를 가리키며 초기 상태로 돌아오면 되었어서, 예외 상황이 발생하지 않았다.<br>
 
+  ![스크린샷(13)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/373ccb78-0d39-4c77-bd39-be723fbbb637)<br>
+  <br>
+
+  하지만, 더미 노드가 존재하지 않는 원형 연결 리스트의 경우, 삭제할 노드가 홀로 남은 상태에서, 삭제되어 버리면 `tail`은 `NULL`을 가리켜야 하는 예외 상황이 발생하게 된다.<br>
+
+  ![스크린샷(16)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/970280b7-e46a-4d6d-a414-fd2568708910)<br>
+  <br>
+
+  ![스크린샷(17)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/0c277fb4-e5d9-401b-a649-dfcba6671dc0)<br>
+
+  삭제할 노드가 홀로 남아있는 상태에서, 해당 노드가 삭제되면, `tail`은 참조할 수 있는 노드가 존재하지 않아, `NULL`을 가리키게 되는 것이다.<br>
+<br>
+
+###### 원형 연결 리스트의 노드를 삭제하는 - `LRemove`
+자, 이렇게 원형 연결 리스트의 노드를 삭제하는 함수 `LRemove`를 구현하는데 있어, 발생할 수 있는 예외 사항 2가지를 정리해 보았다. 이때, 두 예외 사항의 공통점은 다음과 같다.<br>
+
+**"삭제하고자 하는 노드를 `tail`이 가리키고 있는 경우(삭제를 위해 `cur`이 가리키고 있는 노드를 `tail`도 가리키는 경우)"** <br>
+
+이렇게 삭제하고자 하는 노드를 `tail`이 가리키고 있는 상황에서, 삭제하고자 하는 노드가 원형 연결 리스트의 유일한 노드가 아니면, 삭제 후, `tail`이 삭제한 노드 이전 노드를 가리키게 하고, 유일한 노드면, 삭제 후 `tail`이 `NULL`을 가리키게 하면 된다.<br>
+
+이러한 두 가지 예외사항을 적용하여, 원형 연결 리스트의 노드를 삭제하는 함수 `LRemove`를 구현하면, 다음과 같다.<br>
+
+```c
+Data LRemove(List * pList) {
+  Node * rpos = pList -> cur;
+  Data rdata = rpos -> data;
+
+  if(pList -> tail == rpos) {
+    if(pList -> tail == pList -> tail -> next) {
+      pList -> tail = NULL;
+    }
+    else {
+      pList -> tail = pList -> before;
+    }
+  }
+
+  pList -> before -> next = pList -> cur -> next;
+  pList -> cur = pList -> before;
+
+  free(rpos);
+  (pList -> numOfData)--;
+  return rdata;
+}
+```
 
   
 
