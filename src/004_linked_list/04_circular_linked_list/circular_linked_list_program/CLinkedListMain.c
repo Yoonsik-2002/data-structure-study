@@ -26,12 +26,14 @@ void main() {
 	printf("\n");
 	
 	/* 2의 배수를 모두 삭제 */
-	if(LFirst(&list, &data)) {
-		if(data % 2 == 0)
+	if(nodeNum != 0) {
+		LFirst(&list, &data);
+		if(data %2 == 0)
 			LRemove(&list);
 		
 		for(i = 0; i < LCount(&list)-1; i++) {
-			if(data %2 == 0)
+			LNext(&list, &data);
+			if(data %2 == 0) 
 				LRemove(&list);
 		}
 	}
