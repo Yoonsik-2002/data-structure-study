@@ -47,3 +47,34 @@ void LInsert(List * pList , Data data) {
 	(pList -> numOfData)++;
 }
 
+/* 원형 연결 리스트의 첫 번쨰 노드를 조회 - LFIrst */
+int LFirst(List * pList, Data * pData) {
+	if(pList -> tail == NULL) {
+		return FALSE;
+	}
+	
+	pList -> before = pList -> tail;
+	pList -> cur = pList -> tail -> next;
+	
+	*pData  = pList -> cur -> data;
+	
+	return TRUE;
+}
+
+/* 원형 연결 리스트의 첫 번쨰 이후 노드를 조회 - LNext */
+int LNext(List * pList, Dtat * pData) {
+	if(pList -> tail == NULL) {
+		return FALSE;
+	}
+	
+	pList -> before = pList -> cur;
+	pList -> cur = pList -> before -> next;
+	
+	*pData = pLIst -> cur -> data;
+	
+	return TRUE;
+}
+
+
+
+
