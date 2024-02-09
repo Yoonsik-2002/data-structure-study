@@ -7,16 +7,16 @@
 typedef int Data;
 
 typedef struct _node {
-	Date data;
+	Data data;
 	struct _node * next;
 } Node;
 
 typedef struct _CLL {
-	struct _CLL * tail;  // 원형 연결 리스트의 마지막 노드(꼬리)를 참조하는 구조체 포인터 변수
-	struct _CLL * cur;  // 현재 참조하고 있는 원형 연결 리스트의 노드를 나타내는 구조체 포인터 변수
-	struct _CLL * before;  // cur바로 이전 노드를 참조하는 구조체 포인터 변수
+	Node * tail;  // 원형 연결 리스트의 마지막 노드(꼬리)를 참조하는 구조체 포인터 변수
+	Node * cur;  // 현재 참조하고 있는 원형 연결 리스트의 노드를 나타내는 구조체 포인터 변수
+	Node * before;  // cur바로 이전 노드를 참조하는 구조체 포인터 변수
 	
-	int numOfdata;
+	int numOfData;
 } CList;
 
 typedef CList List;

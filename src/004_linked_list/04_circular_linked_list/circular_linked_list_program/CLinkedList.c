@@ -62,7 +62,7 @@ int LFirst(List * pList, Data * pData) {
 }
 
 /* 원형 연결 리스트의 첫 번쨰 이후 노드를 조회 - LNext */
-int LNext(List * pList, Dtat * pData) {
+int LNext(List * pList, Data * pData) {
 	if(pList -> tail == NULL) {
 		return FALSE;
 	}
@@ -70,7 +70,7 @@ int LNext(List * pList, Dtat * pData) {
 	pList -> before = pList -> cur;
 	pList -> cur = pList -> before -> next;
 	
-	*pData = pLIst -> cur -> data;
+	*pData = pList -> cur -> data;
 	
 	return TRUE;
 }
@@ -91,7 +91,7 @@ Data LRemove(List * pList) {
 	}
 	
 	pList -> before -> next = pList -> cur -> next;
-	pLIst -> cur = pList -> before;
+	pList -> cur = pList -> before;
 	
 	free(rpos);
 	(pList -> numOfData)--;
