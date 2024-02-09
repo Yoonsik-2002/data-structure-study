@@ -75,4 +75,30 @@ int LNext(List * pList, Dtat * pData) {
 	return TRUE;
 }
 
+/* 원형 연결 리스트의 노드 삭제 - LRemove */
+Data LRemove(List * pList) {
+	Node * rpos = pList -> cur;
+	Data rdata = rpos -> data;
+	
+	if(pList -> tail == rpos) {
+		if(pList -> tail -> next = pList-> tail) {
+			pList -> tail = NULL;
+		}
+		
+		else {
+			pList -> tail = pList -> before;
+		}
+	}
+	
+	pList -> before -> next = pList -> cur -> next;
+	pLIst -> cur = pList -> before;
+	
+	free(rpos);
+	(pList -> numOfData)--;
+	return rdata;
+}
 
+/* 원형 연결 리스트의 데이터 개수를 반환 - LCount */
+int LCount(List * pList) {
+	return pList -> numOfData;
+}
