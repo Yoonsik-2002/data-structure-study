@@ -326,8 +326,29 @@ typedef struct _CLL {
 <br>
 
 ### 3. 원형 연결 리스트의 노드의 삭제
+이전에 구현 하였던 더미 노드(dummy node)기반의 단순 연결 리스트의 노드 삭제 함수`LRemove`는 다음 네 가지 기능으로 이루어져 있었다.<br>
 
+1) 삭제할 노드와 해당 노드의 데이터를 임시 저장
+2) `before`가 가리키고 있는 노드가 `cur`의 다음 노드를 가리키게 함
+3) `cur`이 `before`가 가리키고 있는 노드를 가리키게 함<br>
+  (`cur`이 삭제한 노드의 다음 노드를 가리키게 하면, 아직 탐색이 이루어지지 않은 노드를 가리키는 꼴이 되어버림)
+4) 임시저장된 삭제할 노드를 heap메모리에서 소멸시키고, 삭제한 노드의 데이터를 반환
+<br>
 
+이러한 더미 노드 기반의 단순 연결 리스트의 노드 삭제 함수 `LRemove`는 다음과 같이 정의하였었다.<br>
+```c
+LData LRemove(List * pList) {
+  Node * rpos = pList -> cur;
+  Data rdata = rpos -> data;
+
+  pList -> before -> next = pList -> cur -> next;
+  pList -> cur = pList -> before;
+
+  free(rpos);
+  (pList -> numOfData)--;
+  return rdata;
+}
+```
 
 
 
