@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "CLinkedList.h"
 #include "Employee.h"
-
 /* 원형 연결 리스트의 초기화 - ListInit */
 void ListInit(List * pList) {
 	pList -> tail = NULL;
