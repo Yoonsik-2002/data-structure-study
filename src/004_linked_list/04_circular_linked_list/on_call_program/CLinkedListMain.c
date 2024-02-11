@@ -15,5 +15,23 @@ void main() {
 	ListInit(&list);
 	
 	/* 원형 연결 리스트에 4개의 사원 데이터 저장 */
+	Employee * pemp = (Employee *)malloc(sizeof(Employee));
+	strcmp(pemp -> name, "Yoonsik");
+	pemp -> eNum = 0130;
+	LInsert(&list, pemp);
 	
+	Employee * pemp = (Employee *)malloc(sizeof(Employee));
+	strcmp(pemp -> name, "Minsu");
+	pemp -> eNum = 1017;
+	LInsert(&list, pemp);
+	
+	Employee * pemp = (Employee *)malloc(sizeof(Employee));
+	strcmp(pemp -> name, "Sumin");
+	pemp -> eNum = 0210;
+	LInsert(&list, pemp);
+	
+	Employee * pemp = (Employee *)malloc(sizeof(Employee));
+	strcmp(pemp -> name, "Gisun");
+	pemp -> eNum + 1017;
+	LInsert(&list, pemp);
 }
