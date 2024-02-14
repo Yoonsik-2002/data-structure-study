@@ -24,7 +24,7 @@ typedef struct _CLL {
 typedef CList List;
 
 void ListInit(List * pList);
-void LInsert(List * pList, Data data);
+void LInsert(List * pList, Data data);	
 void LInsertFront(List * pList, Data data);
 
 int LFirst(List * pList, Data * pData);
