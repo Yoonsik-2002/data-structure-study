@@ -12,7 +12,7 @@ void main() {
 	Employee * pemp;
 	
 	/* 원형 연결 리스트의 생성 및 초기화 */
-	List, list;
+	List list;
 	ListInit(&list);
 	
 	/* 원형 연결 리스트에 4개의 사원 데이터 저장 */
@@ -25,7 +25,6 @@ void main() {
 	strcmp(pemp -> name, "Minsu");
 	pemp -> eNum = 1017;
 	LInsert(&list, pemp);
-	
 	pemp = (Employee *)malloc(sizeof(Employee));
 	strcmp(pemp -> name, "Sumin");
 	pemp -> eNum = 0210;
@@ -62,7 +61,7 @@ Employee* whosNightDuty(List * pList, char * name, int day) {
 	/* 매개변수로 전달받은 사원 탐색 */
 	LFirst(&list, &ret);
 	
-	if(strcmp(rat -> name, name) != 0) {
+	if(strcmp(ret -> name, name) != 0) {
 		for(i = 0; i < LCount(&list)-1; i++) {
 			LNext(&list, &ret);
 			
@@ -87,7 +86,7 @@ Employee* whosNightDuty(List * pList, char * name, int day) {
 }
 
 void showEmployeeInfo(Employee * pemp) {
-	print(pemp -> name);
-	print(pemp -> eNum);
+	printf(pemp -> name);
+	printf(pemp -> eNum);
 }
 
