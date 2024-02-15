@@ -37,11 +37,11 @@ void main() {
 	LInsert(&list, pemp);
 	
 	/* 15일 뒤, 당직 사원 */
-	whosNightDuty(&list, "Sumin", 15);
+	pemp = whosNightDuty(&list, "Sumin", 15);
 	showEmployeeInfo(pemp);
 	
 	/* 7일 뒤, 당직 사원 */
-	whosNightDuty(&list, "Yoonsik", 7);
+	pemp = whosNightDuty(&list, "Yoonsik", 7);
 	showEmployeeInfo(pemp);
 	
 	/* 모든 데이터 소멸 */
@@ -85,3 +85,9 @@ Employee* whosNightDuty(List * pList, char * name, int day) {
 	
 	return ret;
 }
+
+void showEmployeeInfo(Employee * pemp) {
+	print(pemp -> name);
+	print(pemp -> eNum);
+}
+
