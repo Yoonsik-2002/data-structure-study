@@ -56,14 +56,14 @@ void main() {
 
 Employee* whosNightDuty(List * pList, char * name, int day) {
 	int i;
-	Data * ret; 
+	Employee * ret; 
 	
 	/* 매개변수로 전달받은 사원 탐색 */
-	LFirst(&list, &ret);
+	LFirst(pList, &ret);
 	
 	if(strcmp(ret -> name, name) != 0) {
-		for(i = 0; i < LCount(&list)-1; i++) {
-			LNext(&list, &ret);
+		for(i = 0; i < LCount(pList)-1; i++) {
+			LNext(pList, &ret);
 			
 			if(strcmp(ret -> name, name) == 0)
 				break;
@@ -72,21 +72,21 @@ Employee* whosNightDuty(List * pList, char * name, int day) {
 		// 	return NULL;
 		// }
 		
-		if(i >= LCount(&list)-1) {
+		if(i >= LCount(pList)-1) {
 			return NULL;
 		}
 	}
 	
 	/* 탐색한 사원으로 부터, day일 후, 당직 근무에 투입되는 사원을 탐색 */
 	for(i = 0; i < day; i++) {
-		LNext(&list, &ret);
+		LNext(pList, &ret);
 	}
 	
 	return ret;
 }
 
-void showEmployeeInfo(Employee * pemp) {
-	printf(pemp -> name);
-	printf(pemp -> eNum);
+void showEmployeeInfo(Employee * emp) {
+	printf("Employee name : %s \n", emp -> name);
+	printf("Employee number : %d \n\n", emp -> eNum);
 }
 
