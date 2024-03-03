@@ -113,7 +113,21 @@ void ListInit(List * pList) {
 
 해당 두 경우를 적용시켜, 노드삽입함수 `LInsert`함수를 구현해 보도록 하겠다.<br>
 
+###### 첫 번째노드를 추가하는 경우 
+```c
+void LFirst(List * pList , Data * pData) {
+  Node * newNode = (Node *)malloc(sizeof(Node));
+  newNode -> data = data;
 
+  newNode -> next = pList -> head; // 첫 번째 노드를 추가하는 시점에서 head 아무것도 가리키고 있지 않기 때문에, newNode -> next 에는 NULL이 저장된다. 
+  pList -> head = newNode;
+  (pList -> numOfData)++;
+
+  return TRUE;
+}
+```
+
+위 코드는 양방향 연결 리스트에 첫 번째 노드를 추가해주는 코드이다. 첫 번째 노드를 추가하는 경우, 새 노드를 생성하고, `head`가 이 새로운 첫 번째 노드를 가리키도록 만들어 주면 된다. 해당 과정을 그림으로 나타내면 다음과 같다.<br>
 
 
 
