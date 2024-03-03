@@ -47,4 +47,4 @@
 ![스크린샷(2)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/9717df44-3775-45d3-937d-6e6b1b00571e)<br>
 
 이렇게 작성한 ADT를 토대로, 헤더파일을 작성하면, 아래 링크의 헤더파일과 같이 작성하는 것이 가능하다.<br>
-[DBLinkedList.h]
+[DBLinkedList.h](https://github.com/Yoonsik-2002/data-structure-study/blob/main/src/004_linked_list/05_doubly_linked_list/doubly_linked_list_program/DBLinkedList.h)<br>
