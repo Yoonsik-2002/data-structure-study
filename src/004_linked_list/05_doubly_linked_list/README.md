@@ -48,3 +48,41 @@
 
 이렇게 작성한 ADT를 토대로, 헤더파일을 작성하면, 아래 링크의 헤더파일과 같이 작성하는 것이 가능하다.<br>
 [DBLinkedList.h](https://github.com/Yoonsik-2002/data-structure-study/blob/main/src/004_linked_list/05_doubly_linked_list/doubly_linked_list_program/DBLinkedList.h)<br>
+
+헤더파일을 완성하였으니, 이제 본격적으로 양방향 연결 리스트를 구현해 보도록 하겠다.<br>
+<br>
+
+### 1. 양방향 연결 리스트의 초기화
+###### `ListInit`함수 구현
+양방향 연결 리스트를 나타내는 구조체를 구현하면, 다음과 같이 작성하는 것이 가능하였다.<br>
+
+```c
+typedef struct _dbLinkedList {
+  struct _dbLinkedList * head;
+  struct _dbLinkedList * cur;
+  int numOfData;
+} DBLinkedList;
+```
+
+이렇게 구현되는 양방향 연결 리스트를 처음 작동시키기 전에, 초기상태(값)로 초기화 해주는 기능을 담당하는 함수가 바로, 이 `LineInit`함수이다. 먼저, 이 `DBLinkedList`구조체의 멤버들을 살펴보도록 하겠다.<br>
+
+- ###### `head`
+  연결 리스트의 첫 번째 노드를 가리킨다. 초기상태에는 연결리스트에 노드가 존재하지 않기 때문에, 초기값으로, `NULL`로 초기화 해준다.<br>
+
+- ###### `cur`
+  연결 리스트의 노드(데이터)를 조회하는데 사용된다. 데이터 조회동작에 있어, 첫 번쨰 노드를 조회하는데 사용하는 `LFirst`함수의 호출과 동시에 초기화가 어차피 이루어지기 때문에, 굳이 `ListInit`함수에서 초기화 해줄 필요는 없다.<br>
+
+- ###### `numOfData`
+  연결 리스트에 저장되어 있는 데이터의 개수를 저장하는데 사용된다. 초기 상태에는 연결 리스트에 아무런 데이터(노드)도 저장하고 있지 않기 떄문에, 초기값으로 0으로 초기화 해준다.<br>
+<br>
+
+자, 이를 종합하여, `ListInit`함수를 구현해 보면, 다음과 같이 구현할 수 있다.<br>
+
+```c
+void ListInit(List * pList) {
+  pList -> head = NULL;
+  pList -> numOfdata = 0;
+}
+```
+
+
