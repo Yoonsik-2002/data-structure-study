@@ -13,6 +13,7 @@ typedef struct _node {
 	Data data;
 } Node;
 
+
 /* 양방향 연결 리스트를 표현하는 구조체 */
 typedef struct _dbLinkedList {
 	Node * head;
