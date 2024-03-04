@@ -17,7 +17,7 @@ void main() {
 	// LInsert(&list, 7); LInsert(&list, 8);
 	
 	for(int i = 1; i <= 8; i++) {
-		LInsert(&list, i);
+		LInsert(&list, i); // 1~8까지의 데이터를 저장하는 노드를 순차적으로 삽입
 	}
 	
 	/* 데이터 탐색 및 출력 */

@@ -37,7 +37,7 @@ int LFirst(List * pList, Data * pData) {
 	return TRUE;
 }
 
-/* 첫 번쨰 노드 이후 노드를 탐색 - LNext */
+/* 첫 번 노드 이후 노드를 탐색 - LNext */
 int LNext(List * pList, Data * pData) {
 	if(pList -> cur -> next == NULL) {
 		return FALSE;
