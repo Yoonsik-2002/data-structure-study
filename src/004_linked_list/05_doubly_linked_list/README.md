@@ -131,9 +131,9 @@ void ListInit(List * pList) {
   <br>
 
   ![스크린샷(5)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/a5340f6a-a006-4b88-ac88-35e981bf2497)<br>
-<br>
+  <br>
   
-- ###### 첫 번째 이후의 노드를 추가하는 경우 추가하기
+- ###### 첫 번째 노드 + 첫 번째 이후의 노드를 추가하는 경우
   첫 번째 이후의 노드를 추가하는 경우는 이전에 작성한 첫 번째 노드를 추가하는 경우에 다음 코드를 추가해 주면 된다.<br>
   ```c
   if(pList -> head != NULL) {
@@ -161,7 +161,59 @@ void ListInit(List * pList) {
   위 코드는 기존 첫 번째 노드를 추가해주는 기능에, 첫 번째 노드 이후의 노드(연결리스트가 비어있지 않은 상태)를 추가해주는 기능을 더하여, `LInsert`함수를 완성한 코드이다. 첫 번째 노드 이후의 새 노드를 추가하는 경우, 아래 그림과 같이 작동한다.<br>
   <br>
 
-  ![스크린샷(4)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/feca7978-1b3c-4ca3-988b-bac0dfaedb05)
+  ![스크린샷(4)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/feca7978-1b3c-4ca3-988b-bac0dfaedb05)<br>
+  <br>
 
+### 3. 데이터 조회
+이번에 구현할 양방향 연결 리스트의 데이터 조회 기능을 담당하는 함수는 다음 세 가지가 있다.<br>
 
+- **`int LFirst(List * pList, Data * pData);`** - 첫 번째 노드(데이터)조회
+- **`int LNext(List * pList, Data * pData);`** - 첫 번쨰 노드 이후의 노드(데이터)조회
+- **`int LPrev(List * pList, Data * pData);`** - LNext의 반대 방향으로 노드(데이터)조회
 
+해당 함수들을 하나씩 구현해 보면, 다음과 같다.<br>
+
+- ###### 첫 번째 노드(데이터)조회 - LFirst
+  ```c
+  int LFirst(List * pList, Data * pData) {
+    if(pList -> head == NULL) {
+      return FALSE;
+    }
+
+    pList -> cur = pList -> head;
+    *pData = pList -> cur -> data;
+
+    return TURE;
+  }
+  ```
+
+- ###### 첫 번쨰 노드 이후의 노드(데이터) 조회 - LNext
+  ```c
+  int LNext(List * pList, Data * pData) {
+    if(pLIst -> cur -> next == NULL) {
+      return FALSE;
+    }
+
+    pList -> cur = pList -> cur -> next;
+    *pData = pList -> cur -> data;
+
+    return TRUE;
+  }
+  ```
+
+- ###### `LNext`의 반대 방향으로 노드(데이터) 조회 - LPrev
+  ```c
+  int LPrev(List * pList, Data * pData) {
+    if(pList -> cur -> prev == NULL) {
+      return FALSE;
+    }
+
+    pList -> cur = pList -> cur -> prev;
+    *pData = pList -> cur -> data;
+
+    reutrn TURE;
+  }
+  ```
+<br>
+
+---
