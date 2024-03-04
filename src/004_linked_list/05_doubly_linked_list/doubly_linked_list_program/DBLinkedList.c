@@ -18,7 +18,8 @@ void LInsert(List * pList, Data data) {
 		pList -> head -> prev = newNode;
 	}
 	
-	newNode -> next = head;
+	newNode -> next = pList -> head;
+	newNode -> prev = NULL;
 	pList -> head = newNode;
 	(pList -> numOfData)++
 }
