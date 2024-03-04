@@ -21,12 +21,13 @@ void LInsert(List * pList, Data data) {
 	newNode -> next = pList -> head;
 	newNode -> prev = NULL;
 	pList -> head = newNode;
-	(pList -> numOfData)++
+	
+	(pList -> numOfData)++;
 }
 
 /* 첫 번째 노드를 탐색 - LFirst */
-int LFirst(List -> pList, Data * pData) {
-	if(pLIst -> head == NULL) {
+int LFirst(List * pList, Data * pData) {
+	if(pList -> head == NULL) {
 		return FALSE;
 	}
 	
@@ -36,13 +37,25 @@ int LFirst(List -> pList, Data * pData) {
 	return TRUE;
 }
 
-/* 두 번쨰 노드를 탐색 - LNext */
-int LNext(List -> pList, Dat * pData) {
+/* 첫 번쨰 노드 이후 노드를 탐색 - LNext */
+int LNext(List * pList, Data * pData) {
 	if(pList -> cur -> next == NULL) {
 		return FALSE;
 	}
 	
 	pList -> cur = pList -> cur -> next;
+	*pData = pList -> cur -> data;
+	
+	return TRUE;
+}
+
+/* LNext의 역방향으로 노드를 탐색 - LPrev */
+int LPrev(List * pList, Data * pData) {
+	if(pList -> cur -> prev == NULL) {
+		return FALSE;
+	}
+	
+	pList -> cur = pList -> cur -> prev;
 	*pData = pList -> cur -> data;
 	
 	return TRUE;

@@ -15,8 +15,8 @@ typedef struct _node {
 
 /* 양방향 연결 리스트를 표현하는 구조체 */
 typedef struct _dbLinkedList {
-	struct _dbLinkedList * head;
-	struct _dbLinkedList * cur;
+	Node * head;
+	Node * cur;
 	int numOfData;
 } DBLinkedList;
 
@@ -26,5 +26,7 @@ typedef DBLinkedList List;
 void ListInit(List * pList);
 void LInsert(List * pList, Data data);
 int LFirst(List * pList, Data * pData);
-int LNext(List * pLIst, Data * pData);
+int LNext(List * pList, Data * pData);
+int LPrev(List * pList, Data * pData);
 
+#endif
