@@ -112,25 +112,56 @@ void ListInit(List * pList) {
 <br>
 
 해당 두 경우를 적용시켜, 노드삽입함수 `LInsert`함수를 구현해 보도록 하겠다.<br>
+<br>
 
-###### 첫 번째노드를 추가하는 경우 
-```c
-void LFirst(List * pList , Data * pData) {
-  Node * newNode = (Node *)malloc(sizeof(Node));
-  newNode -> data = data;
+- ###### 첫 번째 노드를 추가하는 경우 
+  ```c
+  void LInsert(List * pList, Data * pData) {
+    Node * newNode = (Node *)malloc(sizeof(Node));
+    newNode -> data = data;
 
-  newNode -> next = pList -> head; // 첫 번째 노드를 추가하는 시점에서 head 아무것도 가리키고 있지 않기 때문에, newNode -> next 에는 NULL이 저장된다. 
-  pList -> head = newNode;
-  (pList -> numOfData)++;
+    newNode -> next = pList -> head; // 첫 번째 노드를 추가하는 시점에서 head 아무것도 가리키고 있지 않기 때문에, newNode -> next 에는 NULL이 저장된다.
+    newNode -> prev = NULL;
+    pList -> head = newNode;
+    (pList -> numOfData)++;
+  }
+  ```
 
-  return TRUE;
-}
-```
+  위 코드는 양방향 연결 리스트에 첫 번째 노드를 추가해주는 코드이다. 첫 번째 노드를 추가하는 경우, 새 노드를 생성하고, `head`가 이 새로운 첫 번째 노드를 가리키도록 만들어 주면 된다. 해당 과정을 그림으로 나타내면 다음과 같다.<br>
+  <br>
 
-위 코드는 양방향 연결 리스트에 첫 번째 노드를 추가해주는 코드이다. 첫 번째 노드를 추가하는 경우, 새 노드를 생성하고, `head`가 이 새로운 첫 번째 노드를 가리키도록 만들어 주면 된다. 해당 과정을 그림으로 나타내면 다음과 같다.<br>
+  ![스크린샷(5)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/a5340f6a-a006-4b88-ac88-35e981bf2497)<br>
+<br>
+  
+- ###### 첫 번째 이후의 노드를 추가하는 경우 추가하기
+  첫 번째 이후의 노드를 추가하는 경우는 이전에 작성한 첫 번째 노드를 추가하는 경우에 다음 코드를 추가해 주면 된다.<br>
+  ```c
+  if(pList -> head != NULL) {
+    pList -> head -> prev = newNode;
+  }
+  ```
+  위 코드를 추가하여, `LInsert`함수를 완성해 보면, 다음과 같다.<br>
 
+  ```c
+  void LInsert(List * pList, Data * pData) {
+    Node * newNode = (Node *)malloc(sizeof(Node));
+    newNode -> data = data;
 
+    if(pList -> head != NULL) {
+      pLIst -> head -> prev = newNode;
+    }
 
+    newNode -> next = pList -> head;
+    newNOde -> prev = NULL;
+    pList -> head = newNode;
+    (pList -> numOfdata)++;
+  }
+  ```
+
+  위 코드는 기존 첫 번째 노드를 추가해주는 기능에, 첫 번째 노드 이후의 노드(연결리스트가 비어있지 않은 상태)를 추가해주는 기능을 더하여, `LInsert`함수를 완성한 코드이다. 첫 번째 노드 이후의 새 노드를 추가하는 경우, 아래 그림과 같이 작동한다.<br>
+  <br>
+
+  ![스크린샷(4)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/feca7978-1b3c-4ca3-988b-bac0dfaedb05)
 
 
 
