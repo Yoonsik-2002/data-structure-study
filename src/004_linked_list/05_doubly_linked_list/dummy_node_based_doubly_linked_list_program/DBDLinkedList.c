@@ -32,3 +32,26 @@ void LInsert(List * pList, Data data) {
 	newNode -> next = pList -> tail;
 	pList -> tail -> prev = newNode;
 }
+
+/* cur의 위치를 탐색 전, 초기상태로 초기화 - LFirst */
+int LFirst(List * pList) {
+	if((pList -> tail -> prev == pList -> head) && (pList -> head -> next == pList -> tail)) {
+		return False;
+	}
+	
+	pList -> cur = pList -> tail;
+	
+	return TRUE;
+}
+
+/* 첫 번째 노드 부터, 마지막 노드까지 탐색  - LNext */
+int LNext(List * pList, Data * pData) {
+	if(pList -> cur -> next -> data == NULL) {
+		return FALSE;
+	}
+	
+	pList -> cur = pList -> cur -> next;
+	*pData = pList -> cur -> data;
+	
+	return TRUE;
+}
