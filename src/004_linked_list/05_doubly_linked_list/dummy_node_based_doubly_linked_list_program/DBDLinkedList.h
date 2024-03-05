@@ -27,7 +27,7 @@ typedef DBDLinkedList List;
 void ListInit(List * pList);
 void LInseret(List * pLIst, Data data);
 
-int LFirst(List * pList, Data * pData);
+int LFirst(List * pList);
 int LNext(List * pLIst, Data * pData);
 
 Data LRemove(List * pList);
