@@ -11,6 +11,9 @@ void ListInit(List * pList) {
 	pList -> head = HDMN;
 	pList -> tail = TDMN;
 	
+	pList -> head -> prev = NULL;
+	pList -> tail -> next = NULL;
+	
 	pList -> head -> next = pList -> tail;
 	pList -> tail -> prev = pList -> head;
 	
@@ -34,12 +37,13 @@ void LInsert(List * pList, Data data) {
 }
 
 /* cur의 위치를 탐색 전, 초기상태로 초기화 - LFirst */
-int LFirst(List * pList) {
-	if((pList -> tail -> prev == pList -> head) && (pList -> head -> next == pList -> tail)) {
+int LFirst(List * pList, Data * pData) {
+	if(pList -> tail -> prev == pList -> head) {
 		return FALSE;
 	}
 	
-	pList -> cur = pList -> tail;
+	pList -> cur = pList -> tail -> prev;
+	*pData = pList -> cur -> data;
 	
 	return TRUE;
 }
