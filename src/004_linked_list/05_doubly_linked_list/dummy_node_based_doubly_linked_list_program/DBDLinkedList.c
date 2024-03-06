@@ -5,16 +5,13 @@
 
 /* Dummy node 기반의 양방향 연결 리스트의 초기화 - ListInit */
 void ListInit(List * pList) {
-	Node * HDMN = (Node *)malloc(sizeof(Node));
-	Node * TDMN = (Node *)malloc(sizeof(Node));
-	
-	pList -> head = HDMN;
-	pList -> tail = TDMN;
+	pList -> head = (Node *)malloc(sizeof(Node));
+	pList -> tail = (Node *)malloc(sizeof(Node));
 	
 	pList -> head -> prev = NULL;
-	pList -> tail -> next = NULL;
-	
 	pList -> head -> next = pList -> tail;
+	
+	pList -> tail -> next = NULL;
 	pList -> tail -> prev = pList -> head;
 	
 	pList -> numOfData = 0;
@@ -36,7 +33,7 @@ void LInsert(List * pList, Data data) {
 	(pList -> numOfData)++;
 }
 
-/* cur의 위치를 탐색 전, 초기상태로 초기화 - LFirst */
+/* 연결 리스트의 첫 번째 노드를 탐색 - LFirst */
 int LFirst(List * pList, Data * pData) {
 	if(pList -> tail -> prev == pList -> head) {
 		return FALSE;
@@ -48,7 +45,7 @@ int LFirst(List * pList, Data * pData) {
 	return TRUE;
 }
 
-/* 첫 번째 노드부터 마지막 노드까지 순서대로 탐색 - LNext */
+/* 첫 번째 노드 이후의 노드를 순서대로 탐색 - LNext */
 int LNext(List * pList, Data * pData) {
 	if(pList -> cur -> next -> next == NULL) {
 		return FALSE;
