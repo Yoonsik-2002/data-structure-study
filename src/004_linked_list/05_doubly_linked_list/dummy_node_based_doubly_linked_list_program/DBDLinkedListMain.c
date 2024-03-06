@@ -29,6 +29,7 @@ void main() {
 			printf("%d ", data);
 		}
 	}
+	printf("\n");
 	
 	/* 짝수 데이터를 지닌 노드를 연결 리스트에서 삭제 */
 	if(LFirst(&list, &data)) {
@@ -49,4 +50,5 @@ void main() {
 			printf("%d ", data);
 		}
 	}
+	printf("\n");
 }
