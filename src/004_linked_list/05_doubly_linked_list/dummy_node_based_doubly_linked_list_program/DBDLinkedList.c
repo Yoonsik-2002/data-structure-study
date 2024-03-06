@@ -35,11 +35,11 @@ void LInsert(List * pList, Data data) {
 
 /* 연결 리스트의 첫 번째 노드를 탐색 - LFirst */
 int LFirst(List * pList, Data * pData) {
-	if(pList -> tail -> prev == pList -> head) {
+	if(pList -> head -> next == pList -> tail) {
 		return FALSE;
 	}
 	
-	pList -> cur = pList -> tail -> prev;
+	pList -> cur = pList -> head -> next;
 	*pData = pList -> cur -> data;
 	
 	return TRUE;
@@ -74,10 +74,10 @@ Data LRemove(List * pList) {
 	Node * rpos = pList -> cur;
 	Data rdata = rpos -> data;
 	
-	pList -> cur -> next -> prev = pList -> cur -> prev;
 	pList -> cur -> prev -> next = pList -> cur -> next;
+	pList -> cur -> next -> prev = pList -> cur -> prev;
 	
-	pList -> cur = pList -> cur -> next;
+	pList -> cur = pList -> cur -> prev;
 	
 	free(rpos);
 	
