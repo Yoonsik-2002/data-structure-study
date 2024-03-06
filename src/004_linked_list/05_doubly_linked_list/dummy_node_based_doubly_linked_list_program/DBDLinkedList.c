@@ -6,9 +6,7 @@
 /* Dummy node 기반의 양방향 연결 리스트의 초기화 - ListInit */
 void ListInit(List * pList) {
 	Node * HDMN = (Node *)malloc(sizeof(Node));
-	HDMN -> data = NULL;
 	Node * TDMN = (Node *)malloc(sizeof(Node));
-	TDMN -> data = NULL;
 	
 	pList -> head = HDMN;
 	pList -> tail = TDMN;
@@ -31,6 +29,8 @@ void LInsert(List * pList, Data data) {
 	/* newNode를 pList -> tail과 연결 */
 	newNode -> next = pList -> tail;
 	pList -> tail -> prev = newNode;
+	
+	(pList -> numOfData)++;
 }
 
 /* cur의 위치를 탐색 전, 초기상태로 초기화 - LFirst */
@@ -46,7 +46,7 @@ int LFirst(List * pList) {
 
 /* 첫 번째 노드부터 마지막 노드까지 순서대로 탐색 - LNext */
 int LNext(List * pList, Data * pData) {
-	if(pList -> cur -> next -> data == NULL) {
+	if(pList -> cur -> next -> next == NULL) {
 		return FALSE;
 	}
 	
@@ -58,7 +58,7 @@ int LNext(List * pList, Data * pData) {
 
 /* LNext의 역방향으로 노드를 탐색 - LPrev */
 int LPrev(List * pList, Data * pData) {
-	if(pList -> cur -> prev -> data == NULL) {
+	if(pList -> cur -> prev -> prev == NULL) {
 		return FALSE;
 	}
 	
@@ -70,17 +70,19 @@ int LPrev(List * pList, Data * pData) {
 
 /* 노드 삭제 - LRemove */
 Data LRemove(List * pList) {
-	Data temp;
-	temp = pList -> cur -> data;
+	Node * rpos = pList -> cur;
+	Data rdata = rpos -> data;
 	
 	pList -> cur -> next -> prev = pList -> cur -> prev;
 	pList -> cur -> prev -> next = pList -> cur -> next;
 	
-	free(pList -> cur);
+	pList -> cur = pList -> cur -> next;
+	
+	free(rpos);
 	
 	(pList -> numOfData)--;
 	
-	return temp;
+	return rdata;
 }
 
 /* 노드의 개수 출력 - LCount */

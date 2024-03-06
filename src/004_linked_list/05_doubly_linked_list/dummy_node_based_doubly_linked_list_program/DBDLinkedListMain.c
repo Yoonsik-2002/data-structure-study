@@ -20,12 +20,12 @@ void main() {
 	if(LFirst(&list)) {
 		/* 정방향으로 데이터 출력 */
 		while(LNext(&list, &data)) {
-			print(data);
+			printf("%d ", data);
 		}
 		
 		/* 역방향으로 데이터 출력 */
 		while(LPrev(&list, &data)) {
-			print(data);
+			printf("%d ", data);
 		}
 	}
 	
@@ -40,7 +40,7 @@ void main() {
 	/* 데이터 삭제 후, 리스트의 남아있는 데이터를 출력 */
 	if(LFirst(&list)) {
 		while(LNext(&list, &data)) {
-			print(data);
+			printf("%d ", data);
 		}
 	}
 }
