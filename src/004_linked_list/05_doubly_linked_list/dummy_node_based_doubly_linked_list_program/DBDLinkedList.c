@@ -36,7 +36,7 @@ void LInsert(List * pList, Data data) {
 /* cur의 위치를 탐색 전, 초기상태로 초기화 - LFirst */
 int LFirst(List * pList) {
 	if((pList -> tail -> prev == pList -> head) && (pList -> head -> next == pList -> tail)) {
-		return False;
+		return FALSE;
 	}
 	
 	pList -> cur = pList -> tail;
@@ -44,7 +44,7 @@ int LFirst(List * pList) {
 	return TRUE;
 }
 
-/* 첫 번째 노드 부터, 마지막 노드까지 탐색  - LNext */
+/* 첫 번째 노드부터 마지막 노드까지 순서대로 탐색 - LNext */
 int LNext(List * pList, Data * pData) {
 	if(pList -> cur -> next -> data == NULL) {
 		return FALSE;
@@ -54,4 +54,36 @@ int LNext(List * pList, Data * pData) {
 	*pData = pList -> cur -> data;
 	
 	return TRUE;
+}
+
+/* LNext의 역방향으로 노드를 탐색 - LPrev */
+int LPrev(List * pList, Data * pData) {
+	if(pList -> cur -> prev -> data == NULL) {
+		return FALSE;
+	}
+	
+	pList -> cur = pList -> cur -> prev;
+	*pData = pList -> cur -> data;
+	
+	return TRUE;
+}
+
+/* 노드 삭제 - LRemove */
+Data LRemove(List * pList) {
+	Data temp;
+	temp = pList -> cur -> data;
+	
+	pList -> cur -> next -> prev = pList -> cur -> prev;
+	pList -> cur -> prev -> next = pList -> cur -> next;
+	
+	free(pList -> cur);
+	
+	(pList -> numOfData)--;
+	
+	return temp;
+}
+
+/* 노드의 개수 출력 - LCount */
+int LCount(List * pList) {
+	return pList -> numOfData;
 }
