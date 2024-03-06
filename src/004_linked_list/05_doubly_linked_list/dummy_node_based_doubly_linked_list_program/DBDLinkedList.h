@@ -29,6 +29,7 @@ void LInseret(List * pLIst, Data data);
 
 int LFirst(List * pList);
 int LNext(List * pLIst, Data * pData);
+int LPrev(List * pList, Data * pData);
 
 Data LRemove(List * pList);
 int LCount(List * pList);
