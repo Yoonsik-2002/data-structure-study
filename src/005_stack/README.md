@@ -25,7 +25,10 @@
   `포도맛 사탕` -> `오랜지맛 사탕` -> `딸기맛 사탕` 순서
 <br>
 
-![스크린샷(2)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/db0c5b26-3628-4951-9f0c-a7cd1e9d535b)
+![스크린샷(2)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/db0c5b26-3628-4951-9f0c-a7cd1e9d535b)<br>
+
+이러한 stack은 나중에 들어온 요소가 제일 먼저 나오게 되어, **'후입선출'** 방식의 자료구조 라고도 한다.<br>
+그리고 영어로는 'Last in First out'이라 하여, **LIFO** 구조의 자료구조 라고도 한다.<br>
 
 
 
