@@ -25,6 +25,7 @@
   `포도맛 사탕` -> `오랜지맛 사탕` -> `딸기맛 사탕` 순서
 <br>
 
+![스크린샷(2)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/db0c5b26-3628-4951-9f0c-a7cd1e9d535b)
 
 
 
