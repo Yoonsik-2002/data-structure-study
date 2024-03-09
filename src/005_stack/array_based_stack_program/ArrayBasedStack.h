@@ -23,4 +23,4 @@ Data SPop(Stack * pStack);
 
 Data SPeek(Stack * pStack);
 
-#endIf
+#endif
