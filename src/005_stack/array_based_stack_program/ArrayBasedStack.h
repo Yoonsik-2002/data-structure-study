@@ -20,6 +20,7 @@ void SIsEmpty(Stack * pStack);
 
 void SPush(Stack * pStack, Data data);
 Data SPop(Stack * pStack);
+
 Data SPeek(Stack * pStack);
 
 #endIf
