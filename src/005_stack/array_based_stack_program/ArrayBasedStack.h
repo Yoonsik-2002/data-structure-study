@@ -16,7 +16,7 @@ typedef struct _arrayStack {
 typedef ArrayStack Stack;
 
 void StackInit(Stack * pStack);
-void SIsEmpty(Stack * pStack);
+int SIsEmpty(Stack * pStack);
 
 void SPush(Stack * pStack, Data data);
 Data SPop(Stack * pStack);
