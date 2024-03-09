@@ -44,7 +44,7 @@
 ### 스택(Stack)의 ADT
 스택의 ADT를 정의해 보면, 아래와 같다.<br>
 
-![스크린샷(3)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/ca1d4d25-669d-4100-9f73-cff0b34a5f4a)<br>
+![스크린샷(1)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/bda03861-1a63-4197-a2d1-a4a107f24ec0)<br>
 <br>
 
 
