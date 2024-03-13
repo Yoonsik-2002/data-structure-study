@@ -22,5 +22,6 @@ Stack이란 자료구조는 어떠한 특성을 지닌 자료구조였는가? �
 
 ![스크린샷(4)](https://github.com/Yoonsik-2002/data-structure-study/assets/83572199/1cbd4943-ad94-4eca-bbb6-6bd678039b4d)
 
+해당 ADT를 기반으로, 연결 리스트 기반 스택 프로그램의 헤더파일을 정의해 보면, 다음과 같이 정의하는 것이 가능하다.<br>
 
 
