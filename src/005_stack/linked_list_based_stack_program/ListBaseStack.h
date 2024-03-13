@@ -13,8 +13,6 @@ typedef struct _node {
 
 typedef struct _StackList {
 	Node * head;
-	Node * cur;
-	Node * before;
 	int numOfData;
 } StackList;
 
